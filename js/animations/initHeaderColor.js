@@ -1,0 +1,47 @@
+
+export default function initHeaderColor(rootRef) {
+  const root = rootRef;
+  const scroller = root.querySelector('.portfolio-scroll');
+  const header = root.querySelector('.portfolio-header');
+  const projects = root.querySelector('.work-projects');
+  const sections = [...scroller.querySelectorAll('section')];
+  let frame = 0;
+
+  const update = () => {
+   frame = 0;
+   const projectTop = projects.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+   header.classList.toggle('portfolio-header--raised', projectTop <= scroller.clientHeight * .0583 + header.offsetHeight);
+   const backgroundOf = element => {
+    for (let node = element; node; node = node.parentElement) {
+     const color = getComputedStyle(node).backgroundColor;
+     if (color !== 'transparent' && color !== 'rgba(0, 0, 0, 0)') return color;
+    }
+    return '';
+   };
+   const bounds = [...sections].reverse().map(section => ({
+    rect: section.getBoundingClientRect(),
+    background: backgroundOf(section),
+   }));
+   const rect = header.getBoundingClientRect();
+   const y = rect.top + rect.height / 2;
+   const section = bounds.find(({ rect: area }) => y >= area.top && y < area.bottom);
+   const channels = (section?.background || backgroundOf(root)).match(/[\d.]+/g)?.map(Number);
+   header.dataset.theme = channels && channels[2] - channels[0] > 10 ? 'B' : 'P';
+  };
+  const schedule = () => {
+   if (!frame) frame = requestAnimationFrame(update);
+  };
+  const observer = new ResizeObserver(schedule);
+  observer.observe(root);
+  observer.observe(scroller.querySelector('.hero'));
+  scroller.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  update();
+  return () => {
+   cancelAnimationFrame(frame);
+   header.classList.remove('portfolio-header--raised');
+   observer.disconnect();
+   scroller.removeEventListener('scroll', schedule);
+   window.removeEventListener('resize', schedule);
+  };
+}

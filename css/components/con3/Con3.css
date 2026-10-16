@@ -1,0 +1,71 @@
+﻿.keywords-about-stack {position:relative;}
+.keywords-about-stack>.con2 {position:sticky;top:var(--keywords-pin-top,0px);min-height:100dvh;}
+.keywords-about-stack>.con2::after {content:'';position:absolute;inset:0;z-index:1;background:#000;opacity:var(--keywords-dim,0);pointer-events:none;}
+.keywords-pin-hold {height:100dvh;pointer-events:none;}
+.con3 {position:relative;z-index:2;min-height:100dvh;background:#afbacb;color:var(--frame-cream);container-type:inline-size;}
+.con3-canvas {position:relative;height:56.25cqw;min-height:100dvh;}
+.con3-label {position:absolute;left:51.354167cqw;top:calc(50% - 14.895833cqw);margin:0;font-size:1.666667cqw;line-height:1.25;font-weight:800;}
+.con3-portrait {position:absolute;left:17.604167cqw;top:calc(50% - 14.322917cqw);width:23.4375cqw;aspect-ratio:450/550;}
+.con3-photo-frame {position:absolute;inset:0;overflow:hidden;border-radius:1.041667cqw;background:#f8f3ef;}
+.con3-photo-frame img {display:block;width:100%;height:100%;object-fit:cover;}
+.con3-portrait::after {content:'';position:absolute;left:76%;top:98%;width:46%;height:4%;background:radial-gradient(ellipse at center,rgb(55 64 80 / .11) 0%,rgb(55 64 80 / .04) 35%,transparent 70%);filter:blur(5px);pointer-events:none;}
+.con3-portrait-crop {position:absolute;z-index:1;left:53.333333%;top:60.909091%;width:70.444444%;height:43.272727%;}
+.con3-portrait-crop::before {content:'';position:absolute;left:13%;right:9%;bottom:1%;height:5%;border-radius:50%;background:rgb(75 61 62 / .17);filter:blur(5px);pointer-events:none;}
+.con3-portrait-crop img {position:relative;display:block;width:100%;height:100%;object-fit:contain;max-width:none;}
+.con3-copy {position:absolute;left:51.354167cqw;top:calc(50% + 2.135417cqw);transform:translateY(-50%);width:31.614583cqw;display:flex;flex-direction:column;gap:1.5625cqw;}
+.con3-copy h2 {margin:0;font-size:5cqw;line-height:1.25;font-weight:800;}
+.con3-copy h2 span {display:block;white-space:nowrap;}
+.con3-copy h2 span:first-child {font-weight:900;}
+.con3-copy h2 span:last-child {font-weight:700;}
+.con3-body {display:flex;flex-direction:column;gap:1.354167cqw;}
+.con3-statement {margin:0;font-size:1.666667cqw;line-height:1.25;font-weight:600;white-space:nowrap;}
+.con3-statement strong {font-weight:900;}
+.con3-description {margin:0;font-size:1.25cqw;line-height:1.25;font-weight:400;}
+.con3-description span {display:block;white-space:nowrap;}
+@media(max-width:600px) {
+ .con3-canvas {height:auto;min-height:100dvh;padding:135px 8% 90px;}
+ .con3-label {position:static;font-size:18px;}
+ .con3-portrait {position:relative;left:auto;top:auto;width:260px;max-width:79%;margin:30px auto;}
+ .con3-photo-frame {border-radius:12px;}
+ .con3-copy {position:static;transform:none;width:100%;gap:24px;}
+ .con3-copy h2 {font-size:clamp(36px,9vw,54px);}
+ .con3-body {gap:20px;}
+ .con3-statement {font-size:clamp(16px,3.8vw,22px);white-space:normal;word-break:keep-all;}
+ .con3-description {font-size:15px;line-height:1.7;word-break:keep-all;}
+ .con3-description span {display:inline;white-space:normal;}
+ .con3-description span+span::before {content:' ';}
+}
+@media(prefers-reduced-motion:reduce) {
+ .keywords-about-stack>.con2 {position:relative;top:auto;}
+ .keywords-pin-hold {display:none;}
+ .keywords-about-stack>.con2::after {display:none;}
+}
+.con3-copy .bracket-reveal,
+.con3-copy h2 .bracket-reveal {
+ display:inline-flex;
+ align-items:baseline;
+ vertical-align:baseline;
+ white-space:nowrap;
+ font-weight:inherit;
+}
+.con3-copy .bracket-reveal span,
+.con3-copy h2 .bracket-reveal span {
+ display:inline-block;
+ font-weight:inherit;
+ white-space:pre;
+}
+.con3-copy .bracket-reveal .bracket-word,
+.con3-copy h2 .bracket-reveal .bracket-word {
+ overflow:hidden;
+ flex:none;
+}
+.bracket-edge {flex:none;}
+.con3-copy h2 > span:first-child,
+.con3-copy h2 > span:first-child .bracket-reveal,
+.con3-copy h2 > span:first-child .bracket-reveal span {
+ font-weight:900;
+}
+
+.con3-statement .bracket-edge:first-child {margin-right:.15em;}
+.con3-statement .bracket-edge:last-child {margin-left:.15em;}
+

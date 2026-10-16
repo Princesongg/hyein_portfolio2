@@ -1,0 +1,55 @@
+.archive-gallery {display:grid;grid-template-columns:80px minmax(0,1fr);align-items:center;gap:38px;padding:60px 5.0521% 110px;background:#f7f2ef;color:#adb9cb;}
+.archive-gallery-controls {align-self:center;}
+.archive-gallery-view {margin:0 0 24px;font-size:32px;font-weight:800;}
+.archive-gallery-arrows {display:flex;gap:10px;}
+.archive-gallery-arrows button {display:grid;place-items:center;flex:none;width:36px;height:36px;padding:0;border:1px solid currentColor;border-radius:50%;background:none;color:inherit;font:inherit;font-size:20px;cursor:pointer;transition:background .2s,color .2s;}
+.archive-gallery-arrows button:hover:not(:disabled) {background:#adb9cb;color:#f7f2ef;}
+.archive-gallery-arrows button:disabled {opacity:.3;cursor:default;}
+.archive-gallery-count {margin:20px 0 0;font-size:11px;letter-spacing:.1em;}
+.archive-gallery-stage {display:flex;min-width:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.archive-gallery-stage::-webkit-scrollbar {display:none;}
+.archive-gallery-card {flex:0 0 100%;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:7%;padding:18px 0;scroll-snap-align:start;}
+.archive-gallery-visual {min-width:0;}
+.archive-gallery-image-slot {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;aspect-ratio:4/3;border:1px solid rgb(173 185 203 / .28);background:#eeebe8;color:#adb9cb;}
+.archive-gallery-image-slot span {font-size:11px;letter-spacing:.15em;}
+.archive-gallery-image-slot p {margin:0;font-size:24px;font-weight:300;}
+.archive-gallery-visual img {display:block;width:100%;height:auto;max-height:600px;object-fit:contain;}
+.archive-artwork {position:relative;width:min(100%,480px);margin:auto;padding:0 18px 24px 0;}
+.archive-artwork .archive-artwork-main {max-height:none;}
+.archive-award-preview {position:absolute;right:8px;bottom:4px;width:24%;padding:4px;border:1px solid rgb(173 185 203 / .3);background:#fff;box-shadow:0 5px 16px rgb(78 64 66 / .16);transform:rotate(5deg);cursor:zoom-in;}
+.archive-award-preview img {max-height:none;}
+.archive-gallery-copy {min-width:0;}
+.archive-gallery-kicker {margin:0 0 22px;font-size:clamp(12px,1vw,18px);font-weight:700;}
+.archive-gallery-kicker span {font-weight:300;}
+.archive-gallery-copy h3 {margin:0;font-size:clamp(32px,3.3vw,64px);line-height:1.15;font-weight:800;word-break:keep-all;}
+.archive-gallery-category {margin:16px 0 40px;font-size:clamp(16px,1.25vw,24px);font-weight:300;}
+.archive-gallery-award {margin:-22px 0 32px;font-size:14px;line-height:1.7;font-weight:600;word-break:keep-all;color:#7b899d;}
+.archive-gallery-info {display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+.archive-gallery-info h4 {display:table;margin:0 0 14px;padding-bottom:6px;border-bottom:1px solid rgb(173 185 203 / .6);font-size:18px;font-weight:800;}
+.archive-gallery-info p {margin:0;font-size:15px;line-height:1.8;word-break:keep-all;color:#7b899d;}
+.archive-gallery-info p+p {margin-top:12px;}
+.archive-gallery-tasks {display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:13px;line-height:1.8;word-break:keep-all;color:#7b899d;}
+.archive-gallery-tasks li::before {content:'·';margin-right:8px;}
+.archive-gallery-work {grid-column:1/-1;}
+.archive-gallery button:focus-visible,.archive-gallery-stage:focus-visible {outline:2px solid #adb9cb;outline-offset:4px;}
+.archive-gallery-stage:focus-visible {outline-offset:-2px;}
+@media(max-width:1100px) {
+ .archive-gallery {grid-template-columns:1fr;gap:20px;}
+ .archive-gallery-controls {display:flex;align-items:center;gap:22px;}
+ .archive-gallery-view,.archive-gallery-count {margin:0;}
+ .archive-gallery-count {margin-left:auto;}
+ .archive-gallery-info {gap:22px;}
+}
+@media(max-width:800px) {
+ .archive-gallery {padding:40px 7% 80px;}
+ .archive-gallery-card {grid-template-columns:1fr;gap:30px;align-content:start;}
+ .archive-gallery-image-slot {aspect-ratio:4/3;max-height:420px;}
+ .archive-gallery-category {margin-bottom:28px;}
+ .archive-gallery-info h4 {font-size:16px;}
+ .archive-gallery-info p {font-size:14px;}
+}
+@media(max-width:480px) {
+ .archive-gallery-info {grid-template-columns:1fr;}
+ .archive-gallery-work {grid-column:auto;}
+}
+@media(prefers-reduced-motion:reduce) {.archive-gallery-arrows button {transition:none;}}

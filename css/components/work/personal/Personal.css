@@ -1,0 +1,97 @@
+.personal-start {
+ --personal-background:#d2deeb;
+ --personal-ink:#416194;
+ position:relative;
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ min-height:clamp(360px,23.4375vw,450px);
+ padding:clamp(208px,15vw,288px) 5.0521% clamp(60px,4.375vw,84px);
+ background:var(--personal-scroll-background,var(--personal-background));
+ color:var(--personal-ink);
+ scroll-margin-top:90px;
+}
+.personal-start-copy {position:relative;z-index:1;min-width:0;margin-left:-.5729vw;}
+.personal-projects {position:relative;background:var(--video-scroll-background,#d2deeb);color:var(--video-scroll-ink,#416194);}
+.personal-projects-stage {position:relative;overflow-x:auto;scroll-snap-type:x mandatory;}
+.personal-projects-track {display:flex;width:100%;}
+.personal-projects-panel {position:relative;}
+.personal-projects-panel {flex:0 0 100%;min-width:0;min-height:100dvh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:6%;padding:150px 5.0521% 95px;scroll-snap-align:start;}
+.personal-projects[data-horizontal='true'] {height:calc(var(--story-stage-height,100dvh) + var(--story-distance,0px));}
+.personal-projects[data-horizontal='true'] .personal-projects-stage {position:sticky;top:0;height:var(--story-stage-height,100dvh);overflow:hidden;}
+.personal-projects[data-horizontal='true'] .personal-projects-track {height:100%;will-change:transform;}
+.personal-projects[data-horizontal='true'] .personal-projects-panel {height:100%;}
+.personal-projects-chapters {position:absolute;top:100px;right:5.0521%;display:flex;gap:20px;z-index:1;}
+.personal-projects-chapters button {padding:5px 2px;border:0;border-bottom:2px solid transparent;background:none;color:inherit;opacity:.5;cursor:pointer;}
+.personal-projects-chapters button[aria-current='step'],.personal-projects-chapters button:hover {opacity:1;border-bottom-color:currentColor;}
+.personal-projects-visual {position:relative;min-width:0;padding:0 16% 25%;}
+.personal-projects-visual a {display:block;}
+.personal-projects-visual > a {overflow:hidden;border:1px solid rgb(65 97 148 / .45);border-radius:18px;background:var(--frame-cream);box-shadow:0 12px 35px rgb(65 97 148 / .10);text-decoration:none;}
+.personal-preview-caption {display:block;padding:16px 18px;color:#416194;font-size:10px;line-height:1.5;letter-spacing:.09em;}
+.personal-projects-visual > a .personal-shot-desktop {display:block;box-shadow:none;}
+.personal-shot-desktop {width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;box-shadow:0 12px 35px rgb(65 97 148 / .12);}
+.personal-shot-scroll {position:relative;overflow:hidden;}
+.personal-shot-scroll img {display:block;width:100%;height:auto;max-width:none;animation:personal-page-scroll 22s ease-in-out infinite;}
+@keyframes personal-page-scroll {
+ 0%,12% {transform:translateY(0);}
+ 48%,60% {transform:translateY(calc(-100% + 100cqw * .625));}
+ 96%,100% {transform:translateY(0);}
+}
+.personal-shot-scroll {container-type:inline-size;}
+.personal-scroll-content {position:relative;animation:personal-page-scroll 22s ease-in-out infinite;}
+.personal-shot-scroll .personal-scroll-content > img {animation:none;}
+.personal-onitsuka-video {position:absolute;left:3.125%;top:2.257%;width:93.75%;height:32.986%;object-fit:cover;border-radius:0 11% 0 11%;}
+.personal-onitsuka-overlay {position:absolute;left:3.125%;top:2.257%;width:93.75%;height:32.986%;color:white;pointer-events:none;text-shadow:0 1px 3px rgb(0 0 0 / .3);}
+.personal-onitsuka-menu {position:absolute;left:5.83%;top:5%;display:flex;gap:3.5cqw;font-size:1.04cqw;font-weight:800;}
+.personal-onitsuka-overlay img {animation:none;object-fit:contain;}
+.personal-onitsuka-overlay .personal-onitsuka-logo {position:absolute;left:47.1%;top:3.8%;width:7.11%;height:7.9%;}
+.personal-onitsuka-icons {position:absolute;right:5.7%;top:5%;display:flex;align-items:center;gap:1.9cqw;height:3.4%;}
+.personal-onitsuka-icons img:first-child {width:15.52cqw;}
+.personal-onitsuka-icons img:nth-child(2) {width:1.29cqw;}
+.personal-onitsuka-icons img:last-child {width:1.46cqw;}
+.personal-onitsuka-title {position:absolute;left:5.5%;top:80%;display:flex;flex-direction:column;align-items:center;}
+.personal-onitsuka-title strong {font-family:Georgia,serif;font-weight:900;font-size:3.125cqw;line-height:1.4;}
+.personal-onitsuka-title span {font-size:1.667cqw;font-weight:800;color:#ffcd00;}
+@media(prefers-reduced-motion:reduce) {.personal-shot-scroll img {animation:none;}}
+@media(prefers-reduced-motion:reduce) {.personal-scroll-content {animation:none;}}
+.personal-shot-detail {position:absolute;right:0;bottom:0;width:30%;height:65%;overflow:hidden;border:6px solid #f8f2ef;box-shadow:0 12px 35px rgb(65 97 148 / .15);}
+.personal-shot-detail img {width:100%;height:100%;object-fit:cover;object-position:center top;}
+.personal-projects-kicker {margin:0 0 18px;font-size:clamp(13px,1.05vw,20px);font-weight:700;}
+.personal-projects-kicker span {font-weight:300;}
+.personal-projects-copy h2 {margin:0 0 44px;font-size:clamp(34px,4vw,76px);line-height:1.08;font-weight:800;overflow-wrap:anywhere;}
+.personal-projects-copy h2>span {display:block;margin-top:14px;font-size:clamp(16px,1.25vw,24px);line-height:1.4;font-weight:400;overflow-wrap:normal;}
+.personal-projects-info {display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+.personal-projects-info h3 {display:table;margin:0 0 15px;padding-bottom:6px;border-bottom:2px solid currentColor;font-size:20px;font-weight:800;}
+.personal-projects-info p {margin:0;color:var(--video-scroll-muted,#647b9b);font-size:16px;line-height:1.8;word-break:keep-all;}
+.personal-projects-work {grid-column:1/-1;}
+.personal-projects-tasks {display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0 0;padding:0;list-style:none;color:var(--video-scroll-muted,#647b9b);font-size:14px;line-height:1.8;word-break:keep-all;}
+.personal-projects-tasks li::before {content:'·';margin-right:8px;}
+.personal-projects-link {display:inline-flex;margin-top:38px;padding:14px 28px;border:1px solid currentColor;border-radius:999px;color:inherit;text-decoration:none;transition:background .2s,color .2s;}
+.personal-projects-link:hover {background:#416194;color:#f8f2ef;}
+.personal-projects-stage:focus-visible,.personal-projects-chapters button:focus-visible,.personal-projects-link:focus-visible {outline:2px solid #416194;outline-offset:4px;}
+@media(max-width:900px) {
+ .personal-projects-panel {grid-template-columns:1fr;gap:28px;padding:150px 7% 80px;}
+ .personal-projects-visual {width:100%;max-width:500px;margin:auto;}
+ .personal-projects-copy h2 {font-size:clamp(32px,6vw,52px);margin-bottom:28px;}
+ .personal-projects-info {gap:20px;}
+ .personal-projects-info p {font-size:14px;}
+ .personal-projects-info h3 {font-size:17px;}
+}
+@media(max-width:480px) {.personal-projects-info {grid-template-columns:1fr;}.personal-projects-work {grid-column:auto;}}
+.ux-process {background:var(--personal-scroll-background,var(--pink-ivory));}
+.personal-start-eyebrow {margin:0 0 clamp(30px,2.8vw,54px);font-size:clamp(13px,1.0417vw,20px);font-weight:300;line-height:1.3;color:#416094;}
+.personal-start h2 {margin:0;font-size:clamp(32px,3.3333vw,64px);font-weight:800;line-height:1.15;}
+.personal-start-accent {margin:4px 0 0;font-family:var(--font-accent);font-size:clamp(26px,2.5vw,48px);font-weight:300;font-style:italic;line-height:1.3;color:#f8f2ef;}
+.personal-start-description {margin:32px 0 0;font-size:clamp(18px,1.6667vw,32px);font-weight:300;line-height:1.5;color:rgb(65 96 148 / .6);word-break:keep-all;}
+.personal-start-art {margin-top:0;}
+.personal-start-art .team-start-stamp img,
+.personal-start-art .team-start-postmark img {inset:0;width:100%;height:100%;object-fit:cover;}
+@media(max-width:700px) {
+ .personal-start {padding:160px 7% 80px;gap:32px;flex-direction:column;}
+ .personal-start-copy {margin-left:0;}
+ .personal-start-eyebrow {margin-bottom:28px;}
+ .personal-start h2,.personal-start-accent {margin-left:0;}
+ .personal-start h2 {font-size:clamp(28px,6.3vw,44px);}
+ .personal-start-description {margin-top:24px;font-size:18px;}
+ .personal-start-art {align-self:flex-end;width:190px;margin:0 2% 0 0;}
+}

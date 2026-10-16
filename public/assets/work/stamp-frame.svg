@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" preserveAspectRatio="none">
+ <defs><path id="star" d="M0-12 C3-4 4-3 12 0 C4 3 3 4 0 12 C-3 4-4 3-12 0 C-4-3-3-4 0-12Z"/></defs>
+ <rect x="2" y="2" width="996" height="616" rx="12" fill="none" stroke="#8f6e73" stroke-width="2" opacity=".75"/>
+ <path d="M57 21H943Q943 57 979 57V563Q943 563 943 599H57Q57 563 21 563V57Q57 57 57 21Z" fill="none" stroke="#b1bccc" stroke-width="9" opacity=".72"/>
+ <g fill="#8f6e73" opacity=".8"><use href="#star" transform="translate(27 27)"/><use href="#star" transform="translate(973 27)"/><use href="#star" transform="translate(27 593)"/><use href="#star" transform="translate(973 593)"/><use href="#star" transform="translate(500 22) scale(.8)"/><use href="#star" transform="translate(500 598) scale(.8)"/></g>
+ <g stroke="#8f6e73" stroke-width="1.5" opacity=".65"><path d="M76 22H475M525 22H924M76 598H475M525 598H924"/></g>
+</svg>

@@ -1,0 +1,19 @@
+.quick-qa {position:relative;z-index:1;display:flex;align-items:center;min-height:100dvh;margin-top:-100dvh;padding:160px 8% 120px;background:#aebacb;color:var(--frame-cream);}
+.quick-qa-inner {width:100%;max-width:1600px;margin-inline:auto;}
+.quick-qa h2 {margin:0 0 44px;font-size:clamp(38px,3.333333vw,64px);line-height:1.2;font-weight:600;}
+.quick-qa h2 em {font-family:var(--font-accent);font-style:italic;font-weight:400;}
+.quick-qa-list {border-top:1px solid rgb(248 244 241 / .45);}
+.quick-qa-item {border-bottom:1px solid rgb(248 244 241 / .45);}
+.quick-qa-item.is-animating {overflow:hidden;}
+.quick-qa-item summary {display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px;padding:24px 0;list-style:none;cursor:pointer;font-size:clamp(16px,1.041667vw,20px);line-height:1.6;font-weight:500;}
+.quick-qa-item summary::-webkit-details-marker {display:none;}
+.quick-qa-item summary:hover {color:var(--deep-blue-accent);}
+.quick-qa-item summary:focus-visible {outline:2px solid var(--deep-blue-accent);outline-offset:5px;border-radius:3px;}
+.quick-qa-toggle {position:relative;flex-shrink:0;width:20px;height:20px;}
+.quick-qa-toggle::before,.quick-qa-toggle::after {content:'';position:absolute;top:9px;left:3px;width:14px;height:1.5px;background:currentColor;}
+.quick-qa-toggle::after {transform:rotate(90deg);transition:transform .25s ease;}
+.quick-qa-item[open]:not([data-qa-state='closed']) .quick-qa-toggle::after {transform:rotate(0);}
+.quick-qa-answer {max-width:1000px;padding:4px 42px 32px 0;color:var(--deep-blue-accent);font-size:clamp(15px,.9375vw,18px);line-height:1.85;overflow-wrap:anywhere;word-break:keep-all;}
+.quick-qa-answer p {margin:0;white-space:pre-line;}
+@media(max-width:600px) {.quick-qa {padding:140px 10% 100px;}.quick-qa h2 {margin-bottom:32px;}.quick-qa-item summary {min-height:76px;gap:16px;padding-block:22px;}.quick-qa-answer {padding-right:0;}}
+@media(prefers-reduced-motion:reduce) {.quick-qa {margin-top:0;}.quick-qa-item[open] .quick-qa-answer {animation:none;}.quick-qa-toggle::after {transition:none;}}
