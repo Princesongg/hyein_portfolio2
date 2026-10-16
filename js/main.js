@@ -48,7 +48,7 @@ resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
 start(initHeroMotion,root);
-root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.personal-onitsuka-video').forEach(video=>start(initLaptopPreview,video));
+root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
 root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
  const label=document.createElement('span');
  label.className='personal-preview-caption';

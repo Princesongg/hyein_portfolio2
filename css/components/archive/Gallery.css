@@ -15,7 +15,7 @@
 .archive-gallery-image-slot p {margin:0;font-size:24px;font-weight:300;}
 .archive-gallery-visual img {display:block;width:100%;height:auto;max-height:600px;object-fit:contain;}
 .archive-artwork {position:relative;width:min(100%,480px);margin:auto;padding:0 18px 24px 0;}
-.archive-artwork .archive-artwork-main {max-height:none;}
+.archive-artwork .archive-artwork-main {max-height:none;border:1px solid rgb(143 110 115 / .22);border-radius:22px;box-shadow:0 8px 18px rgb(65 74 88 / .055);}
 .archive-award-preview {position:absolute;right:8px;bottom:4px;width:24%;padding:4px;border:1px solid rgb(173 185 203 / .3);background:#fff;box-shadow:0 5px 16px rgb(78 64 66 / .16);transform:rotate(5deg);cursor:zoom-in;}
 .archive-award-preview img {max-height:none;}
 .archive-gallery-copy {min-width:0;}
