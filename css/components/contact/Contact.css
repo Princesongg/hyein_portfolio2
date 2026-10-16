@@ -1,5 +1,10 @@
 .contact {display:grid;place-items:center;min-height:100dvh;padding:80px 40px;background:var(--contact-scroll-background,#aebacb);color:#f8f4f1;scroll-margin-top:0;}
-.contact-ending {display:flex;flex-direction:column;align-items:center;gap:clamp(28px,2.916667vw,56px);}
+.contact-ending {position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:clamp(28px,2.916667vw,56px);}
+.contact {position:relative;overflow:hidden;}
+.contact-mail {position:absolute;right:-2%;bottom:-8%;width:clamp(290px,31vw,570px);aspect-ratio:600/520;pointer-events:none;transform:rotate(10deg);}
+.contact-mail-envelope {position:absolute;inset:0;width:100%;height:100%;opacity:.18;filter:drop-shadow(0 7px 9px rgb(65 74 88 / .10));}
+.contact-mail-paper {position:absolute;left:-14%;top:3%;width:83%;height:auto;opacity:.42;transform:rotate(-22deg);filter:drop-shadow(0 3px 3px rgb(65 74 88 / .12));}
+@media(max-width:900px) {.contact-mail {width:280px;right:-75px;bottom:-85px;opacity:.85;}.contact {padding-bottom:220px;}}
 .contact-heading {position:relative;width:clamp(260px,24.739583vw,475px);max-width:100%;aspect-ratio:475/201.13;}
 .contact-heading h2 {position:absolute;left:0;bottom:0;margin:0;color:#f7f3ef;font-size:clamp(52px,5vw,96px);font-weight:800;line-height:1.2;letter-spacing:0;}
 .contact-character {position:absolute;top:0;right:-1.473684%;display:block;width:39.789474%;height:auto;aspect-ratio:189/141;object-fit:contain;pointer-events:none;}
@@ -7,7 +12,7 @@
 .contact-paw--lower {left:103.158%;top:22.552%;width:10.644%;transform:rotate(25.88deg);}
 .contact-paw--upper {left:95.025%;top:-16.536%;width:9.584%;transform:rotate(-27.09deg);}
 .contact-links {display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.083333vw,40px);margin:0;font-style:normal;}
-.contact-link {display:flex;align-items:center;gap:clamp(20px,2.083333vw,40px);color:inherit;text-decoration:none;font-size:clamp(20px,1.666667vw,32px);line-height:1.2;white-space:nowrap;}
+.contact-link {display:flex;align-items:center;gap:clamp(20px,2.083333vw,40px);color:inherit;text-decoration:none;font-weight:500;font-size:clamp(20px,1.666667vw,32px);line-height:1.2;white-space:nowrap;}
 .contact-icon {display:grid;place-items:center;width:clamp(16px,1.666667vw,32px);height:clamp(18px,1.822917vw,35px);flex-shrink:0;}
 .contact-icon img {display:block;max-width:none;transform:scale(.5);}
 @media(min-width:960px) {.contact-icon img {transform:scale(.75);}}

@@ -108,7 +108,7 @@
 .team-story-galerie-screens>a {display:block;color:inherit;text-decoration:none;}
 .team-story-galerie-preview {display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;}
 .team-story-screen-caption {display:block;padding:14px 18px;font-size:11px;letter-spacing:.08em;}
-.team-story-galerie-mobile {position:absolute;right:0;bottom:0;width:24%;border:5px solid var(--frame-cream);border-radius:16px;overflow:hidden;box-shadow:0 12px 24px rgba(143,110,115,.16);background:var(--frame-cream);}
+.team-story-phone.team-story-galerie-mobile {right:0;bottom:0;width:24%;filter:drop-shadow(0 10px 12px rgba(143,110,115,.14));transform:rotate(3deg);}
 .team-story-galerie-mobile figcaption {padding:8px 0;text-align:center;font-size:9px;}
 .team-story-galerie-screens>a:focus-visible {outline:2px solid var(--deep-blue-accent);outline-offset:4px;}
 
