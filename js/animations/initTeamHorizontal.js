@@ -4,22 +4,31 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
   const scroller = root.closest('.portfolio-scroll');
   const track = root.querySelector('.' + prefix + '-track');
   const rows = [...track.children];
+  const buttons = [...root.querySelectorAll('.' + prefix + '-chapters button')];
   const media = window.matchMedia(prefix === 'ux-process' ? '(prefers-reduced-motion: reduce), (max-width: 900px)' : '(prefers-reduced-motion: reduce)');
   let frame = 0;
+  let measureFrame = 0;
   let distance = 0;
+  let activeIndex = -1;
+  let previousOffset = -1;
   const update = () => {
    frame = 0;
    if (media.matches) return;
    const offset = scroller.getBoundingClientRect().top - root.getBoundingClientRect().top;
-   const index = Math.round(Math.max(0, Math.min(distance, offset)) / scroller.clientWidth);
-   root.querySelectorAll('.' + prefix + '-chapters button').forEach((button, buttonIndex) => {
+   const clampedOffset = Math.max(0, Math.min(distance, offset));
+   const index = Math.round(clampedOffset / scroller.clientWidth);
+   if (index !== activeIndex) buttons.forEach((button, buttonIndex) => {
     if (buttonIndex === index) button.setAttribute('aria-current','step');
     else button.removeAttribute('aria-current');
    });
-   track.style.transform = `translate3d(${-Math.max(0, Math.min(distance, offset))}px,0,0)`;
+   activeIndex = index;
+   if (clampedOffset !== previousOffset) track.style.transform = `translate3d(${-clampedOffset}px,0,0)`;
+   previousOffset = clampedOffset;
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
   const measure = () => {
+   activeIndex = -1;
+   previousOffset = -1;
    root.dataset.horizontal = String(!media.matches);
    track.style.transform = '';
    root.style.removeProperty('--story-stage-height');
@@ -32,7 +41,15 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    root.style.setProperty('--story-stage-height', `${stageHeight}px`);
    root.style.setProperty('--story-distance', `${distance}px`);
    root.dataset.horizontal = 'true';
-   schedule();
+   // Restore the current translation before the browser paints the measured layout.
+   cancelAnimationFrame(frame);
+   update();
+  };
+  const scheduleMeasure = () => {
+   if (!measureFrame) measureFrame = requestAnimationFrame(() => {
+    measureFrame = 0;
+    measure();
+   });
   };
   const onKey = event => {
    if (media.matches || event.target !== root.querySelector('.' + prefix + '-stage')) return;
@@ -42,17 +59,21 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    const next = scroller.scrollTop + (event.key === 'ArrowRight' ? 1 : -1) * scroller.clientWidth;
    scroller.scrollTo({top:Math.max(start,Math.min(start + distance,next)),behavior:'smooth'});
   };
-  const observer = new ResizeObserver(measure);
+  const observer = new ResizeObserver(scheduleMeasure);
   observer.observe(scroller);
-  root.addEventListener('load', measure, true);
+  root.addEventListener('load', scheduleMeasure, true);
   root.addEventListener('keydown', onKey);
   scroller.addEventListener('scroll', schedule, {passive:true});
   media.addEventListener('change', measure);
   measure();
+  // Font metrics can change panel heights after the first layout.
+  document.fonts.addEventListener('loadingdone', scheduleMeasure);
   return () => {
    cancelAnimationFrame(frame);
+   cancelAnimationFrame(measureFrame);
    observer.disconnect();
-   root.removeEventListener('load', measure, true);
+   root.removeEventListener('load', scheduleMeasure, true);
+   document.fonts.removeEventListener('loadingdone', scheduleMeasure);
    root.removeEventListener('keydown', onKey);
    scroller.removeEventListener('scroll', schedule);
    media.removeEventListener('change', measure);

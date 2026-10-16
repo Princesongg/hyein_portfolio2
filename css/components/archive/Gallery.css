@@ -53,3 +53,23 @@
  .archive-gallery-work {grid-column:auto;}
 }
 @media(prefers-reduced-motion:reduce) {.archive-gallery-arrows button {transition:none;}}
+
+.archive-brand-gallery {display:grid;gap:16px;max-width:620px;margin:auto;}
+.archive-brand-gallery button {display:block;min-width:0;width:100%;padding:0;border:0;background:transparent;color:#7b899d;font:inherit;text-align:left;cursor:zoom-in;}
+.archive-brand-gallery .archive-brand-main img {width:100%;max-height:none;height:auto;border-radius:12px;}
+.archive-brand-details {display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;align-items:start;}
+.archive-brand-crop {position:relative;display:block;overflow:hidden;border:1px solid #adb9cb40;border-radius:7px;}
+.archive-brand-gallery .archive-brand-crop img {position:absolute;max-width:none;max-height:none;object-fit:fill;}
+.archive-brand-crop--photo {aspect-ratio:844/973;}
+.archive-brand-gallery .archive-brand-crop--photo img {width:100%;height:130.45%;left:0;top:-23.69%;}
+.archive-brand-crop--plan-one {aspect-ratio:739/1024;}
+.archive-brand-gallery .archive-brand-crop--plan-one img {width:113.35%;height:115.38%;left:-5.17%;top:-11.31%;}
+.archive-brand-crop--plan-two {aspect-ratio:760/1024;}
+.archive-brand-gallery .archive-brand-crop--plan-two img {width:112.92%;height:124.38%;left:-5.15%;top:-6.6%;}
+.archive-brand-caption {display:block;margin-top:8px;font-size:10px;line-height:1.5;letter-spacing:.04em;}
+@media(max-width:480px) {.archive-brand-gallery {gap:12px;}.archive-brand-details {gap:8px;}.archive-brand-caption {font-size:9px;}}
+.archive-brand-hero {position:relative;margin-top:18px;}
+.archive-brand-gallery .archive-brand-overlay {position:absolute;z-index:1;right:-8px;top:-18px;width:27%;padding:5px;background:#f8f4f1;border:1px solid #c9b1ae66;border-radius:7px;box-shadow:0 5px 14px #59474c24;transform:rotate(6deg);}
+.archive-brand-calendar-crop {position:relative;display:block;aspect-ratio:1024/955;overflow:hidden;border-radius:3px;}
+.archive-brand-gallery .archive-brand-calendar-crop img {position:absolute;max-width:none;max-height:none;left:-19.74%;top:-20.2%;width:168.42%;height:120.2%;object-fit:fill;}
+@media(max-width:480px) {.archive-brand-gallery .archive-brand-overlay {right:0;width:29%;padding:4px;}}

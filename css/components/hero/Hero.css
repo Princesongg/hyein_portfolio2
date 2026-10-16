@@ -1,7 +1,7 @@
 ﻿:root {--frame-cream:#f8f4f1;--pink-ivory:#eee3e1;--mist-blue:#b1bccc;--powder-blue:#d7dfeb;--petal-pink:#f8d6dc;--light-pink-brown:#c9b1ae;--deep-pink-brown:#8f6e73;--deep-blue-accent:#405c91;}
 body {overflow:hidden;background:var(--frame-cream);font-family:'SUITE',Arial,sans-serif;}
 .portfolio {width:100%;height:100dvh;position:relative;overflow:hidden;background:var(--mist-blue);color:var(--frame-cream);}
-.portfolio-scroll {height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none;scroll-behavior:smooth;}
+.portfolio-scroll {height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;overflow-anchor:none;scrollbar-width:none;scroll-behavior:auto;}
 .portfolio-scroll::-webkit-scrollbar {display:none;}
 .portfolio-header {--menu-hover:#406093;position:absolute;z-index:3;left:5.2083%;right:5.2083%;top:5.83%;display:flex;align-items:center;justify-content:space-between;min-height:clamp(40px,2.604167vw,50px);padding:5px clamp(16px,1.302083vw,25px);border-radius:30px;background:rgba(64,96,147,.2);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);color:var(--frame-cream);transition:background-color .2s ease,top .3s ease;}
 .portfolio-header[data-theme='P'] {--menu-hover:#8f6e72;background:rgba(143,110,114,.2);}

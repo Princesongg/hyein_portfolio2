@@ -4,7 +4,7 @@ export default function initHeaderColor(rootRef) {
   const scroller = root.querySelector('.portfolio-scroll');
   const header = root.querySelector('.portfolio-header');
   const projects = root.querySelector('.work-projects');
-  const sections = [...scroller.querySelectorAll('section')];
+  const sections = [...scroller.querySelectorAll('section')].reverse();
   let frame = 0;
 
   const update = () => {
@@ -18,15 +18,15 @@ export default function initHeaderColor(rootRef) {
     }
     return '';
    };
-   const bounds = [...sections].reverse().map(section => ({
-    rect: section.getBoundingClientRect(),
-    background: backgroundOf(section),
-   }));
    const rect = header.getBoundingClientRect();
    const y = rect.top + rect.height / 2;
-   const section = bounds.find(({ rect: area }) => y >= area.top && y < area.bottom);
-   const channels = (section?.background || backgroundOf(root)).match(/[\d.]+/g)?.map(Number);
-   header.dataset.theme = channels && channels[2] - channels[0] > 10 ? 'B' : 'P';
+   const section = sections.find(section => {
+    const area = section.getBoundingClientRect();
+    return y >= area.top && y < area.bottom;
+   });
+   const channels = backgroundOf(section || root).match(/[\d.]+/g)?.map(Number);
+   const theme = channels && channels[2] - channels[0] > 10 ? 'B' : 'P';
+   if (header.dataset.theme !== theme) header.dataset.theme = theme;
   };
   const schedule = () => {
    if (!frame) frame = requestAnimationFrame(update);

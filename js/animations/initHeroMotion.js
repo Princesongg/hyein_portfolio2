@@ -60,9 +60,9 @@ export default function initHeroMotion(rootRef) {
    }, 2.42);
 
    // Start together once the original illustrations are decoded.
-   Promise.all(Array.from(root.querySelectorAll('.hero-canvas img')).map(img =>
+   Promise.all([window.portfolioIntroFinished, ...Array.from(root.querySelectorAll('.hero-canvas img')).map(img =>
     img.decode ? img.decode().catch(() => {}) : Promise.resolve()
-   )).then(() => { if (!disposed) timeline.play(0); });
+   )]).then(() => { if (!disposed) timeline.play(0); });
 
    return () => { disposed = true; };
   }, rootRef);

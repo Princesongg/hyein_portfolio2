@@ -9,9 +9,11 @@ export default function initWorkTyping(sectionRef, options = {}) {
   let frame = 0, travel = 0, distance = 1;
   let current = 0;
   let lastTime = 0;
+  let previousProgress = -1, previousEntry = -1;
   const update = timestamp => {
    frame = 0;
    if (media.matches) {
+    previousProgress = -1;
     lastTime = 0;
     title.style.transform = '';
     if (!options.preserveFrame) portfolioFrame.style.opacity = '';
@@ -22,7 +24,13 @@ export default function initWorkTyping(sectionRef, options = {}) {
     return;
    }
    const viewport = scroller.getBoundingClientRect();
-   const progress = Math.max(0, Math.min(1, (viewport.top - section.getBoundingClientRect().top) / distance));
+   const sectionTop = section.getBoundingClientRect().top;
+   const progress = Math.max(0, Math.min(1, (viewport.top - sectionTop) / distance));
+   const entry = Math.max(0,Math.min(1,(scroller.clientHeight-sectionTop+viewport.top)/(scroller.clientHeight*.8)));
+   // Settled sections outside the viewport do not need more style updates.
+   if (progress === previousProgress && entry === previousEntry && current === progress) return;
+   previousProgress = progress;
+   previousEntry = entry;
    const target = progress;
    const elapsed = lastTime ? Math.min(64, timestamp - lastTime) : 16;
    lastTime = timestamp;
@@ -33,15 +41,16 @@ export default function initWorkTyping(sectionRef, options = {}) {
    const subtitleProgress = Math.max(0, Math.min(1, (settle - .45) / .55));
    const subtitleFade = subtitleProgress * subtitleProgress * (3 - 2 * subtitleProgress);
    subtitle.style.opacity = String(1 - subtitleFade);
-   const entry = Math.max(0,Math.min(1,(scroller.clientHeight-section.getBoundingClientRect().top+viewport.top)/(scroller.clientHeight*.8)));
    const frameEntry = options.enterFrame ? entry*entry*(3-2*entry) : 1;
    if (!options.preserveFrame) portfolioFrame.style.opacity = String(frameEntry*(1-subtitleFade));
    subtitle.style.filter = `blur(${subtitleFade * 8}px)`;
    subtitle.style.transform = `translateY(${-subtitleFade * 16}px)`;
    const width = scroller.clientWidth;
    title.style.transform = `translate3d(${width * .12 - travel * slide}px,0,0)`;
-   chars.forEach(char => {
-    const rect = char.getBoundingClientRect();
+   // Read all character positions before writing their individual styles.
+   const characterRects = chars.map(char => char.getBoundingClientRect());
+   chars.forEach((char, index) => {
+    const rect = characterRects[index];
     const x = rect.left + rect.width / 2 - viewport.left;
     const scale = width / 1920;
     const fogStart = 480 * scale;
@@ -61,6 +70,7 @@ export default function initWorkTyping(sectionRef, options = {}) {
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
   const measure = () => {
+   previousProgress = -1;
    travel = Math.max(0, title.scrollWidth - scroller.clientWidth * .38);
    distance = Math.max(scroller.clientHeight * 2, travel * 1.5);
    section.style.setProperty(options.distanceProperty || '--work-scroll-distance', distance + 'px');

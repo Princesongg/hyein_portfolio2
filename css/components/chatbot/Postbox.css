@@ -2,8 +2,13 @@
 .postbox-widget button,.postbox-widget a,.postbox-widget textarea {font:inherit;}
 .postbox-widget button {cursor:pointer;}
 .postbox-controls {position:absolute;right:clamp(24px,4vw,76px);bottom:max(38px,5vh);display:flex;flex-direction:column;align-items:center;gap:18px;pointer-events:auto;}
-.postbox-launch {position:relative;display:grid;place-items:center;width:72px;height:72px;border:1px solid var(--light-pink-brown);border-radius:50%;background:var(--frame-cream);color:var(--deep-pink-brown);box-shadow:0 6px 22px #8f6e7314;transition:transform .25s,background .25s;}
-.postbox-launch:hover {transform:translateY(-3px);background:var(--pink-ivory);}
+.postbox-launch {position:relative;display:grid;place-items:center;width:72px;height:72px;padding:0;border:1px solid var(--light-pink-brown);border-radius:50%;background:var(--frame-cream);color:var(--deep-pink-brown);box-shadow:0 4px 16px #8f6e7314;}
+.postbox-mailbox {position:relative;display:block;width:78%;height:78%;}
+.postbox-mailbox img {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;transition:opacity .18s;}
+.postbox-mailbox-normal {filter:saturate(.72);}
+.postbox-mailbox-hover {opacity:0;filter:saturate(.72) brightness(.96);transform:scale(1.08);}
+.postbox-launch:is(:hover,:focus-visible) .postbox-mailbox-normal {opacity:0;}
+.postbox-launch:is(:hover,:focus-visible) .postbox-mailbox-hover {opacity:1;}
 .postbox-tooltip {position:absolute;right:0;bottom:calc(100% + 12px);width:max-content;max-width:260px;padding:8px 14px;border-radius:18px;background:var(--deep-pink-brown);color:var(--frame-cream);font-size:13px;opacity:0;visibility:hidden;transition:opacity .2s;pointer-events:none;}
 .postbox-launch:hover .postbox-tooltip,.postbox-launch:focus-visible .postbox-tooltip {opacity:1;visibility:visible;}
 .postbox-launch[aria-expanded='true'] .postbox-tooltip {display:none;}
@@ -13,7 +18,8 @@
 .postbox-panel[hidden] {display:none;}
 .postbox-panel.is-open {opacity:1;transform:translateY(0);}
 .postbox-header {display:flex;align-items:center;gap:12px;padding:18px 18px 15px;background:var(--pink-ivory);flex-shrink:0;}
-.postbox-envelope {font-size:29px;}
+.postbox-envelope {display:block;width:46px;height:46px;flex-shrink:0;}
+.postbox-envelope img {display:block;width:100%;height:100%;object-fit:contain;}
 .postbox-header h2 {margin:0;font-size:18px;line-height:1.3;font-weight:800;}
 .postbox-header p {margin:3px 0 0;font-family:var(--font-accent);font-style:italic;font-size:14px;color:var(--deep-pink-brown);}
 .postbox-close {margin-left:auto;margin-right:-6px;align-self:flex-start;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--deep-pink-brown);font-size:28px!important;line-height:1;}
@@ -40,5 +46,30 @@
  .postbox-header {padding:12px 14px;}
  .postbox-suggestions {max-height:132px;overflow-y:auto;padding:8px 12px;}
  .postbox-suggestions button {min-height:40px;}
+}
+/* Airmail stationery frame, with all decoration outside the chat controls. */
+.postbox-panel {
+ border:6px solid transparent;border-radius:18px;
+ background:linear-gradient(#f8f4f1,#f8f4f1) padding-box,
+ repeating-linear-gradient(135deg,#c9b1ae 0 11px,#f8f4f1 11px 21px,#adb9cb 21px 32px,#f8f4f1 32px 42px) border-box;
+ box-shadow:0 16px 48px #59474c24,inset 0 0 0 1px #c9b1ae66;
+}
+.postbox-header {position:relative;padding:20px 16px 27px;background:linear-gradient(110deg,#eee3e180,#f8f4f1);border-bottom:1px dashed #c9b1ae;}
+.postbox-header::after {content:'DESIGN POST OFFICE · WITH LOVE';position:absolute;left:18px;bottom:8px;font-size:8px;letter-spacing:.18em;color:#8f6e7399;pointer-events:none;}
+.postbox-envelope {position:relative;width:48px;height:56px;padding:6px;background:#f8f4f1;border:1px dashed #c9b1ae;outline:3px solid #f8f4f1;transform:rotate(-6deg);box-shadow:0 2px 4px #8f6e7314;}
+.postbox-envelope::after {content:'♥';position:absolute;right:-9px;bottom:-5px;display:grid;place-items:center;width:23px;height:23px;border:1px solid #c9b1ae;border-radius:50%;color:#c9b1ae;font-size:11px;background:#f8f4f1e6;pointer-events:none;}
+.postbox-header h2 {font-size:17px;letter-spacing:.025em;}
+.postbox-guide {padding-top:13px;}
+.postbox-log {background-image:repeating-linear-gradient(transparent 0 30px,#c9b1ae0d 30px 31px);background-attachment:local;}
+.postbox-message:not(.postbox-message--user) {border:1px solid #c9b1ae40;border-radius:4px 12px 12px 12px;background:#eee3e1e8;box-shadow:0 2px 3px #8f6e7306;}
+.postbox-suggestions {border-top:1px dashed #c9b1ae88;background:#f8f4f1;}
+.postbox-form textarea {border-radius:6px;background:linear-gradient(transparent 32px,#c9b1ae33 32px 33px,transparent 33px),#f8f4f1;}
+.postbox-form button {border-radius:6px;}
+@media(max-width:600px),(max-height:600px) {
+ .postbox-panel {border-width:5px;border-radius:14px;}
+ .postbox-header {padding:14px 12px 26px;gap:10px;}
+ .postbox-header h2 {font-size:clamp(13px,4vw,17px);}
+ .postbox-envelope {width:42px;height:48px;}
+ .postbox-header::after {left:14px;font-size:7px;}
 }
 @media(prefers-reduced-motion:reduce) {.postbox-widget * {animation:none!important;transition:none!important;scroll-behavior:auto!important;}}

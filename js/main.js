@@ -220,6 +220,12 @@ function documentPreview(material) {
 }
 const documentDialog=initDocumentDialog(root.querySelector('.ux-document-dialog'),{scroller,renderPreview:documentPreview});
 const openDocument=documentDialog.open;
+root.querySelectorAll('[data-archive-image]').forEach(button => {
+ button.addEventListener('click',() => openDocument({
+  label:button.querySelector('img').alt,
+  image:button.dataset.archiveImage,
+ }));
+});
 cleanups.push(documentDialog.destroy);
 root.querySelector('.ux-lean-open').addEventListener('click',() => openDocument(leanCanvas));
 root.querySelector('.archive-award-preview').addEventListener('click',() => openDocument({

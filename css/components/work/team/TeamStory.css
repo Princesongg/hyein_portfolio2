@@ -7,6 +7,10 @@
 .team-story-copy h3 em {font-family:var(--font-accent);font-style:italic;font-weight:400;letter-spacing:-.04em;color:var(--light-pink-brown);}
 .team-story-copy h4 {margin:0 0 14px;font-size:18px;font-weight:800;}
 .team-story-description {margin:0;max-width:470px;font-size:16px;line-height:1.9;word-break:keep-all;}
+.team-story-row--together .team-story-description + .team-story-description {margin-top:16px;}
+@media(min-width:801px) {
+ .team-story-row--together .team-story-single-line {white-space:nowrap;}
+}
 .team-story-visual {min-width:0;}
 .team-story-visual figure {margin:0;}
 .team-story-visual img {display:block;width:100%;height:auto;}
