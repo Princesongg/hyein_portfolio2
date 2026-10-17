@@ -3,6 +3,7 @@
 const clamp = value => Math.max(0, Math.min(1, value));
 const ease = value => {const t=clamp(value); return t*t*(3-2*t);};
 const mix = (a,b,t) => a+(b-a)*t;
+const boundedSize = value => Math.max(.86,Math.min(1.12,value));
 // Small, intentional offsets preserve the original scattered composition.
 // x offset / y offset / relative size / rotation. Five pieces act as anchors.
 const scatterRhythm = [
@@ -15,13 +16,11 @@ const scatterRhythm = [
  [.015,.032,1.08,6],[-.020,-.030,.86,-13],[.018,.028,1.40,10],
  [-.015,-.030,.80,-7],[.012,.034,1.10,11],[0,-.024,.92,-6],
 ];
-// Balanced clusters laid over two envelopes, with a clear diagonal reading flow.
-const scatteredArchive = [
- [.065,.26],[.15,.57],[.12,.80],[.235,.35],[.255,.67],[.36,.205],
- [.39,.50],[.36,.81],[.49,.30],[.52,.70],[.61,.43],[.56,.84],
- [.70,.235],[.68,.655],[.775,.38],[.74,.81],[.84,.58],[.91,.29],
- [.90,.77],[.965,.49],[.115,.415],[.475,.565],[.88,.185],[.605,.18],
-];
+// A full-screen floating collection: six columns, four loose rows.
+const scatteredArchive = Array.from({length:24},(_,index)=>[
+ .095+(index%6)*.162,
+ .25+Math.floor(index/6)*.195+[-.018,.012,-.008,.025,-.012,.006][index%6],
+]);
 // Gap rhythm / relative size / rotation offset / displacement from the route.
 // Fixed art direction makes reverse scrolling and resizing deterministic.
 const waveRhythm = [
@@ -34,32 +33,28 @@ const waveRhythm = [
  [1.14,1.12,5,.10],[.92,.92,-12,-.17],[1.08,1.22,8,.15],
  [.89,.83,-6,-.08],[1.16,1.10,10,.12],[.96,.96,-5,-.10],
 ];
-// x / y / size / angle. Leave the center open; crop selected edge pieces.
-const collage = [
- [-.01,.27,1.28,-12],[.13,.23,.83,8],[.27,.24,1.16,-6],[.42,.19,.73,11],
- [.55,.25,1.24,-8],[.70,.20,.84,7],[.85,.26,1.30,10],[1.01,.22,.95,-13],
- [.05,.48,.79,9],[.19,.44,1.04,-11],[.80,.47,.85,-8],[.96,.48,1.15,12],
- [-.02,.73,1.35,8],[.13,.69,.74,-7],[.28,.73,1.10,10],[.42,.77,.80,-12],
- [.57,.74,1.15,6],[.72,.72,.71,-9],[.86,.75,1.23,-7],[1.02,.78,.86,14],
- [.20,.96,.91,-8],[.38,.98,1.08,7],[.61,.98,.79,-12],[.78,.98,1.02,9],
-];
-const mobileCollage = [
- [-.02,.22,1.10,-12],[.24,.19,.84,8],[.51,.23,1.05,-6],[.80,.18,.78,11],
- [1.02,.30,1.10,-8],[.12,.34,.87,7],[.37,.34,.70,10],[.70,.33,.95,-13],
- [-.02,.48,.84,9],[.14,.61,.78,-11],[.89,.60,.82,-8],[1.02,.46,1.04,12],
- [-.03,.76,1.05,8],[.31,.68,.76,-7],[.59,.68,.98,10],[.82,.76,.75,-12],
- [.19,.83,.90,6],[.44,.83,.74,-9],[.65,.86,.91,-7],[1.04,.86,1.12,14],
- [.02,.98,.79,-8],[.32,1,.96,7],[.57,1.02,.82,-12],[.86,1.02,.95,9],
-];
-// Positions on the right-hand postcard: loose rows, varied sizes and angles.
-const letterStamps = [
- [.10,.09,.88,-14],[.35,.04,1.02,8],[.61,.12,.76,-9],[.86,.06,.94,14],
- [.18,.28,.72,11],[.44,.24,.84,-17],[.71,.31,1.01,7],[.94,.26,.69,-12],
- [.04,.48,.81,-8],[.31,.45,.96,13],[.57,.47,.72,-15],[.84,.47,.91,8],
- [.15,.68,.95,12],[.43,.65,.71,-7],[.67,.68,.89,16],[.95,.66,.76,-10],
- [.06,.87,.72,-13],[.32,.89,.88,8],[.58,.87,1.02,-7],[.85,.90,.78,15],
- [.24,.16,.63,-20],[.55,.36,.66,18],[.20,.77,.67,-16],[.76,.79,.65,19],
-];
+// Keep all 24 memories in view and reserve a clear center for the title.
+const collage = Array.from({length:24},(_,index)=>{
+ const size=[1.06,.92,1.12,.86,1.02,.96][index%6];
+ const angle=[-7,5,-4,6,-5,3][index%6];
+ if(index<8) return [.07+index*(.86/7),.23,size,angle];
+ if(index<16) return [.07+(index-8)*(.86/7),.82,size,angle];
+ const side=index-16;
+ return [[.075,.205,.795,.925][side%4],side<4?.43:.62,size,angle];
+});
+const mobileCollage = Array.from({length:24},(_,index)=>[
+ .14+(index%4)*.24,
+ [.19,.29,.39,.68,.785,.89][Math.floor(index/4)],
+ [1.04,.94,1.08,.9][index%4],
+ [-6,4,-3,5][index%4],
+]);
+// Six restrained columns collect into the right-hand editorial gallery.
+const letterStamps = Array.from({length:24},(_,index)=>[
+ .075+(index%6)*.17,
+ .10+Math.floor(index/6)*.26+[-.03,.01,-.015,.025,-.01,.02][index%6],
+ [.86,1.08,.94,1.02,.9,1.12][index%6],
+ [-9,6,-5,8,-7,4][index%6],
+]);
 
 export default function initAboutPostcards(section) {
  const scroller=section.closest('.portfolio-scroll');
@@ -72,11 +67,14 @@ export default function initAboutPostcards(section) {
  const cards=aboutPostcards.map(item=>{
   const card=document.createElement('div');
   card.className='about-postcard';
+  card.setAttribute('role','listitem');
   const picture=document.createElement('div');
   picture.className='about-postcard-window';
   const image=document.createElement('img');
   image.src=item.image;
-  image.alt='';
+  image.alt=`Personal memory ${item.id}`;
+  image.width=480;
+  image.height=640;
   image.loading='lazy';
   image.decoding='async';
   picture.append(image);
@@ -111,7 +109,7 @@ export default function initAboutPostcards(section) {
   const mobile=width<700;
   if(width!==flowWidth||height!==flowHeight) {
    flowWidth=width;flowHeight=height;
-   // Space by arc length with deliberate gaps and room for larger stamps.
+   // Space by arc length with deliberate gaps and room for larger photos.
    const samples=[];
    let distance=0;
    for(let i=0;i<=200;i++) {
@@ -143,7 +141,7 @@ export default function initAboutPostcards(section) {
   const nextTop=nextSection.getBoundingClientRect().top-scroller.getBoundingClientRect().top;
   const cover=clamp(1-nextTop/height);
   stage.style.setProperty('--qa-dim',String(ease(cover)*.45));
-  // Hold the finished letter while the next section slides over the sticky stage.
+  // Hold the finished editorial while the next section slides over the sticky stage.
   const target=clamp(-top/Math.max(1,section.offsetHeight-height*2));
   const dt=last?Math.min(64,time-last):16;
   current+=(target-current)*(1-Math.exp(-dt/100));
@@ -158,31 +156,43 @@ export default function initAboutPostcards(section) {
   route.style.opacity=String(ease((progress-.36)/.10)*(1-ease((progress-.52)/.16)));
   const points=[];
   const cardWidth=cards[0].offsetWidth;
+  const cardHeights=cards.map(card=>card.offsetHeight);
   cards.forEach((card,index)=>{
    const fraction=index/(cards.length-1);
    const [dx,dy,scatterSize,scatterAngle]=scatterRhythm[index];
    const [,waveSize,waveAngle,waveOffset]=waveRhythm[index];
-   const scatterX=width*(mobile ? .05+fraction*.90+dx : scatteredArchive[index][0]);
-   const scatterY=height*(mobile ? .17+((index*7)%17)/17*.66+dy : scatteredArchive[index][1]);
+   const scatterX=width*(mobile ? .14+(index%4)*.24+dx*.15 : scatteredArchive[index][0]+dx*.2);
+   const scatterY=height*(mobile ? .225+Math.floor(index/4)*.134+dy*.1 : scatteredArchive[index][1]+dy*.2);
    // One serpentine route instead of a straight row or rotating ring.
    const {x:flowX,y:flowY,normalX,normalY}=flowPoints[index];
    const flowAngle=Math.sin(fraction*Math.PI*3+1)*11+waveAngle;
    const [cx,cy,size,angle]=(mobile?mobileCollage:collage)[index];
    let x=mix(mix(scatterX,flowX,gather),cx*width,spread);
    let y=mix(mix(scatterY,flowY,gather),cy*height,spread);
-   // Keep the dotted line smooth; let individual stamps stray across it.
+   // Keep the dotted line smooth; let individual photos stray across it.
    points.push([x,y]);
    const drift=cardWidth*waveOffset*gather*(1-spread);
    x+=normalX*drift;
    y+=normalY*drift;
    const collect=ease((progress-.84-(index%4)*.008)/.19);
    const [lx,ly,letterSize,letterAngle]=letterStamps[index];
-   const letterX=width*(mobile ? .09+lx*.82 : .51+lx*.43);
-   const letterY=height*(mobile ? .57+ly*.34 : .24+ly*.64);
+   const letterX=width*(mobile ? .09+(index%6)*.164 : .52+lx*.43);
+   const letterY=height*(mobile ? .575+Math.floor(index/6)*.106+[-.004,.006,-.003,.004,-.006,.002][index%6] : .24+ly*.64);
    x=mix(x,letterX,collect);
    y=mix(y,letterY,collect);
-   const rotation=mix(mix(mix(scatterAngle,flowAngle,gather),angle,spread),letterAngle,collect);
-   const scale=mix(mix(mix((mobile ? .48 : .57)*scatterSize,.34*waveSize,gather),size,spread),letterSize*(mobile ? .62 : .88),collect);
+   const rotation=mix(mix(mix(scatterAngle*.32,flowAngle*.25,gather),angle*.3,spread),letterAngle*.25,collect);
+   const cardHeight=cardHeights[index];
+   const editorialScale=Math.min(letterSize*(mobile?.72:.66),width*(mobile?.145:.062)*letterSize/cardWidth,height*(mobile?.09:.155)/cardHeight);
+   const titleScale=Math.min((mobile?.78:.72)*boundedSize(size),height*(mobile?.091:.18)/cardHeight);
+   const scatterScale=Math.min((mobile?.85:.76)*boundedSize(scatterSize),height*(mobile?.13:.17)/cardHeight);
+   const scale=mix(mix(mix(scatterScale,(mobile?.62:.52)*Math.min(waveSize,1.15),gather),titleScale,spread),editorialScale,collect);
+   // Rotated geometry stays clear of the viewport edges and fixed navigation.
+   const radians=rotation*Math.PI/180;
+   const halfWidth=(Math.abs(Math.cos(radians))*cardWidth+Math.abs(Math.sin(radians))*cardHeight)*scale/2;
+   const halfHeight=(Math.abs(Math.sin(radians))*cardWidth+Math.abs(Math.cos(radians))*cardHeight)*scale/2;
+   const inset=mobile?8:18;
+   x=Math.max(inset+halfWidth,Math.min(width-inset-halfWidth,x));
+   y=Math.max(Math.max(106,height*.11)+halfHeight,Math.min(height-inset-halfHeight,y));
    card.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%) rotate(${rotation}deg) scale(${scale})`;
    card.style.opacity='1';
   });

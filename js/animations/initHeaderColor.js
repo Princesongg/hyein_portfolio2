@@ -25,6 +25,9 @@ export default function initHeaderColor(rootRef) {
     return y >= area.top && y < area.bottom;
    });
    const channels = backgroundOf(section || root).match(/[\d.]+/g)?.map(Number);
+   const inHero = section?.classList.contains('edition-hero') === true;
+   header.classList.toggle('edition-header', inHero);
+   root.classList.toggle('edition-active', inHero);
    const theme = channels && channels[2] - channels[0] > 10 ? 'B' : 'P';
    if (header.dataset.theme !== theme) header.dataset.theme = theme;
   };

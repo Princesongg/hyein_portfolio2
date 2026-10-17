@@ -1,0 +1,22 @@
+.loading-intro {position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:#f8f5f0;color:#887361;padding:32px 24px;}
+.loading-intro-art {position:relative;width:clamp(210px,28vw,340px);aspect-ratio:3/2;opacity:0;isolation:isolate;}
+.loading-intro-orbit-system {position:absolute;inset:0;transform:rotate(8deg);transform-origin:50% 50%;pointer-events:none;}
+.loading-intro-orbit-back,.loading-intro-orbit-front {position:absolute;inset:0;pointer-events:none;}
+.loading-intro-orbit-back {z-index:1;clip-path:inset(-50% -50% 50% -50%);}
+.loading-intro-orbit-front {z-index:3;clip-path:inset(50% -50% -50% -50%);}
+.loading-intro-ring {position:absolute;left:0;top:-25%;width:100%;height:150%;object-fit:contain;opacity:.8;}
+.loading-intro-bead {position:absolute;left:96.1%;top:26.8%;width:7%;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%);z-index:1;pointer-events:none;}
+.loading-intro-main-star {position:absolute;left:14%;top:-4%;width:72%;height:108%;object-fit:contain;pointer-events:none;z-index:2;}
+.loading-intro-highlight {position:absolute;left:50%;top:50%;width:34px;height:34px;object-fit:contain;transform:translate(-50%,-50%);opacity:0;pointer-events:none;z-index:4;}
+.loading-intro h2 {margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,40px);letter-spacing:.065em;text-align:center;line-height:1.2;}
+.loading-intro-subtitle {margin:14px 0 0;text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-size:11px;letter-spacing:.22em;}
+.loading-intro-progress {width:min(280px,80vw);margin-top:32px;}
+.loading-intro-track {height:2px;background:#e9e1d8;border-radius:2px;overflow:hidden;}
+.loading-intro-fill {height:100%;background:#c9ae8f;transform:scaleX(0);transform-origin:left;}
+.loading-intro-meta {display:flex;justify-content:space-between;gap:12px;margin-top:13px;font-family:'Cormorant Garamond',Georgia,serif;font-size:10px;letter-spacing:.13em;}
+.loading-intro-number {font-variant-numeric:tabular-nums;}
+.loading-intro-slow {font:13px 'SUITE',sans-serif;text-align:center;line-height:1.8;}
+.loading-intro-slow[hidden] {display:none;}
+.loading-intro-slow button {display:block;margin:10px auto 0;padding:8px 16px;color:#796858;background:transparent;border:1px solid #d9c9ba;border-radius:20px;cursor:pointer;}
+.loading-intro-slow button:focus-visible {outline:2px solid #796858;outline-offset:4px;}
+@media(prefers-reduced-motion:reduce) {.loading-intro-art {opacity:1;}}

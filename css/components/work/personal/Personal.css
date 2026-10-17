@@ -98,3 +98,20 @@
  .personal-start-description {margin-top:24px;font-size:18px;}
  .personal-start-art {align-self:flex-end;width:190px;margin:0 2% 0 0;}
 }
+.personal-start.personal-start--crystal {align-items:center;gap:2%;padding:clamp(100px,9vw,170px) 6.5%;}
+.personal-start--crystal .personal-start-copy {width:54%;margin-left:0;}
+.personal-start.personal-start--crystal .personal-start-eyebrow {font-family:var(--font-body,sans-serif);font-size:clamp(12px,1.35vw,22px);letter-spacing:.19em;margin-bottom:clamp(48px,5.8vw,100px);}
+.personal-start.personal-start--crystal h2 {position:relative;isolation:isolate;font-size:clamp(52px,6.8vw,118px);line-height:.98;letter-spacing:-.035em;}
+.personal-chapter-number {position:absolute;left:1.6em;bottom:.02em;z-index:-1;font-size:2.3em;font-weight:400;letter-spacing:-.08em;line-height:.9;color:rgb(157 136 118 / .1);pointer-events:none;}
+.personal-start--crystal .personal-start-accent {margin-top:20px;font-size:clamp(25px,2.5vw,42px);}
+.personal-start.personal-start--crystal .personal-start-description {margin-top:25px;font-size:clamp(15px,1.2vw,20px);}
+.personal-start--crystal .personal-crystal-art {position:relative;flex:none;width:46%;aspect-ratio:1;margin:35px -2% 0 0;overflow:hidden;}
+.personal-crystal-art img {position:absolute;left:-10.2%;top:-6.73%;width:115.26%;height:129.81%;max-width:none;}
+@media(max-width:700px) {
+ .personal-start.personal-start--crystal {padding:120px 7% 80px;gap:20px;}
+ .personal-start--crystal .personal-start-copy {width:100%;}
+ .personal-start.personal-start--crystal .personal-start-eyebrow {font-size:11px;letter-spacing:.15em;margin-bottom:40px;}
+ .personal-start.personal-start--crystal h2 {font-size:clamp(48px,12vw,80px);}
+ .personal-chapter-number {left:1.6em;right:auto;}
+ .personal-start--crystal .personal-crystal-art {width:min(100%,440px);margin:0 -3% 0 0;}
+}

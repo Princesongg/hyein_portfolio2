@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="garden:chevron-double-down-stroke-16" filter="url(#filter0_g_0_16)">
+<path id="Vector" d="M66.95 40.94C67.3151 41.3968 67.5086 41.9671 67.4967 42.5518C67.4848 43.1364 67.2684 43.6984 66.885 44.14L66.56 44.45L41.56 64.45C41.1827 64.7522 40.726 64.9385 40.245 64.9864C39.764 65.0343 39.2795 64.9418 38.85 64.72L38.44 64.45L13.44 44.45C12.9549 44.0592 12.6331 43.5015 12.5377 42.8859C12.4424 42.2704 12.5802 41.6414 12.9243 41.1221C13.2684 40.6029 13.7939 40.2308 14.398 40.0787C15.002 39.9266 15.6411 40.0056 16.19 40.3L16.56 40.55L40 59.295L63.44 40.545C63.9581 40.1325 64.6186 39.9425 65.2767 40.0165C65.9348 40.0906 66.5366 40.4227 66.95 40.94ZM66.95 15.94C67.3151 16.3968 67.5086 16.9671 67.4967 17.5518C67.4848 18.1364 67.2684 18.6984 66.885 19.14L66.56 19.45L41.56 39.45C41.1827 39.7522 40.726 39.9385 40.245 39.9864C39.764 40.0343 39.2795 39.9418 38.85 39.72L38.44 39.45L13.44 19.45C12.9549 19.0592 12.6331 18.5015 12.5377 17.8859C12.4424 17.2704 12.5802 16.6414 12.9243 16.1221C13.2684 15.6029 13.7939 15.2308 14.398 15.0787C15.002 14.9266 15.6411 15.0056 16.19 15.3L16.56 15.55L40 34.295L63.44 15.545C63.9581 15.1325 64.6186 14.9425 65.2767 15.0165C65.9348 15.0906 66.5366 15.4227 66.95 15.94Z" fill="#796858" fill-opacity="0.5"/>
+</g>
+<defs>
+<filter id="filter0_g_0_16" x="-3" y="-3" width="86" height="86" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.99900001287460327 0.99900001287460327" numOctaves="3" seed="6338" />
+<feDisplacementMap in="shape" scale="6" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_0_16">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+</defs>
+</svg>

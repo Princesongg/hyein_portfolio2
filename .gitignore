@@ -13,6 +13,8 @@ dist-ssr
 *.local
 .contact-originals/
 .postcard-originals/
+.archive-originals/
+.hero-originals/
 .tmp-*
 
 # Editor directories and files

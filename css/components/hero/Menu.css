@@ -1,0 +1,84 @@
+/* Figma 2354:476 — 1720 × 50 menu, with a 1610 × 40 inner row. */
+.portfolio > .portfolio-header {
+ --menu-hover:#59474c;
+ left:5.208333%;
+ right:5.208333%;
+ top:4.166667%;
+ height:50px;
+ min-height:50px;
+ padding:5px clamp(24px,2.864583vw,55px);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:24px;
+ border:0;
+ border-radius:30px;
+ background:rgba(157,136,118,.2);
+ color:#796858;
+ backdrop-filter:blur(10px);
+ -webkit-backdrop-filter:blur(10px);
+ font-family:'Cormorant Garamond','SUITE',Georgia,serif;
+}
+.portfolio > .portfolio-header.portfolio-header--raised {top:20px;}
+.portfolio > .portfolio-header .portfolio-logo {
+ display:flex;
+ align-items:center;
+ flex-shrink:0;
+ gap:10px;
+ font-size:16px;
+ font-weight:600;
+ line-height:1.2;
+ letter-spacing:0;
+}
+.portfolio > .portfolio-header .portfolio-logo-icon {
+ position:relative;
+ flex-shrink:0;
+ width:30px;
+ height:33px;
+ overflow:hidden;
+}
+.portfolio > .portfolio-header .portfolio-logo-icon img {
+ position:absolute;
+ width:802.41%;
+ height:737.65%;
+ max-width:none;
+ left:-486.74%;
+ top:-80%;
+ object-fit:fill;
+ transform:none!important;
+}
+.portfolio > .portfolio-header nav {
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-wrap:nowrap;
+ height:40px;
+ min-height:40px;
+ max-width:none;
+ gap:clamp(20px,2.083333vw,40px);
+}
+.portfolio > .portfolio-header nav a {
+ font-size:16px;
+ font-weight:400;
+ line-height:normal;
+ letter-spacing:0;
+ white-space:nowrap;
+}
+@media(max-width:1000px) {
+ .portfolio > .portfolio-header {padding-inline:24px;gap:18px;}
+ .portfolio > .portfolio-header nav {gap:20px;}
+ .portfolio > .portfolio-header nav a {font-size:14px;}
+ .portfolio > .portfolio-header .portfolio-logo {font-size:14px;}
+}
+@media(max-width:700px) {
+ .portfolio > .portfolio-header {left:5%;right:5%;height:auto;min-height:60px;padding:9px 16px;gap:12px;}
+ .portfolio > .portfolio-header .portfolio-logo {gap:6px;font-size:11px;}
+ .portfolio > .portfolio-header .portfolio-logo-icon {width:24px;height:26.4px;}
+ .portfolio > .portfolio-header nav {display:grid;grid-template-columns:repeat(3,auto);justify-content:end;height:auto;min-height:40px;gap:5px 14px;}
+ .portfolio > .portfolio-header nav a {display:grid;place-items:center;min-height:18px;font-size:11px;}
+}
+@media(max-width:360px) {
+ .portfolio > .portfolio-header {padding-inline:12px;gap:8px;}
+ .portfolio > .portfolio-header nav {gap:5px 10px;}
+ .portfolio > .portfolio-header nav a {font-size:10px;}
+}

@@ -47,3 +47,23 @@
  .team-start-art[data-stamp-state] .team-start-postmark {animation:none;opacity:1;transform:none;}
  .team-start-art[data-stamp-state] .team-start-stamp {animation:none;}
 }
+.team-crystal-art {transform-origin:50% 50%;}
+.team-crystal-float {position:relative;width:100%;height:100%;overflow:visible;}
+.team-crystal-image {display:block;width:100%;height:100%;object-fit:contain;}
+.team-crystal-sparkle {position:absolute;left:var(--sparkle-x);top:var(--sparkle-y);width:var(--sparkle-size);height:var(--sparkle-size);margin-left:calc(var(--sparkle-size) / -2);margin-top:calc(var(--sparkle-size) / -2);opacity:0;pointer-events:none;filter:drop-shadow(0 0 2px #dec6a5);}
+.team-crystal-sparkle::before,.team-crystal-sparkle::after {content:'';position:absolute;inset:0;background:#c9ae8f;clip-path:polygon(50% 0,60% 39%,100% 50%,60% 61%,50% 100%,40% 61%,0 50%,40% 39%);}
+.team-crystal-sparkle::after {inset:1px;background:#fffdf6;}
+.team-start.team-start--collaboration {gap:2%;padding:clamp(100px,9vw,170px) 6.5%;}
+.team-start--collaboration .team-start-copy {width:44%;margin-left:0;}
+.team-start.team-start--collaboration .team-start-eyebrow {font-family:var(--font-body,sans-serif);font-size:clamp(12px,1.35vw,22px);letter-spacing:.19em;margin-bottom:clamp(48px,5.8vw,100px);white-space:nowrap;}
+.team-start.team-start--collaboration h2 {font-size:clamp(58px,7.2vw,126px);line-height:.98;letter-spacing:-.035em;}
+.team-start--collaboration .team-start-accent {margin-top:18px;font-size:clamp(25px,2.5vw,42px);}
+.team-start.team-start--collaboration .team-start-description {margin-top:25px;font-size:clamp(15px,1.2vw,20px);}
+.team-start--collaboration .team-crystal-art {width:54%;aspect-ratio:4/3;margin:35px -2% 0 0;}
+@media(max-width:700px) {
+ .team-start.team-start--collaboration {padding:120px 7% 90px;gap:10px;}
+ .team-start--collaboration .team-start-copy {width:100%;}
+ .team-start.team-start--collaboration .team-start-eyebrow {font-size:11px;letter-spacing:.15em;margin-bottom:40px;}
+ .team-start.team-start--collaboration h2 {font-size:clamp(54px,13vw,86px);}
+ .team-start--collaboration .team-crystal-art {width:min(100%,440px);margin:0 -3% 0 0;}
+}

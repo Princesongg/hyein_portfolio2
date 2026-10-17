@@ -1,9 +1,9 @@
-import initHeroMotion from './animations/initHeroMotion.js';
+import initEditionHero from './animations/initEditionHero.js';
+import LoadingIntro from './components/LoadingIntro.js';
 import initLaptopPreview from './animations/initLaptopPreview.js';
 import initDocumentDialog from './components/work/initDocumentDialog.js';
 import initPostbox from './components/chatbot/initPostbox.js';
 import initQuickQA from './components/contact/initQuickQA.js';
-import initLetterInteraction from './animations/initLetterInteraction.js';
 import initHeaderColor from './animations/initHeaderColor.js';
 import initCon1Typing from './animations/initCon1Typing.js';
 import initReadyTyping from './animations/initReadyTyping.js';
@@ -15,12 +15,12 @@ import initSkillOrbit from './animations/initSkillOrbit.js';
 import initAboutIntro from './animations/about/initAboutIntro.js';
 import initAboutPostcards from './animations/about/initAboutPostcards.js';
 import initTeamHorizontal from './animations/initTeamHorizontal.js';
-import initDotTransition from './animations/initDotTransition.js';
 import initKeywordCards from './animations/initKeywordCards.js';
 import initKeywordStack from './animations/initKeywordStack.js';
 import initBracketReveal from './animations/initBracketReveal.js';
 import initStoryReveal from './animations/initStoryReveal.js';
 import initStampPress from './animations/initStampPress.js';
+import initTeamCrystal from './animations/initTeamCrystal.js';
 import {leanCanvas, leanCanvases, personas, journeyMaps, uxSteps} from './data/uxProcessData.js';
 
 const root = document.querySelector('.portfolio');
@@ -36,8 +36,8 @@ const start = (initialize,...args) => {
 // Keep the original 1920 × 1080 artwork aligned with the viewport.
 function resizeHero() {
  const scale = root.clientWidth / 1920;
- root.querySelector('.hero').style.height = Math.max(root.clientHeight,1080 * scale)+'px';
- root.querySelector('.hero-canvas').style.transform = `translateX(-50%) scale(${scale})`;
+ if (!root.querySelector('.edition-hero')) root.querySelector('.hero').style.height = Math.max(root.clientHeight,1080 * scale)+'px';
+ if (root.querySelector('.hero-canvas')) root.querySelector('.hero-canvas').style.transform = `translateX(-50%) scale(${scale})`;
  root.querySelector('.con1-letter>div').style.transform = `translateX(-50%) scale(${scale})`;
  root.querySelector('.portfolio-frame>div').style.transform = `scale(${scale},${root.clientHeight / 1080})`;
  root.querySelector('.portfolio-logo-icon img').style.transform = `scale(${Math.min(Math.max(scale,.66),1)})`;
@@ -47,7 +47,8 @@ const resizeObserver = new ResizeObserver(resizeHero);
 resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
-start(initHeroMotion,root);
+start(LoadingIntro);
+start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
 root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
  const label=document.createElement('span');
@@ -57,27 +58,26 @@ root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
 });
 start(initPostbox,root);
 start(initQuickQA,reference('.quick-qa'));
-start(initLetterInteraction,root);
 start(initHeaderColor,root);
-start(initDotTransition,reference('.con1-transition'));
 start(initCon1Typing,reference('.con1-copy'));
 start(initReadyTyping,reference('.contact-ready'));
 start(initKeywordCards,reference('.con2'));
 start(initKeywordStack,reference('.keywords-about-stack'));
 root.querySelectorAll('.bracket-reveal').forEach(element => start(initBracketReveal,element));
 start(initWorkTyping,reference('.work-intro'));
-root.querySelectorAll('.team-start-art').forEach(art => start(initStampPress,art));
+root.querySelectorAll('.team-start-art:not(.team-crystal-art)').forEach(art => start(initStampPress,art));
+start(initTeamCrystal,reference('.team-crystal-art'));
 start(initTeamBackground,reference('.team-detail'));
 start(initPersonalBackground,reference('.personal-start'));
 start(initPersonalBackground,reference('.video-start'),{
  previousSelector:'.personal-projects',
  property:'--video-scroll-background',
- from:[210,222,235],
- to:[143,110,114],
+ from:[252,250,247],
+ to:[244,239,234],
  colors:{
-  '--video-scroll-ink':[[65,97,148],[247,242,239]],
-  '--video-scroll-muted':[[100,123,155],[247,242,238]],
-  '--video-scroll-accent':[[100,123,155],[199,174,171]],
+  '--video-scroll-ink':[[121,104,88],[121,104,88]],
+  '--video-scroll-muted':[[98,86,77],[98,86,77]],
+  '--video-scroll-accent':[[125,105,87],[125,105,87]],
  },
 });
 start(initTeamHorizontal,reference('.team-story'));
@@ -92,18 +92,18 @@ start(initAboutPostcards,reference('.about-postcards'));
 start(initPersonalBackground,reference('.about-intro'),{
  previousSelector:'.skill-section',
  property:'--about-scroll-background',
- from:[247,242,239],
- to:[200,174,170],
+ from:[252,250,247],
+ to:[241,234,226],
 });
 start(initPersonalBackground,reference('.archive-start'),{
  previousSelector:'.short-form',
  property:'--archive-scroll-background',
- from:[143,110,114],
- to:[247,242,239],
+ from:[244,239,234],
+ to:[252,250,247],
  colors:{
-  '--archive-scroll-ink':[[247,242,239],[173,185,203]],
-  '--archive-scroll-muted':[[226,207,204],[175,187,204]],
-  '--archive-scroll-accent':[[226,207,204],[210,221,235]],
+  '--archive-scroll-ink':[[121,104,88],[121,104,88]],
+  '--archive-scroll-muted':[[98,86,77],[98,86,77]],
+  '--archive-scroll-accent':[[125,105,87],[125,105,87]],
  },
 });
 const shortFormVideos = [...root.querySelectorAll('.short-form-visual video')];

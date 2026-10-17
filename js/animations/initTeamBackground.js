@@ -19,8 +19,8 @@ export default function initTeamBackground(sectionRef) {
    const firstHalf = position <= entry;
    const progress = firstHalf ? position / entry : (position - entry) / (distance - entry);
    const eased = progress * progress * (3 - 2 * progress);
-   const from = firstHalf ? [175, 186, 203] : [237, 225, 223];
-   const to = firstHalf ? [237, 225, 223] : [248, 244, 241];
+   const from = firstHalf ? [244, 239, 234] : [241, 234, 226];
+   const to = firstHalf ? [241, 234, 226] : [252, 250, 247];
    const channels = from.map((channel, index) => Math.round(channel + (to[index] - channel) * eased));
    const color = `rgb(${channels.join(',')})`;
    surfaces.forEach(element => element.style.setProperty('--work-background', color));

@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="혜인의 UI/UX 디자인 및 웹 퍼블리싱 포트폴리오"><title>HYEIN'S PORTFOLIO</title>
-<link rel="icon" type="image/png" href="/images/favicon.png">
-<link rel="apple-touch-icon" href="/images/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/images/favicon-aurora.svg">
+<link rel="apple-touch-icon" href="/images/favicon-aurora-source.png">
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/components/hero/Hero.css">
+<link rel="stylesheet" href="/css/components/hero/EditionHero.css">
 <link rel="stylesheet" href="/css/components/hero/VisitIntro.css">
+<link rel="stylesheet" href="/css/components/hero/LoadingIntro.css">
 <link rel="stylesheet" href="/css/components/con1/Con1.css">
 <link rel="stylesheet" href="/css/components/con2/Con2.css">
 <link rel="stylesheet" href="/css/components/con3/Con3.css">
@@ -28,32 +30,37 @@
 <link rel="stylesheet" href="/css/components/contact/QuickQA.css">
 <link rel="stylesheet" href="/css/components/contact/Ready.css">
 <link rel="stylesheet" href="/css/components/chatbot/Postbox.css">
-</head><body><script src="/visit-intro.js"></script><link rel="preload" as="image" href="/assets/hero/2bf09.svg"/><link rel="preload" as="image" href="/assets/hero/abac7.svg"/><link rel="preload" as="image" href="/assets/hero/719e7.png"/><link rel="preload" as="image" href="/assets/hero/89dfb.png"/><link rel="preload" as="image" href="/assets/hero/f2374.png"/><link rel="preload" as="image" href="/assets/hero/60424.png"/><link rel="preload" as="image" href="/assets/hero/fcfed.png"/><link rel="preload" as="image" href="/assets/hero/bfcf8.png"/><link rel="preload" as="image" href="/assets/hero/be9c4.png"/><link rel="preload" as="image" href="/assets/hero/4cd88.png"/><link rel="preload" as="image" href="/assets/con1/de524.png"/><link rel="preload" as="image" href="/assets/con3/a1386.png"/><link rel="preload" as="image" href="/assets/work/stamp-frame-original.png"/><link rel="preload" as="image" href="/assets/hero/85f7a.svg"/>
+<link rel="stylesheet" href="/css/edition-theme.css">
+<link rel="stylesheet" href="/css/components/hero/Menu.css">
+</head><body><link rel="preload" as="image" href="/assets/hero/2bf09.svg"/><link rel="preload" as="image" href="/assets/hero/abac7.svg"/><link rel="preload" as="image" href="/assets/hero/719e7.png"/><link rel="preload" as="image" href="/assets/hero/89dfb.png"/><link rel="preload" as="image" href="/assets/hero/f2374.png"/><link rel="preload" as="image" href="/assets/hero/60424.png"/><link rel="preload" as="image" href="/assets/hero/fcfed.png"/><link rel="preload" as="image" href="/assets/hero/bfcf8.png"/><link rel="preload" as="image" href="/assets/hero/be9c4.png"/><link rel="preload" as="image" href="/assets/hero/4cd88.png"/><link rel="preload" as="image" href="/assets/con1/de524.png"/><link rel="preload" as="image" href="/assets/con3/a1386.png"/><link rel="preload" as="image" href="/assets/work/crystal-project-frame-v2.png"/><link rel="preload" as="image" href="/assets/hero/85f7a.svg"/>
+<div class="loading-intro" aria-label="THE HYEIN EDITION 준비 중">
+<div class="loading-intro-art"><div class="loading-intro-orbit-system" aria-hidden="true"><img class="loading-intro-ring" src="/assets/intro/crystal-ring-thin.png" alt="" fetchpriority="high"/><img class="loading-intro-bead" src="/assets/intro/crystal-bead.png" alt="" fetchpriority="high"/></div><img class="loading-intro-main-star" src="/assets/intro/crystal-star.png" alt="" fetchpriority="high"/><img class="loading-intro-highlight" src="/assets/intro/crystal-star.png" alt=""/></div>
+<div><h2>THE HYEIN EDITION</h2><p class="loading-intro-subtitle">PREPARING YOUR EXPERIENCE</p></div>
+<div class="loading-intro-progress" role="progressbar" aria-label="시각적 인트로 진행률 — 필수 이미지 준비 후 전환" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="loading-intro-track"><div class="loading-intro-fill"></div></div><div class="loading-intro-meta"><span>LOADING CREATIVE WORLD</span><span class="loading-intro-number">000%</span></div></div>
+<div class="loading-intro-slow" hidden><p>이미지를 준비하고 있어요. 연결이 느리면 먼저 사이트로 이동할 수 있어요.</p><button type="button">사이트로 이동</button></div>
+</div>
+<noscript><style>.loading-intro {display:none;}</style></noscript>
 <div class="portfolio">
 <header class="portfolio-header"><a class="portfolio-logo" href="#intro"><span class="portfolio-logo-icon" aria-hidden="true"><img src="/assets/hero/2bf09.svg" alt="" style="transform:scale(1)"/></span><span>HYEIN&#x27;S<br/>PORTFOLIO</span></a>
 <nav aria-label="포트폴리오 메뉴"><a href="#intro">INTRO</a><a href="#work">WORK</a><a href="#archive">ARCHIVE</a><a href="#skill">SKILL</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
 </nav>
 </header>
 <main class="portfolio-scroll" tabindex="0" aria-label="포트폴리오 내용">
-<section id="intro" class="hero" aria-labelledby="hero-title" style="height:1080px">
-<div class="hero-canvas" style="transform:translateX(-50%) scale(1)">
-<div class="flight"><img src="/assets/hero/abac7.svg" alt=""/>
-</div>
-<p class="eyebrow">UI/UX DESIGN · WEB PUBLISHING
-</p>
-<h1 id="hero-title"><span class="hello">HELLO</span><span class="name">I&#x27;M HYEIN</span>
-</h1><img class="plane" src="/assets/hero/719e7.png" alt="종이비행기를 타고 있는 혜인과 하얀 강아지"/>
-<div class="stamp"><img src="/assets/hero/89dfb.png" alt=""/>
-</div>
-<div class="flower"><img src="/assets/hero/f2374.png" alt=""/>
-</div>
-<div class="postmark"><img src="/assets/hero/60424.png" alt=""/>
-</div><img class="sparkle" src="/assets/hero/fcfed.png" alt=""/><button type="button" class="letter" aria-label="큰 엽서 잡아 움직이기. 방향키로도 움직일 수 있습니다."><img src="/assets/hero/bfcf8.png" alt="" draggable="false"/></button>
-<div class="postcard"><img src="/assets/hero/be9c4.png" alt=""/>
-</div>
-<div class="hero-envelope"><img src="/assets/hero/4cd88.png" alt=""/>
-</div>
-</div>
+<div class="edition-opening">
+<section id="intro" class="hero edition-hero" aria-labelledby="hero-title">
+<div class="edition-scene" aria-hidden="true"><img class="edition-background" src="/assets/hero/edition/d94e2.png" alt="" fetchpriority="high"/>
+<img class="edition-cloud-top" src="/assets/hero/edition/589e9.png" alt=""/>
+<img class="edition-aurora-ribbon" src="/assets/hero/edition/3adcf.png" alt=""/>
+<img class="edition-moon" src="/assets/hero/edition/05300.png" alt=""/>
+<div class="edition-heart"><img src="/assets/hero/edition/1f73c.png" alt="" fetchpriority="high"/></div>
+<img class="edition-sparkle" src="/assets/hero/edition/9c030.png" alt=""/>
+<img class="edition-star" src="/assets/hero/edition/b7968.png" alt=""/>
+<div class="edition-butterfly"><img src="/assets/hero/edition/8034a.png" alt=""/></div>
+<div class="edition-cloud edition-cloud-bottom"><img src="/assets/hero/edition/16d6d.png" alt=""/></div>
+<div class="edition-cloud edition-cloud-right"><img src="/assets/hero/edition/16d6d.png" alt=""/></div></div>
+<div class="edition-copy"><h1 id="hero-title"><span>THE</span><span>HYEIN</span><span>EDITION</span></h1><p>UI/UX DESIGN &middot; WEB PUBLISHING</p></div>
+<a class="edition-explore" href="#con1-title"><span>A COLLECTION OF CREATIVE IDEAS</span><img src="/assets/hero/edition/4e20c.svg" width="80" height="80" alt="Scroll to explore"/></a>
+<div hidden><button type="button" class="letter" tabindex="-1" aria-hidden="true"><img src="/assets/hero/bfcf8.png" alt=""/></button></div>
 </section>
 <section class="con1" aria-labelledby="con1-title"><canvas class="con1-transition" aria-hidden="true"></canvas>
 <div class="con1-letter" aria-hidden="true">
@@ -69,12 +76,13 @@
 <p class="con1-statement" aria-label="좋아하는 것에서 시작해, 새로운 영역으로 시선을 넓혀갑니다"><span class="con1-typing-line" aria-hidden="true">좋아하는 것에서 시작해,</span><span class="con1-typing-line" aria-hidden="true">새로운 영역으로 시선을 넓혀갑니다</span>
 </p>
 </div>
-<div class="con1-story-image"><img src="/assets/con1/de524.png" alt="함께 디자인을 논의하는 사람들을 담은 우표 일러스트"/>
+<div class="con1-story-image con1-crystal-artwork"><img src="/assets/con1/crystal-collection.png" alt="ART ? FASHION ? UI/UX ???? ???"/>
 </div>
 <p class="con1-description" aria-label="패션디자인을 전공하며 쌓은 시각적 감각은 다양한 사람과 브랜드를 만나는 경험을 거쳐 웹디자인으로 이어졌습니다. 이제는 브랜드의 개성과 목적에 어울리는 화면을 디자인하고, 직접 웹사이트로 구현하고 있습니다."><span class="con1-typing-line" aria-hidden="true">패션디자인을 전공하며 쌓은 시각적 감각은</span><span class="con1-typing-line" aria-hidden="true">다양한 사람과 브랜드를 만나는 경험을 거쳐 웹디자인으로 이어졌습니다.</span><span class="con1-typing-line" aria-hidden="true">이제는 브랜드의 개성과 목적에 어울리는 화면을 디자인하고,</span><span class="con1-typing-line" aria-hidden="true">직접 웹사이트로 구현하고 있습니다.</span>
 </p>
 </div>
 </section>
+</div>
 <div class="keywords-about-stack">
 <section class="con2" id="my-keywords" aria-labelledby="con2-title">
 <div class="con2-inner">
@@ -128,10 +136,8 @@
 <p class="con3-label">ABOUT ME
 </p>
 <div class="con3-portrait">
-<!-- 프로필 사진은 con3-photo-frame 안에 img 요소로 추가합니다. -->
-<div class="con3-photo-frame"></div>
-<div class="con3-portrait-crop"><img src="/assets/con3/a1386.png" alt="하얀 강아지와 함께 담요 위에 엎드려 있는 혜인"/>
-</div>
+<div class="con3-photo-frame"><img src="/assets/con3/hyein-portrait.jpg" alt="정혜인 프로필 사진" width="1500" height="2100" loading="lazy" decoding="async"/></div>
+
 </div>
 <div class="con3-copy">
 <h2 id="con3-title"><span><span class="bracket-reveal" aria-label="[BEYOND]"><span class="bracket-edge" aria-hidden="true">[ </span><span class="bracket-word" aria-hidden="true"><span class="bracket-character">B</span><span class="bracket-character">E</span><span class="bracket-character">Y</span><span class="bracket-character">O</span><span class="bracket-character">N</span><span class="bracket-character">D</span></span><span class="bracket-edge" aria-hidden="true"> ]</span></span></span><span>THE FRAME</span>
@@ -172,7 +178,7 @@
 </div>
 <div class="project-track" tabindex="0" aria-label="프로젝트 목록">
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://mbc-teamproject-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Diptyque SITE RENEWAL 사이트 보기 (새 탭)"><img src="/assets/work/diptyque-renewal-v2.png" alt="Diptyque SITE RENEWAL 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://mbc-teamproject-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Diptyque SITE RENEWAL 사이트 보기 (새 탭)"><img src="/assets/work/diptyque-renewal-v2.png" alt="Diptyque SITE RENEWAL 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
 </div>
 <div class="project-information">
 <header>
@@ -200,7 +206,7 @@
 </div>
 </article>
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link project-preview--crop" href="https://periperaproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="PERIPERA 사이트 보기 (새 탭)"><img src="/assets/work/peripera.png" alt="PERIPERA 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link project-preview--crop" href="https://periperaproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="PERIPERA 사이트 보기 (새 탭)"><img src="/assets/work/peripera.png" alt="PERIPERA 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
 </div>
 <div class="project-information">
 <header>
@@ -228,7 +234,7 @@
 </div>
 </article>
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link project-preview--crop" href="https://taeyang-album-project.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="TAEYANG — QUINTESSENCE 사이트 보기 (새 탭)"><img src="/assets/work/taeyang.png" alt="TAEYANG — QUINTESSENCE 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy" style="height:100.79%;top:-.39%"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link project-preview--crop" href="https://taeyang-album-project.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="TAEYANG — QUINTESSENCE 사이트 보기 (새 탭)"><img src="/assets/work/taeyang.png" alt="TAEYANG — QUINTESSENCE 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy" style="height:100.79%;top:-.39%"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
 </div>
 <div class="project-information">
 <header>
@@ -256,7 +262,7 @@
 </div>
 </article>
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://onitsukaproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="ONITSUKA TIGER 사이트 보기 (새 탭)"><img src="/assets/work/onitsuka.png" alt="ONITSUKA TIGER 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://onitsukaproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="ONITSUKA TIGER 사이트 보기 (새 탭)"><img src="/assets/work/onitsuka.png" alt="ONITSUKA TIGER 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
 </div>
 <div class="project-information">
 <header>
@@ -284,7 +290,7 @@
 </div>
 </article>
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://jhi-yangji-hospitalproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="H+ YANGJI HOSPITAL 사이트 보기 (새 탭)"><img src="/assets/work/yangji.png" alt="H+ YANGJI HOSPITAL 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://jhi-yangji-hospitalproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="H+ YANGJI HOSPITAL 사이트 보기 (새 탭)"><img src="/assets/work/yangji.png" alt="H+ YANGJI HOSPITAL 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
 </div>
 <div class="project-information">
 <header>
@@ -312,7 +318,7 @@
 </div>
 </article>
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://uniqloproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="UNIQLO 사이트 보기 (새 탭)"><img src="/assets/work/uniqlo.png" alt="UNIQLO 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/><a class="project-preview project-preview--image project-site-link" href="https://uniqloproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="UNIQLO 사이트 보기 (새 탭)"><img src="/assets/work/uniqlo.png" alt="UNIQLO 웹사이트 메인 페이지" width="1920" height="1080" loading="lazy"/><span class="preview-site-overlay" aria-hidden="true"><span class="preview-site-circle"><span class="preview-site-arrow">↗</span><span class="preview-site-label">VIEW SITE</span></span></span></a>
 </div>
 <div class="project-information">
 <header>
@@ -340,7 +346,7 @@
 </div>
 </article>
 <article class="project-card">
-<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/stamp-frame-original.png" alt="" aria-hidden="true"/>
+<div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/>
 <div class="project-preview"><span>PROJECT PREVIEW</span>
 <p>작업 이미지
 </p>
@@ -372,22 +378,19 @@
 </div>
 </div>
 </section>
-<section class="team-start" aria-labelledby="team-start-title">
+<section class="team-start team-start--collaboration" aria-labelledby="team-start-title">
 <div class="team-start-copy">
-<p class="team-start-eyebrow">POST 01 / TEAM PROJECT
+<p class="team-start-eyebrow">CHAPTER 01 / COLLABORATION
 </p>
-<h2 id="team-start-title">TEAM PROJECT
+<h2 id="team-start-title">TEAM<br/>PROJECT
 </h2>
 <p class="team-start-accent">Together, we create
 </p>
 <p class="team-start-description">함께 고민하고, 하나의 방향으로
 </p>
 </div>
-<div class="team-start-art" aria-hidden="true">
-<div class="team-start-stamp"><img src="/assets/work/team/start-stamp.png" alt="" loading="lazy"/>
-</div>
-<div class="team-start-postmark"><img src="/assets/work/team/start-postmark.png" alt="" loading="lazy"/>
-</div>
+<div class="team-start-art team-crystal-art" aria-hidden="true">
+<div class="team-crystal-float"><img class="team-crystal-image" src="/assets/work/team-collaboration-rings.png" alt="" loading="lazy" width="1024" height="768"/><span class="team-crystal-sparkle" style="--sparkle-x:44%;--sparkle-y:56%;--sparkle-size:15px"></span><span class="team-crystal-sparkle" style="--sparkle-x:72%;--sparkle-y:71%;--sparkle-size:12px"></span></div>
 </div>
 </section>
 <section class="team-detail" id="work-team" aria-labelledby="team-detail-title">
@@ -862,17 +865,14 @@
 </div>
 </div>
 </dialog>
-<section class="personal-start" id="work-personal" aria-labelledby="personal-start-title">
+<section class="personal-start personal-start--crystal" id="work-personal" aria-labelledby="personal-start-title">
 <div class="personal-start-copy">
-<p class="personal-start-eyebrow">POST 02 / PERSONAL PROJECT</p>
-<h2 id="personal-start-title">PERSONAL PROJECT</h2>
+<p class="personal-start-eyebrow">CHAPTER 02 / PERSONAL</p>
+<h2 id="personal-start-title">PERSONAL<br/>PROJECT<span class="personal-chapter-number" aria-hidden="true">02</span></h2>
 <p class="personal-start-accent">Designed in my own way</p>
 <p class="personal-start-description">브랜드의 개성을, 나만의 시선으로</p>
 </div>
-<div class="team-start-art personal-start-art" aria-hidden="true">
-<div class="team-start-stamp"><img src="/assets/work/personal/start-stamp.png" alt="" loading="lazy" width="1880" height="2624"/></div>
-<div class="team-start-postmark"><img src="/assets/work/personal/start-postmark.png" alt="" loading="lazy" width="2508" height="2508"/></div>
-</div>
+<div class="personal-start-art personal-crystal-art" aria-hidden="true"><img src="/assets/work/personal-crystal-orbit.png" alt="" loading="lazy"/></div>
 </section>
 <section class="personal-projects" aria-label="개인 프로젝트 02부터 06"><div class="personal-projects-stage" tabindex="0" aria-label="개인 프로젝트 가로 스크롤"><nav class="personal-projects-chapters" aria-label="개인 프로젝트 선택"><button type="button" aria-label="프로젝트 보기">02</button><button type="button" aria-label="프로젝트 보기">03</button><button type="button" aria-label="프로젝트 보기">04</button><button type="button" aria-label="프로젝트 보기">05</button><button type="button" aria-label="프로젝트 보기">06</button></nav><div class="personal-projects-track"><article class="personal-projects-panel" id="personal-02" aria-labelledby="personal-02-title"><div class="personal-projects-visual"><a href="https://periperaproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="PERIPERA 사이트 보기 (새 탭)"><div class="personal-shot-desktop personal-shot-scroll"><img src="/assets/work/peripera-scroll.png" alt="페리페라 HERO부터 제품 소개까지의 전체 페이지 디자인" loading="lazy" decoding="async"/></div></a><figure class="team-story-phone personal-project-phone" aria-hidden="true"><div class="team-story-phone-body"><div class="team-story-phone-screen"><img class="personal-phone-image" src="/assets/work/peripera.png" alt="" loading="lazy"/></div><img class="team-story-phone-frame" src="/assets/work/team/phone-frame.png" alt="" aria-hidden="true" decoding="async"/><img class="team-story-phone-status" src="/assets/work/team/phone-status.png" alt="" aria-hidden="true" decoding="async"/><img class="team-story-phone-camera" src="/assets/work/team/phone-camera.png" alt="" aria-hidden="true" decoding="async"/><img class="team-story-phone-antennas" src="/assets/work/team/phone-antennas.png" alt="" aria-hidden="true" decoding="async"/></div><figcaption>MOBILE UI</figcaption></figure></div><div class="personal-projects-copy"><p class="personal-projects-kicker">02 · PERSONAL PROJECT <span>개인 프로젝트</span></p><h2 id="personal-02-title">PERIPERA<span>Landing Page</span></h2><div class="personal-projects-info"><div><h3>간략 소개</h3><p>페리페라의 발랄하고 키치한 브랜드 감성을 핑크·블루 컬러와 콜라주 그래픽으로 표현한 랜딩페이지 프로젝트입니다.</p></div><div><h3>배운 점</h3><p>다양한 그래픽 요소를 활용하면서도 제품과 콘텐츠가 돋보이도록 시각적 균형과 레이아웃을 고민했습니다.</p></div><div class="personal-projects-work"><h3>작업한 부분</h3><p>브랜드 콘셉트에 맞춘 UI 디자인과 그래픽 요소 구성부터 랜딩페이지 구현까지 진행했습니다.</p><ul class="personal-projects-tasks"><li>브랜드 비주얼 구성</li><li>콜라주 그래픽 디자인</li><li>랜딩페이지 UI 디자인</li><li>화면 구현</li></ul></div></div><a class="personal-projects-link" href="https://periperaproject.vercel.app/" target="_blank" rel="noopener noreferrer">WEBSITE ↗<span class="project-link-sr"> (새 탭)</span></a></div></article>
 <article class="personal-projects-panel" id="personal-03" aria-labelledby="personal-03-title"><div class="personal-projects-visual"><a href="https://taeyang-album-project.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="TAEYANG — QUINTESSENCE 사이트 보기 (새 탭)"><div class="personal-shot-desktop personal-shot-scroll"><img src="/assets/work/taeyang-scroll.png" alt="TAEYANG QUINTESSENCE 메인부터 앨범 소개까지의 전체 페이지 디자인" loading="lazy" decoding="async"/></div></a><figure class="team-story-phone personal-project-phone" aria-hidden="true"><div class="team-story-phone-body"><div class="team-story-phone-screen"><img class="personal-phone-image" src="/assets/work/taeyang.png" alt="" loading="lazy"/></div><img class="team-story-phone-frame" src="/assets/work/team/phone-frame.png" alt="" aria-hidden="true" decoding="async"/><img class="team-story-phone-status" src="/assets/work/team/phone-status.png" alt="" aria-hidden="true" decoding="async"/><img class="team-story-phone-camera" src="/assets/work/team/phone-camera.png" alt="" aria-hidden="true" decoding="async"/><img class="team-story-phone-antennas" src="/assets/work/team/phone-antennas.png" alt="" aria-hidden="true" decoding="async"/></div><figcaption>MOBILE UI</figcaption></figure></div><div class="personal-projects-copy"><p class="personal-projects-kicker">03 · PERSONAL PROJECT <span>개인 프로젝트</span></p><h2 id="personal-03-title">TAEYANG — QUINTESSENCE<span>Album Promotion Landing Page</span></h2><div class="personal-projects-info"><div><h3>간략 소개</h3><p>태양의 QUINTESSENCE 앨범을 주제로, 강렬한 블루 컬러와 대형 타이포그래피를 활용해 아티스트와 음악의 분위기를 표현한 프로모션 랜딩페이지입니다.</p></div><div><h3>배운 점</h3><p>앨범 이미지와 영상, 타이포그래피를 조화롭게 배치하며 음악의 분위기를 웹 화면에 전달하는 시각적 구성과 콘텐츠 흐름을 고민했습니다.</p></div><div class="personal-projects-work"><h3>작업한 부분</h3><p>앨범 콘셉트에 맞춘 UI 디자인과 이미지·영상 콘텐츠 구성, 랜딩페이지 구현을 진행했습니다.</p><ul class="personal-projects-tasks"><li>메인 비주얼 및 타이포그래피 구성</li><li>앨범·영상 콘텐츠 레이아웃 디자인</li><li>회전형 CD 연출을 위한 추가 앨범·CD 그래픽 제작</li><li>랜딩페이지 UI 디자인 및 화면 구현</li></ul></div></div><a class="personal-projects-link" href="https://taeyang-album-project.vercel.app/" target="_blank" rel="noopener noreferrer">WEBSITE ↗<span class="project-link-sr"> (새 탭)</span></a></div></article>
@@ -1062,40 +1062,31 @@
 </div>
 </div>
 </section>
-<section class="about-postcards" aria-label="나를 이루는 순간들">
+<section class="about-postcards memory-archive" aria-label="Aurora Memory Archive — 나를 이루는 순간들">
 <div class="about-postcards-stage">
+<div class="memory-archive-light" aria-hidden="true"></div>
+<div class="memory-archive-orbit" aria-hidden="true"></div>
+<img class="memory-archive-sparkle memory-archive-sparkle--first" src="/assets/hero/edition/9c030.png" alt="" aria-hidden="true" loading="lazy"/>
+<img class="memory-archive-sparkle memory-archive-sparkle--second" src="/assets/hero/edition/b7968.png" alt="" aria-hidden="true" loading="lazy"/>
 <div class="about-postcards-atmosphere" aria-hidden="true">
-<div class="about-postcards-paper-grain"></div>
-<div class="about-postcards-background-type"><span>PIECES</span><em>of me.</em></div>
-<svg class="about-postcards-envelope about-postcards-envelope--first" viewBox="0 0 640 400" fill="none">
-<path class="about-postcards-envelope-flap" d="M2 3 302-180Q320-191 338-180L638 3Z"/>
-<rect class="about-postcards-envelope-inside" x="2" y="3" width="636" height="395" rx="5"/>
-<rect class="about-postcards-envelope-letter" x="55" y="-88" width="530" height="422" rx="5"/>
-<path class="about-postcards-envelope-letter-lines" d="M100-40H540M100-12H540M100 16H432"/>
-<path class="about-postcards-envelope-side" d="M2 4 320 217 2 396Z"/>
-<path class="about-postcards-envelope-side" d="M638 4 320 217 638 396Z"/>
-<path class="about-postcards-envelope-pocket" d="M2 396 294 196Q320 180 346 196L638 396Q638 398 633 398H7Q2 398 2 396Z"/>
-</svg>
-<svg class="about-postcards-envelope about-postcards-envelope--second" viewBox="0 0 640 400" fill="none"><rect x="1" y="1" width="638" height="398" rx="5"/><path d="M2 3 320 246 638 3M2 398 229 177M638 398 411 177"/></svg>
-<p class="about-postcards-postal-label">DESIGN POST OFFICE<span>PERSONAL ARCHIVE — NO. 024</span></p>
-<div class="about-postcards-archive-seal"><span>SPECIAL<br>DELIVERY</span><small>little moments, kept close</small></div>
-<p class="about-postcards-margin-note">POSTCARDS FROM ME<em>A few things I keep close.</em></p>
-<p class="about-postcards-scroll-note">SCROLL TO UNFOLD <span>↓</span></p>
+<div class="about-postcards-background-type">MEMORIES</div>
+<p class="memory-archive-opening-label">PERSONAL ARCHIVE<span>AURORA MEMORY COLLECTION</span></p>
+<p class="memory-archive-opening-note">A collection of little moments.</p>
+<p class="memory-archive-scroll-note">SCROLL TO EXPLORE <span>↓</span></p>
 </div>
 <div class="about-postcards-letter-paper" aria-hidden="true"></div>
 <div class="about-postcards-letter">
 <p class="about-postcards-letter-label">A COLLECTION OF MOMENTS</p>
-<h2>Pieces of <em>me</em></h2>
-<p class="about-postcards-letter-subtitle">My little moments</p>
+<h2>PIECES OF ME</h2>
+<p class="about-postcards-letter-subtitle">Little moments I keep close.</p>
 <div class="about-postcards-letter-body">
-<p>좋아하는 것들, 오래 간직하고 싶은 기억,<br>그리고 일상 속 작고 다정한 순간들.</p>
-<p>서로 다른 시간과 장소에서 쌓인 이야기들을<br>한 장의 엽서처럼 이곳에 모았습니다.</p>
-<p>크고 작은 순간들이 모여<br>저의 소중한 한 페이지가 되었습니다.</p>
+<p>좋아하는 것들, 오래 간직하고 싶은 기억,<br> 그리고 일상 속 작고 다정한 순간들.</p>
+<p>서로 다른 시간과 장소에서 쌓인 이야기들을<br> 하나의 작은 아카이브에 모았습니다.</p>
 </div>
-<p class="about-postcards-letter-sign">From, <em>Hyein</em></p>
+<p class="about-postcards-letter-sign">PERSONAL COLLECTION <span>24 MEMORIES</span></p>
 </div>
-<div class="about-postcards-cards" aria-hidden="true"></div>
-<div class="about-postcards-caption"><p>PIECES OF ME</p><h2>My <em>little</em> moments</h2></div>
+<div class="about-postcards-cards" role="list" aria-label="개인 아카이브 사진 24장"></div>
+<div class="about-postcards-caption"><p>PERSONAL ARCHIVE</p><h2>PIECES OF ME</h2><span>A collection of little moments.</span></div>
 </div>
 </section>
 <section class="quick-qa" id="quick-qa" aria-labelledby="quick-qa-title">
@@ -1126,16 +1117,9 @@
 </div>
 </section>
 <section class="contact" id="contact" aria-labelledby="contact-title">
-<div class="contact-mail" aria-hidden="true">
-<svg class="contact-mail-envelope" viewBox="0 0 600 520" fill="none"><path d="M20 211 275 24Q300 6 325 24L580 211V495H20Z" fill="#e5d6cd" stroke="#c1aaa2" stroke-width="1.5"/><path d="M20 211 300 385 580 211" fill="#d4bdb2"/><path d="M20 211 300 385 20 495Z" fill="#f3e7dd" stroke="#cbb6aa"/><path d="M580 211 300 385 580 495Z" fill="#efe0d5" stroke="#cbb6aa"/><path d="M20 495 278 325Q300 310 322 325L580 495Z" fill="#f8eee4" stroke="#cbb6aa"/></svg>
-<img class="contact-mail-paper" src="/assets/contact/letter-paper.png" alt="" loading="lazy" decoding="async"/>
-</div>
 <footer class="contact-ending">
 <div class="contact-heading">
 <h2 id="contact-title">CONTACT</h2>
-<img class="contact-character" src="/assets/contact/character-v2.png" alt="" loading="lazy"/>
-<img class="contact-paw contact-paw--lower" src="/assets/contact/paw-print.png" alt="" aria-hidden="true" loading="lazy"/>
-<img class="contact-paw contact-paw--upper" src="/assets/contact/paw-print.png" alt="" aria-hidden="true" loading="lazy"/>
 </div>
 <address class="contact-links">
 <a class="contact-link" href="mailto:jhi9955@naver.com"><span class="contact-icon"><img src="/assets/contact/email.svg" alt=""/></span><span>jhi9955@naver.com</span></a>
@@ -1156,14 +1140,14 @@
 </div>
 <aside class="postbox-widget" aria-label="포트폴리오 안내">
 <div class="postbox-controls">
-<button class="postbox-launch" type="button" aria-label="혜인의 우편함 열기" aria-expanded="false" aria-controls="postbox-panel">
-<span class="postbox-mailbox" aria-hidden="true"><img class="postbox-mailbox-normal" src="/assets/contact/chatbot-mailbox-normal.png" alt=""/><img class="postbox-mailbox-hover" src="/assets/contact/chatbot-mailbox-hover.png" alt=""/></span>
+<button class="postbox-launch" type="button" aria-label="챗봇 열기" aria-expanded="false" aria-controls="postbox-panel">
+<svg class="postbox-chat-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-9 9 9.5 9.5 0 0 1-4-.9L3 21l.9-5A9 9 0 1 1 21 12Z"/><circle cx="8" cy="12" r=".9" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r=".9" fill="currentColor" stroke="none"/></svg>
 <span class="postbox-tooltip">혜인에게 궁금한 점이 있나요?</span>
 </button>
 <button class="postbox-top" type="button" aria-label="맨 위로 이동"><svg width="24" height="28" viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 4h14M12 25V8m-7 7 7-7 7 7"/></svg></button>
 </div>
 <section class="postbox-panel" id="postbox-panel" role="dialog" aria-label="HYEIN'S POSTBOX" hidden inert>
-<header class="postbox-header"><span class="postbox-envelope" aria-hidden="true"><img src="/assets/contact/chatbot-header-dog.png" alt=""/></span><div><h2>HYEIN'S POSTBOX</h2><p>A little note for you</p></div><button class="postbox-close" type="button" aria-label="우편함 닫기">×</button></header>
+<header class="postbox-header"><span class="postbox-crystal-avatar" aria-hidden="true"><img src="/assets/contact/chatbot-crystal-dog.png" alt=""/></span><div><h2>HYEIN'S POSTBOX</h2><p>A little note for you</p></div><button class="postbox-close" type="button" aria-label="우편함 닫기">×</button></header>
 <p class="postbox-guide">추천 질문과 키워드로 포트폴리오를 안내해 드려요.</p>
 <div class="postbox-log" role="log" aria-label="대화 내용" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
 <div class="postbox-suggestions" aria-label="추천 질문"></div>

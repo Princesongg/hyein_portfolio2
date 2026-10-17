@@ -16,8 +16,8 @@ export default function initPersonalBackground(section, options = {}) {
   const top = section.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
   const progress = Math.max(0, Math.min(1, (scroller.clientHeight - top) / (scroller.clientHeight * .75)));
   const eased = progress * progress * (3 - 2 * progress);
-  const from = options.from || [238, 227, 225];
-  const to = options.to || [210, 222, 235];
+  const from = options.from || [244, 239, 234];
+  const to = options.to || [252, 250, 247];
   const channels = from.map((channel, index) => Math.round(channel + (to[index] - channel) * eased));
   surfaces.forEach(surface => {
    surface.style.setProperty(property, `rgb(${channels.join(',')})`);
