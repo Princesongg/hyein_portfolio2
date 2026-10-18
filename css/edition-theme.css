@@ -173,15 +173,15 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .skill-groups {width:min(100%,1000px);gap:8%;}
 .skill-group li {font-size:17px;line-height:2.1;}
 .skill-icon {border-color:var(--edition-line);background:rgba(255,255,255,.7);box-shadow:0 12px 35px rgba(121,104,88,.07);border-radius:20px;}
-.about-postcards {background:var(--about-background);color:var(--edition-ink);}
-.about-postcards-route path {stroke:#b49b7f;}
-.about-postcards-caption h2,.about-postcards-letter h2 {font-family:var(--edition-serif);font-weight:400;}
-.about-postcards-caption h2 {font-size:clamp(32px,4.5vw,72px);}
-.about-postcards-letter-paper {background:var(--edition-paper);border-color:var(--edition-line);}
-.about-postcards-letter {color:var(--edition-body);}
-.about-postcards-letter-subtitle {color:var(--edition-ink);}
-.about-postcards-letter-body p {background-image:linear-gradient(to bottom,transparent calc(100% - 1px),var(--edition-line) 0);}
-.about-postcards-letter-sign {border-color:var(--edition-line);}
+/* Ground the four chapter illustrations with a soft, stationary floor shadow. */
+.team-start--collaboration .team-crystal-art,
+.personal-start--crystal .personal-crystal-art,
+.video-start--crystal .video-crystal-art,
+.archive-start--crystal .archive-crystal-art {overflow:visible;isolation:isolate;}
+.team-start--collaboration .team-crystal-art::after,
+.personal-start--crystal .personal-crystal-art::after,
+.video-start--crystal .video-crystal-art::after,
+.archive-start--crystal .archive-crystal-art::after {content:'';position:absolute;left:27%;bottom:-5%;width:46%;height:7%;border-radius:50%;background:radial-gradient(ellipse,rgb(121 104 88 / .19) 0%,rgb(157 136 118 / .10) 35%,rgb(157 136 118 / .035) 58%,transparent 74%);filter:blur(8px);z-index:-1;pointer-events:none;}
 .quick-qa {background:var(--edition-pearl);color:var(--edition-ink);}
 .quick-qa h2 {font-size:clamp(48px,5vw,80px);font-weight:400;}
 .quick-qa-list,.quick-qa-item {border-color:var(--edition-line);}
@@ -248,9 +248,6 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
  .skill-groups {gap:18px;}
  .skill-group h3 {font-size:16px;}
  .skill-group li {font-size:13px;}
- .about-postcards-caption h2 {font-size:32px;}
- .about-postcards-letter h2 {font-size:32px;}
- .about-postcards-letter-body {font-size:12px;line-height:1.75;}
  .portfolio-header nav {display:grid;grid-template-columns:repeat(3,auto);gap:4px 12px;max-width:190px;justify-content:end;}
  .portfolio-header nav a {font-size:10px;}
  .quick-qa h2 {font-size:48px;}

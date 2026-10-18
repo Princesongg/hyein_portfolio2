@@ -1,5 +1,6 @@
-const photoNumbers = Array.from({length:24},(_,index)=>index+1);
-export const aboutPostcards = photoNumbers.map((photoNumber,index) => ({
- id:String(index+1).padStart(2,'0'),
+﻿// Reorder or extend this selection (up to 12); all 24 source photos remain untouched.
+const selectedPhotoNumbers = [1, 3, 5, 7, 9, 12, 15, 18, 21, 24];
+export const aboutPostcards = selectedPhotoNumbers.slice(0, 12).map(photoNumber => ({
+ id:String(photoNumber).padStart(2,'0'),
  image:`/assets/about/postcards/optimized/postcard${photoNumber}.jpg`,
 }));

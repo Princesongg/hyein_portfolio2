@@ -1,127 +1,110 @@
-/* Structural hooks retained for the existing scroll choreography. */
-.about-postcards {position:relative;height:900dvh;}
-.about-postcards-stage {--letter:0;position:sticky;top:0;height:100dvh;overflow:hidden;isolation:isolate;}
-.about-postcards-stage::after {content:'';position:absolute;inset:0;pointer-events:none;}
-.about-postcards-cards,.about-postcards-route {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
-.about-postcards-route {overflow:visible;opacity:0;}
-.about-postcards-route path {fill:none;stroke-linecap:round;}
-.about-postcards.is-postcards-active .about-postcard {will-change:transform;}
-.about-postcard {position:absolute;left:0;top:0;}
-.about-postcard::after {content:'';position:absolute;}
-.about-postcard-window {overflow:hidden;}
-.about-postcards-caption {position:absolute;left:50%;text-align:center;transform:translate(-50%,-50%);opacity:0;pointer-events:none;}
-.about-postcards-letter-paper {position:absolute;opacity:var(--letter);pointer-events:none;}
-.about-postcards-letter {position:absolute;opacity:var(--letter);transform:translateY(calc((1 - var(--letter))*18px));}
-.about-postcards-letter-sign {border-top:1px solid;}
-.about-postcards-atmosphere {position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:var(--archive-fade,1);}
-.about-postcards-background-type {position:absolute;}
-
-/* Aurora Memory Archive. Scoped to the personal photo sequence only. */
-.about-postcards.memory-archive {
- --memory-background:#f8f5f0;
- --memory-secondary:#f5f1ec;
- --memory-pearl:#fffdfb;
- --memory-gold:#c9ae8f;
- --memory-border:#d9c9ba;
- --memory-ink:#796858;
- --memory-muted:#9d8876;
- --memory-serif:'Cormorant Garamond','SUITE',Georgia,serif;
- background:var(--memory-background);
- color:var(--memory-ink);
+/* ABOUT / Curved Fan Stack. All geometry and controls stay inside this section. */
+.about-postcards.memory-fan {
+ --memory-background:#f8f5f0;--memory-ink:#796858;--memory-muted:#9d8876;
+ --memory-serif:var(--edition-serif,'Cormorant Garamond',Georgia,serif);
+ position:relative;background:var(--memory-background);color:var(--memory-ink);
+ /* The existing next section overlaps its predecessor by one viewport. */
+ padding-bottom:100dvh;
 }
-.memory-archive .about-postcards-stage {background:var(--memory-background);}
-.memory-archive .about-postcards-stage::after {background:rgb(121 104 88 / calc(var(--qa-dim,0) * .28));z-index:4;}
-.memory-archive-light {position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 77% 44%,rgb(221 232 246 / .22),transparent 35%),radial-gradient(ellipse at 64% 70%,rgb(240 220 229 / .20),transparent 30%),radial-gradient(ellipse at 27% 25%,rgb(231 223 244 / .13),transparent 27%);}
-.memory-archive-orbit {position:absolute;left:9%;top:25%;width:82%;height:48%;border:1px solid rgb(201 174 143 / .24);border-radius:50%;transform:rotate(-16deg);pointer-events:none;}
-.memory-archive-orbit::after {content:'';position:absolute;right:15%;top:5%;width:5px;height:5px;border:1px solid var(--memory-gold);border-radius:50%;background:var(--memory-pearl);}
-.memory-archive-sparkle {position:absolute;width:clamp(28px,3.5vw,62px);height:auto;pointer-events:none;opacity:.5;}
-.memory-archive-sparkle--first {left:43%;top:12%;}
-.memory-archive-sparkle--second {right:6%;bottom:8%;width:clamp(20px,2.5vw,40px);opacity:.4;}
-.memory-archive .about-postcards-atmosphere {background:none;z-index:0;}
-.memory-archive .about-postcards-atmosphere::before {display:none;}
-.memory-archive .about-postcards-background-type {left:50%;top:47%;transform:translate(-50%,-50%);font-family:var(--memory-serif);font-size:19vw;font-weight:400;letter-spacing:-.05em;line-height:1;opacity:.04;color:var(--memory-ink);}
-.memory-archive-opening-label {position:absolute;left:6%;top:10%;margin:0;font-family:var(--memory-serif);font-size:13px;letter-spacing:.18em;line-height:1.25;}
-.memory-archive-opening-label span {display:block;margin-top:5px;font-size:9.5px;letter-spacing:.22em;color:var(--memory-muted);}
-.memory-archive-opening-note {position:absolute;left:6%;bottom:4%;margin:0;font-family:var(--memory-serif);font-size:20px;font-style:italic;}
-.memory-archive-scroll-note {position:absolute;right:6%;bottom:4%;margin:0;font-family:var(--memory-serif);font-size:12px;letter-spacing:.15em;}
-.memory-archive-scroll-note span {display:inline-block;margin-left:14px;font-size:18px;}
-.memory-archive .about-postcards-cards {z-index:1;}
-.memory-archive .about-postcard {
- width:min(11.5vw,18dvh);
- aspect-ratio:auto;
- padding:6px;
- border:1px solid var(--memory-border);
- border-radius:5px;
- background:linear-gradient(135deg,rgb(255 253 251 / .98),rgb(235 234 246 / .55) 40%,rgb(255 253 251 / .95) 65%,rgb(235 224 216 / .7));
- box-shadow:0 9px 24px -12px rgb(121 104 88 / .24),0 2px 6px rgb(121 104 88 / .07),inset 0 0 0 1px rgb(255 255 255 / .85);
- filter:none;
- transform-origin:center;
+.memory-fan .about-postcards-stage {position:relative;height:100dvh;min-height:0;overflow:clip;background:var(--memory-background);isolation:isolate;}
+.memory-fan-glow {position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 66% 48%,#e7e7ef55,transparent 43%),radial-gradient(ellipse at 82% 70%,#eddfd944,transparent 35%),radial-gradient(ellipse at 25% 30%,#fffdfb99,transparent 40%);}
+.memory-fan-heading {position:absolute;z-index:2;left:8%;top:max(115px,17%);max-width:78%;pointer-events:none;transform-origin:left center;}
+.memory-fan .memory-fan-heading p {margin:0 0 16px;font:12px var(--memory-serif);letter-spacing:.26em;}
+.memory-fan .memory-fan-heading h2 {margin:0;font:400 clamp(42px,5.2vw,88px)/1 var(--memory-serif);letter-spacing:-.04em;white-space:nowrap;}
+.memory-fan-heading>span {display:block;margin-top:20px;color:var(--memory-muted);font:italic clamp(19px,1.6vw,27px) var(--memory-serif);}
+.memory-fan-space {position:absolute;inset:0;perspective:1200px;perspective-origin:50% 50%;}
+.memory-fan-deck {position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 50%;}
+.memory-fan-card {position:absolute;left:0;top:0;width:var(--fan-card-width,210px);transform-style:preserve-3d;transform-origin:center center;backface-visibility:hidden;}
+.memory-fan-photo {display:block;position:relative;box-sizing:border-box;width:100%;padding:6px 6px 18px;border:1px solid #d9c9bab3;border-radius:5px;background:linear-gradient(135deg,#fffdfb,#f0ece8 70%,#eee8ef);box-shadow:0 12px 30px -12px #7968583d,0 2px 6px #79685814,inset 0 0 0 1px #ffffffbf;color:inherit;cursor:zoom-in;transition:box-shadow .35s ease;}
+.memory-fan-photo img {display:block;width:100%;height:auto;border-radius:2px;user-select:none;-webkit-user-drag:none;}
+.memory-fan-card.is-active .memory-fan-photo {box-shadow:0 38px 65px -18px #79685880,0 14px 26px -8px #7968583d,inset 0 0 0 1px #fff;}
+.memory-fan-photo:focus-visible {outline:2px solid #a78b6b;outline-offset:6px;}
+.memory-fan-hint {position:absolute;left:8%;bottom:7%;margin:0;color:var(--memory-muted);font:11px var(--memory-serif);letter-spacing:.20em;pointer-events:none;}
+.memory-fan-hint span {margin-left:18px;font-size:19px;}
+.memory-fan-skip {position:absolute;left:8%;bottom:20px;z-index:4;padding:10px 14px;color:var(--memory-ink);background:#fffdfb;transform:translateY(100px);font:14px 'SUITE',sans-serif;}
+.memory-fan-skip:focus-visible {transform:none;outline:2px solid #a78b6b;}
+.memory-fan .about-postcards-letter {position:relative;width:min(760px,84%);margin:0 auto;padding:90px 0 100px;}
+.memory-fan .about-postcards-letter:focus {outline:none;}
+.memory-fan .about-postcards-letter-label {font:12px var(--memory-serif);letter-spacing:.21em;margin:0 0 26px;}
+.memory-fan .about-postcards-letter-body {font-family:'SUITE',sans-serif;font-size:16px;line-height:1.95;}
+.memory-fan .about-postcards-letter-body p {margin:0 0 22px;background:none;}
+.memory-fan .about-postcards-letter-sign {display:flex;justify-content:space-between;gap:12px;margin-top:36px;padding-top:18px;border-top:1px solid #d9c9ba;font:11px var(--memory-serif);letter-spacing:.13em;}
+/* Existing click-to-focus behavior, without the orbit's captions or hover transforms. */
+.memory-fan .about-photo-focus {box-sizing:border-box;width:min(88vw,760px);max-height:88dvh;padding:48px 28px 24px;border:1px solid #d9c9ba;border-radius:12px;background:#fffdfbf5;color:var(--memory-ink);box-shadow:0 24px 100px #79685829;overflow:auto;overscroll-behavior:contain;}
+.memory-fan .about-photo-focus::backdrop {background:rgb(248 245 240 / .83);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.memory-fan .about-photo-focus[open] {animation:memory-fan-focus-in .25s ease both;}
+.memory-fan .about-photo-focus figure {margin:0;}
+.memory-fan .about-photo-focus figure img {display:block;width:100%;height:auto;max-height:calc(88dvh - 100px);object-fit:contain;}
+.memory-fan .about-photo-focus-close {position:absolute;right:10px;top:8px;display:grid;place-items:center;width:40px;height:40px;border:1px solid #d9c9ba;border-radius:50%;background:#f8f5f0;color:#796858;font:28px/1 Georgia,serif;cursor:pointer;}
+.memory-fan .about-photo-focus-close:focus-visible {outline:2px solid #a78b6b;outline-offset:3px;}
+@keyframes memory-fan-focus-in {from {opacity:0;transform:translateY(8px) scale(.98);}to {opacity:1;transform:none;}}
+@media(max-width:1024px) {
+ .memory-fan-space {perspective:1200px;}
+ .memory-fan .memory-fan-heading h2 {font-size:5.4vw;}
+ .memory-fan-heading {top:max(105px,15%);}
 }
-.memory-archive .about-postcard::after {inset:0;mask:none;background:none;border-radius:inherit;box-shadow:inset 0 1px 0 #fff,inset 1px 0 0 rgb(255 255 255 / .6);pointer-events:none;z-index:2;}
-.memory-archive .about-postcard:nth-child(3n) {background:linear-gradient(135deg,var(--memory-pearl),rgb(227 229 244 / .7) 36%,var(--memory-pearl) 63%,rgb(240 224 229 / .6));}
-.memory-archive .about-postcard-window {position:relative;inset:auto;border:1px solid rgb(201 174 143 / .3);border-radius:2px;background:var(--memory-pearl);}
-.memory-archive .about-postcard-window img {display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;filter:none;opacity:1;}
-.memory-archive .about-postcards-route {z-index:0;}
-.memory-archive .about-postcards-route path {stroke:var(--memory-gold);stroke-width:.7;stroke-dasharray:none;opacity:.4;}
-.memory-archive .about-postcards-caption {z-index:2;top:50%;width:48%;color:var(--memory-ink);}
-.memory-archive .about-postcards-caption p {font-family:var(--memory-serif);font-size:13px;font-weight:400;letter-spacing:.24em;margin:0 0 18px;}
-.memory-archive .about-postcards-caption h2 {margin:0;font-family:var(--memory-serif);font-size:clamp(42px,5.3vw,92px);font-weight:400;letter-spacing:-.035em;line-height:1.05;white-space:nowrap;}
-.memory-archive .about-postcards-caption>span {display:block;margin-top:20px;font-family:var(--memory-serif);font-size:clamp(18px,1.65vw,28px);font-style:italic;font-weight:400;color:var(--memory-muted);}
-.memory-archive .about-postcards-letter-paper {z-index:0;inset:0 54% 0 0;background:var(--memory-pearl);border-right:1px solid var(--memory-border);}
-.memory-archive .about-postcards-letter {z-index:2;left:6%;top:28%;width:35%;color:var(--memory-ink);}
-.memory-archive .about-postcards-letter-label {margin:0 0 24px;font-family:var(--memory-serif);font-size:12px;letter-spacing:.21em;}
-.memory-archive .about-postcards-letter h2 {margin:0;font-family:var(--memory-serif);font-size:clamp(36px,4.1vw,76px);font-weight:400;letter-spacing:-.035em;line-height:1.05;white-space:nowrap;}
-.memory-archive .about-postcards-letter-subtitle {font-family:var(--memory-serif);font-size:clamp(19px,1.7vw,28px);font-style:italic;color:var(--memory-muted);margin:18px 0 0;}
-.memory-archive .about-postcards-letter-body {font-family:'SUITE',sans-serif;font-size:clamp(14px,1.04vw,18px);font-weight:400;line-height:1.95;margin-top:40px;}
-.memory-archive .about-postcards-letter-body p {margin:0 0 22px;background:none;}
-.memory-archive .about-postcards-letter-sign {display:flex;justify-content:space-between;gap:12px;margin-top:38px;padding-top:18px;border-color:var(--memory-border);font-family:var(--memory-serif);font-size:11px;letter-spacing:.13em;color:var(--memory-muted);}
-.memory-archive .about-postcards-letter-sign>span {white-space:nowrap;}
 @media(max-width:700px) {
- .memory-archive .about-postcard {width:min(19vw,10dvh);padding:4px;border-radius:4px;}
- .memory-archive .about-postcards-caption {top:53.5%;width:90%;}
- .memory-archive .about-postcards-caption p {font-size:10px;letter-spacing:.2em;margin-bottom:12px;}
- .memory-archive .about-postcards-caption h2 {font-size:clamp(30px,9.5vw,58px);}
- .memory-archive .about-postcards-caption>span {font-size:18px;margin-top:12px;}
- .memory-archive-opening-label {left:7%;top:12%;font-size:10px;}
- .memory-archive-opening-label span {font-size:7px;margin-top:4px;}
- .memory-archive-opening-note {left:7%;bottom:2.2%;font-size:16px;}
- .memory-archive-scroll-note {display:none;}
- .memory-archive-sparkle--first {top:12%;left:auto;right:9%;width:28px;}
- .memory-archive-sparkle--second {bottom:3%;right:8%;width:22px;}
- .memory-archive-orbit {left:-14%;top:31%;width:128%;height:34%;}
- .memory-archive .about-postcards-letter-paper {inset:0 0 50% 0;border-right:0;border-bottom:1px solid var(--memory-border);}
- .memory-archive .about-postcards-letter {left:8%;top:14%;width:84%;}
- .memory-archive .about-postcards-letter-label {font-size:9px;margin-bottom:14px;}
- .memory-archive .about-postcards-letter h2 {font-size:clamp(30px,9vw,48px);}
- .memory-archive .about-postcards-letter-subtitle {font-size:18px;margin-top:10px;}
- .memory-archive .about-postcards-letter-body {font-size:12px;line-height:1.8;margin-top:20px;}
- .memory-archive .about-postcards-letter-body p {margin-bottom:12px;}
- .memory-archive .about-postcards-letter-body p br {display:none;}
- .memory-archive .about-postcards-letter-sign {font-size:8px;margin-top:14px;padding-top:10px;}
+ .memory-fan .about-postcards-stage {min-height:0;}
+ .memory-fan-space {perspective:1200px;perspective-origin:50% 50%;}
+ .memory-fan-heading {left:8%;top:max(110px,16%);max-width:84%;}
+ .memory-fan .memory-fan-heading h2 {font-size:clamp(34px,9.7vw,60px);}
+ .memory-fan .memory-fan-heading p {font-size:10px;margin-bottom:13px;}
+ .memory-fan-heading>span {margin-top:16px;font-size:20px;}
+ .memory-fan-photo {padding:4px 4px 13px;}
+ .memory-fan-hint {font-size:9px;bottom:8%;}
+ .memory-fan .about-postcards-letter {padding:55px 0 75px;}
+ .memory-fan .about-postcards-letter-body {font-size:14px;}
+ .memory-fan .about-postcards-letter-body p br {display:none;}
+ .memory-fan .about-photo-focus {width:92vw;padding:48px 16px 20px;}
 }
-@media(max-height:700px) and (min-width:701px) {
- .memory-archive .about-postcards-letter {top:24%;}
- .memory-archive .about-postcards-letter-body {font-size:13px;margin-top:24px;}
-}
-@media(max-width:700px) and (max-height:740px) {
- .memory-archive .about-postcards-letter-label {margin-bottom:10px;}
- .memory-archive .about-postcards-letter-body {margin-top:16px;line-height:1.75;}
- .memory-archive .about-postcards-letter-sign {margin-top:10px;padding-top:8px;}
-}
+/* A readable, unpinned collection when movement is disabled or JS is not yet ready. */
+.memory-fan:not(.is-fan-ready) .about-postcards-stage,
+.memory-fan.is-memory-static .about-postcards-stage {height:auto;min-height:0;padding:135px 8% 70px;overflow:visible;}
+.memory-fan:not(.is-fan-ready) .memory-fan-heading,
+.memory-fan.is-memory-static .memory-fan-heading {position:relative;left:auto;top:auto;max-width:100%;margin-bottom:60px;}
+.memory-fan:not(.is-fan-ready) .memory-fan-space,
+.memory-fan.is-memory-static .memory-fan-space {position:relative;left:auto;top:auto;width:auto;height:auto;perspective:none;}
+.memory-fan:not(.is-fan-ready) .memory-fan-deck,
+.memory-fan.is-memory-static .memory-fan-deck {position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;}
+.memory-fan:not(.is-fan-ready) .memory-fan-card,
+.memory-fan.is-memory-static .memory-fan-card {position:relative;width:100%;transform:none;}
+.memory-fan:not(.is-fan-ready) .memory-fan-hint,
+.memory-fan.is-memory-static .memory-fan-hint {display:none;}
 @media(prefers-reduced-motion:reduce) {
- .about-postcards.memory-archive {height:auto;}
- .memory-archive .about-postcards-stage {position:relative;display:flex;flex-direction:column;height:auto;min-height:100dvh;padding:145px 6% 80px;gap:48px;}
- .memory-archive .about-postcards-atmosphere,.memory-archive .about-postcards-route,.memory-archive .about-postcards-caption {display:none;}
- .memory-archive .about-postcards-letter-paper {inset:0;border:0;opacity:1;}
- .memory-archive .about-postcards-letter {position:relative;left:auto;top:auto;width:min(100%,760px);transform:none;opacity:1;}
- .memory-archive .about-postcards-letter-body {font-size:15px;}
- .memory-archive .about-postcards-cards {position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:center;gap:30px 24px;}
- .memory-archive .about-postcard,.memory-archive .about-postcard:nth-child(n) {position:relative;width:100%;transform:none;}
+ .about-postcards.memory-fan {padding-bottom:0;}
+ .memory-fan .about-photo-focus[open] {animation:none;}
+ .memory-fan .memory-fan-photo {transition:none;}
 }
-@media(prefers-reduced-motion:reduce) and (max-width:700px) {
- .memory-archive .about-postcards-stage {padding:125px 7% 70px;gap:30px;}
- .memory-archive .about-postcards-cards {grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 16px;}
- .memory-archive .about-postcards-letter-body {font-size:14px;}
+@media(max-width:700px) {
+ .memory-fan:not(.is-fan-ready) .memory-fan-deck,
+ .memory-fan.is-memory-static .memory-fan-deck {grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
 }
 
+@media(min-width:701px) and (max-height:700px) {
+ .memory-fan-heading {top:100px;}
+ .memory-fan .memory-fan-heading h2 {font-size:clamp(30px,3.5vw,50px);}
+ .memory-fan-heading>span {margin-top:14px;font-size:18px;}
+}
+@media(max-width:700px) and (max-height:650px) {
+ .memory-fan-heading {top:90px;}
+}
+/* Keep the personal note beside the desktop stack, below its opening title. */
+.memory-fan.has-inline-story .about-postcards-letter {position:absolute;left:8%;top:44%;z-index:2;width:24%;margin:0;padding:0;}
+.memory-fan.has-inline-story .about-postcards-letter-label {font-size:10px;margin-bottom:24px;letter-spacing:.18em;}
+.memory-fan.has-inline-story .about-postcards-letter-body {font-size:clamp(14px,1vw,16px);line-height:1.95;}
+.memory-fan.has-inline-story .about-postcards-letter-sign {flex-wrap:wrap;margin-top:24px;padding-top:14px;font-size:9px;letter-spacing:.10em;}
+@media(min-width:701px) and (max-height:700px) {
+ .memory-fan.has-inline-story .about-postcards-letter {top:43%;}
+ .memory-fan.has-inline-story .about-postcards-letter-label {margin-bottom:16px;}
+ .memory-fan.has-inline-story .about-postcards-letter-body p {margin-bottom:14px;}
+ .memory-fan.has-inline-story .about-postcards-letter-sign {margin-top:16px;}
+}
+@media(min-width:701px) and (max-width:1100px) {
+ .memory-fan.has-inline-story .about-postcards-letter {width:22%;}
+}
 
+/* Q&A rises above the held gallery; only the background receives the dim layer. */
+.memory-fan .about-postcards-stage::after {content:'';position:absolute;inset:0;z-index:5;background:#796858;opacity:var(--memory-cover-dim,0);pointer-events:none;}
+@media(min-width:701px) and (prefers-reduced-motion:no-preference) {
+ .about-postcards.memory-fan {padding-bottom:0;}
+}
