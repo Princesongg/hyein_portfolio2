@@ -1,4 +1,4 @@
-﻿.team-story {background:var(--frame-cream);color:var(--deep-pink-brown);}
+.team-story {background:var(--frame-cream);color:var(--deep-pink-brown);}
 .team-story-row {position:relative;min-height:85dvh;padding:110px 7% 90px;display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:8%;}
 .team-story-row:nth-child(even) {background:var(--pink-ivory);}
 .team-story-index {margin:0 0 32px;font-size:13px;letter-spacing:.14em;}
