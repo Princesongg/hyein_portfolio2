@@ -105,6 +105,15 @@ const componentSheets = [
  {id:'components',label:'컴포넌트',image:'/assets/work/ux/planning/components.png',width:2000,height:1200,alt:'딥티크 PC·모바일 내비게이션, 로그인 상태별 헤더, 더 보기와 TOP 버튼 및 화살표 컴포넌트'},
 ].map(({width,height,alt,...material})=>({...material,originalImage:{src:material.image,width,height,alt}}));
 const components = {...componentSheets[1],pages:componentSheets};
+const presentationPages = [
+ {number:16,height:2660,alt:'장표 16: 기존 온라인 경험과 새롭게 디자인한 브랜드 경험 비교'},
+ {number:18,height:2500,alt:'장표 18: 카테고리 탐색, 향 발견, 3D 향수와 푸터 모션 설명'},
+ {number:8,height:2200,alt:'장표 8: 공식 경험 통합, 브랜드 경험 확장과 직관적인 향 탐색 솔루션'},
+].map(({number,height,alt})=>{
+ const image='/assets/work/ux/planning/presentation-'+number+'.png';
+ return {id:'presentation-'+number,label:'장표 '+number,image,originalImage:{src:image,width:1920,height,alt}};
+});
+const presentation = {...presentationPages[0],id:'presentation',label:'장표',title:'Presentation',pages:presentationPages};
 const menuTree = {
  id:'menu',label:'메뉴트리',title:'Information architecture',
  image:'/assets/work/ux/planning/menu-tree.jpg',
@@ -147,5 +156,5 @@ export const uxSteps = [
  {id:'define',title:'문제 정의와 기획',english:'Defining the direction',description:'핵심 사용자와 탐색 흐름을 정리하고, 문제·가치·해결 방향을 연결하는 단계입니다.',documents:[personas[1],journeyMaps[1],leanCanvas]},
  {id:'structure',title:'팀 논의와 구조 설계',english:'Planning together',description:'팀의 논의를 바탕으로 정보 구조와 사용자 흐름, 화면별 요구사항을 정리하는 단계입니다.',documents:[menuTree,userFlow,iaStructure,meetingNotes]},
  {id:'visual',title:'디자인 방향 설정',english:'Shaping the visual language',description:'이미지·컬러·타이포그래피와 여백의 기준을 모아 공통 디자인 방향을 정리하는 단계입니다.',documents:[moodboard,designMindmap]},
- {id:'screens',title:'화면 설계와 구체화',english:'From structure to screens',description:'와이어프레임에서 정보의 우선순위를 정하고, 공통 스타일과 화면 구성을 구체화하는 단계입니다.',documents:[wireframe,designSystem,components,document('presentation','장표','Presentation',[])]},
+ {id:'screens',title:'화면 설계와 구체화',english:'From structure to screens',description:'와이어프레임에서 정보의 우선순위를 정하고, 공통 스타일과 화면 구성을 구체화하는 단계입니다.',documents:[wireframe,designSystem,components,presentation]},
 ];

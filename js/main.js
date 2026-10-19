@@ -47,20 +47,6 @@ const resizeObserver = new ResizeObserver(resizeHero);
 resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
-const roleFeature = reference('.what-i-do-feature > figure');
-const roleSupport = reference('.what-i-do-support');
-const alignRolePreviews = () => {
- roleSupport.style.setProperty('--main-preview-height',roleFeature.getBoundingClientRect().height+'px');
- const firstRole = roleSupport.querySelector('.what-i-do-role');
- const contentHeight = Math.max(...[...firstRole.children].map(child=>child.getBoundingClientRect().height));
- roleSupport.style.setProperty('--first-role-height',contentHeight+'px');
-};
-const rolePreviewObserver = new ResizeObserver(alignRolePreviews);
-rolePreviewObserver.observe(roleFeature);
- [...roleSupport.querySelector('.what-i-do-role').children].forEach(child=>rolePreviewObserver.observe(child));
-alignRolePreviews();
-cleanups.push(() => rolePreviewObserver.disconnect());
-
 start(LoadingIntro);
 start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
@@ -95,6 +81,7 @@ start(initPersonalBackground,reference('.video-start'),{
  },
 });
 start(initTeamHorizontal,reference('.team-story'));
+start(initTeamHorizontal,reference('.role-story'),'role-story');
 start(initStoryReveal,reference('.team-story'));
 start(initTeamHorizontal,reference('.ux-process'),'ux-process');
 start(initTeamHorizontal,reference('.personal-projects'),'personal-projects');
@@ -161,7 +148,8 @@ function goToChapter(section,prefix,index) {
   stage.scrollTo({left:index*stage.clientWidth,behavior});
  } else {
   const top = scroller.scrollTop+section.getBoundingClientRect().top-scroller.getBoundingClientRect().top;
-  scroller.scrollTo({top:top+index*stage.clientWidth,behavior});
+  const hold = parseFloat(section.style.getPropertyValue('--story-hold')) || 0;
+  scroller.scrollTo({top:top+hold+index*stage.clientWidth,behavior});
  }
 }
 root.addEventListener('click',event => {
@@ -183,7 +171,7 @@ root.addEventListener('click',event => {
   scroller.scrollTo({top,behavior:reducedMotion() ? 'instant' : 'smooth'});
  }
 });
-for (const prefix of ['team-story','ux-process','personal-projects','short-form']) {
+for (const prefix of ['team-story','role-story','ux-process','personal-projects','short-form']) {
  const section = root.querySelector('.'+prefix);
  const buttons = section.querySelectorAll('.'+prefix+'-chapters button');
  buttons.forEach((button,index) => button.addEventListener('click',() => goToChapter(section,prefix,index)));
@@ -268,13 +256,21 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
  let current = step.documents[Math.max(0,[...tabs].findIndex(button=>button.getAttribute('aria-pressed')==='true'))];
  const addResearchLabel = () => {
   if (step.id==='research') previewButton.append(element('span','ux-research-card-label',current.label+' ↗'));
+  else if (['interview','structure','visual','screens'].includes(step.id)&&current.image&&!current.pages) {
+   previewButton.append(element('span','ux-document-card-label',current.label+' ↗'));
+  }
  };
+ if (['structure','visual','screens'].includes(step.id)) {
+  previewButton.replaceChildren(documentPreview(current));
+  addResearchLabel();
+ }
  if (step.id==='research') {
   previewButton.replaceChildren(documentPreview(current));
   addResearchLabel();
  }
  if (step.id==='interview') {
   previewButton.replaceChildren(documentPreview(current));
+  addResearchLabel();
   previewButton.setAttribute('aria-label',current.label+' 크게 보기');
   caption.textContent=current.label;
  }

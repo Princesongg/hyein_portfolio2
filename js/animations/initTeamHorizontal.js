@@ -9,13 +9,15 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
   let frame = 0;
   let measureFrame = 0;
   let distance = 0;
+  let hold = 0;
+  let travel = 0;
   let activeIndex = -1;
   let previousOffset = -1;
   const update = () => {
    frame = 0;
    if (media.matches) return;
    const offset = scroller.getBoundingClientRect().top - root.getBoundingClientRect().top;
-   const clampedOffset = Math.max(0, Math.min(distance, offset));
+   const clampedOffset = Math.max(0, Math.min(travel, offset - hold));
    const index = Math.round(clampedOffset / scroller.clientWidth);
    if (index !== activeIndex) buttons.forEach((button, buttonIndex) => {
     if (buttonIndex === index) button.setAttribute('aria-current','step');
@@ -37,7 +39,10 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    // This includes bottom padding that keeps content above the page footer.
    root.dataset.horizontal = 'false';
    const stageHeight = Math.max(scroller.clientHeight, ...rows.map(row => Math.max(row.offsetHeight, row.scrollHeight)));
-   distance = Math.max(0, track.scrollWidth - scroller.clientWidth);
+   travel = Math.max(0, track.scrollWidth - scroller.clientWidth);
+   hold = prefix === 'role-story' ? scroller.clientHeight * .65 : 0;
+   distance = travel + hold * 2;
+   root.style.setProperty('--story-hold', `${hold}px`);
    root.style.setProperty('--story-stage-height', `${stageHeight}px`);
    root.style.setProperty('--story-distance', `${distance}px`);
    root.dataset.horizontal = 'true';
@@ -56,7 +61,8 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    if (!['ArrowLeft','ArrowRight'].includes(event.key)) return;
    event.preventDefault();
    const start = scroller.scrollTop + root.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
-   const next = scroller.scrollTop + (event.key === 'ArrowRight' ? 1 : -1) * scroller.clientWidth;
+   const nextIndex = Math.max(0,Math.min(rows.length - 1,activeIndex + (event.key === 'ArrowRight' ? 1 : -1)));
+   const next = start + hold + nextIndex * scroller.clientWidth;
    scroller.scrollTo({top:Math.max(start,Math.min(start + distance,next)),behavior:'smooth'});
   };
   const observer = new ResizeObserver(scheduleMeasure);
@@ -81,5 +87,6 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    delete root.dataset.horizontal;
    root.style.removeProperty('--story-stage-height');
    root.style.removeProperty('--story-distance');
+   root.style.removeProperty('--story-hold');
   };
 }

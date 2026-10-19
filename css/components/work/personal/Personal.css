@@ -54,7 +54,7 @@
 .personal-onitsuka-title span {font-size:1.667cqw;font-weight:800;color:#ffcd00;}
 @media(prefers-reduced-motion:reduce) {.personal-shot-scroll img {animation:none;}}
 @media(prefers-reduced-motion:reduce) {.personal-scroll-content {animation:none;}}
-.personal-projects-visual .personal-project-phone {right:0;bottom:0;width:30%;margin:0;transform:rotate(3deg);filter:drop-shadow(0 10px 15px rgb(65 97 148 / .15));}
+.personal-projects-visual .personal-project-phone {right:0;bottom:0;width:25%;margin:0;transform:rotate(3deg);filter:drop-shadow(0 10px 15px rgb(65 97 148 / .15));}
 .personal-project-phone .team-story-phone-screen {background:#fff;}
 .personal-project-phone .personal-phone-image {position:absolute;left:0;top:6%;width:100%;height:94%;object-fit:cover;object-position:center top;}
 #personal-02 .team-story-phone-screen {background:#ffe3eb;}
@@ -62,6 +62,10 @@
 #personal-03 .team-story-phone-screen {background:#013db9;}
 #personal-03 .team-story-phone-status {filter:none;mix-blend-mode:screen;}
 #personal-03 .personal-phone-image {top:0;height:100%;object-fit:contain;object-position:center bottom;}
+#personal-06 .personal-phone-image {object-fit:contain;object-position:center top;}
+#personal-06 .team-story-phone-screen {background:#fff;}
+#personal-06 .team-story-phone-screen::before {content:'';position:absolute;inset:0 0 auto;height:13%;background:#ed1d24;pointer-events:none;}
+#personal-06 .team-story-phone-status {filter:none;mix-blend-mode:screen;}
 .personal-hospital-mobile-preview {position:absolute;left:0;top:6%;display:block;width:100%;height:94%;object-fit:contain;}
 .personal-project-phone figcaption {color:#416194;letter-spacing:.08em;}
 .personal-projects-kicker {margin:0 0 18px;font-size:clamp(13px,1.05vw,20px);font-weight:700;}

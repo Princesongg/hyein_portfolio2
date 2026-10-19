@@ -115,7 +115,7 @@ export default function initAboutPostcards(section) {
    });
    timeline.to(playhead,{progress:1,duration:100,ease:'none'});
    if(!context.conditions.mobile) {
-    timeline.to(stage,{'--memory-cover-dim':.30,duration:100*transitionRatio(),ease:'none'});
+    timeline.to({}, {duration:100*transitionRatio(),ease:'none'});
    }
    render(playhead.progress);
    return ()=>{
