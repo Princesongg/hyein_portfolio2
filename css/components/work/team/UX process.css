@@ -44,6 +44,8 @@
 .ux-document-open:has(.ux-document-image--planning)+.ux-material-caption button {min-height:44px;padding:10px 4px;}
 .ux-document-open,.ux-canvas-sheet {display:block;width:100%;border:0;padding:0;background:none;font:inherit;color:inherit;cursor:zoom-in;}
 .ux-process-material {min-width:0;}
+.ux-process-panel:is([aria-labelledby='ux-step-structure'],[aria-labelledby='ux-step-visual'],[aria-labelledby='ux-step-screens']) .ux-document-open:has(.ux-document-image--planning) {box-sizing:border-box;padding:7px;border:1px solid var(--light-pink-brown);border-radius:16px;background:var(--frame-cream);box-shadow:0 8px 24px rgb(100 72 76 / .06);}
+.ux-process-panel:is([aria-labelledby='ux-step-structure'],[aria-labelledby='ux-step-visual'],[aria-labelledby='ux-step-screens']) .ux-document-open .ux-document-image {border-radius:10px;}
 .ux-process-material > .ux-material-caption {display:none;}
 .ux-process-panel[aria-labelledby='ux-step-research'] .ux-document-open {box-sizing:border-box;padding:7px;border:1px solid var(--light-pink-brown);border-radius:16px;background:var(--frame-cream);box-shadow:0 8px 24px rgb(100 72 76 / .06);}
 .ux-process-panel[aria-labelledby='ux-step-research'] .ux-document-open .ux-document-image {border-radius:10px;}
@@ -55,6 +57,8 @@
 .ux-document-pair-card {min-width:0;padding:6px;border:1px solid var(--light-pink-brown);border-radius:14px;background:var(--frame-cream);color:var(--deep-pink-brown);font:inherit;cursor:zoom-in;}
 .ux-document-pair-card .ux-document-image {max-height:none;border-radius:8px;}
 .ux-document-pair-card>span {display:block;padding:12px 4px 6px;font-size:11px;text-align:left;}
+.ux-document-pair[data-document-gallery='flow'] {grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:12px;}
+.ux-document-pair[data-document-gallery='flow'] .ux-document-image {height:42dvh;object-fit:contain;object-position:top;}
 .ux-document-pair[data-document-gallery='meeting'] {grid-template-columns:1fr 1.15fr;gap:0;padding:26px 8px;isolation:isolate;}
 .ux-document-pair[data-document-gallery='meeting'] .ux-document-pair-card {position:relative;box-shadow:0 8px 20px rgb(100 72 76 / .08);}
 .ux-document-pair[data-document-gallery='meeting'] .ux-document-pair-card:first-child {width:116%;z-index:1;transform:translateY(-8px) rotate(-5deg);}

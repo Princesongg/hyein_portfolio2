@@ -24,6 +24,13 @@
 .team-story-gallery-card {position:relative;width:43%;margin:-60px 0 0 auto!important;padding:12px;background:var(--frame-cream);border:1px solid var(--light-pink-brown);border-radius:12px;transform:rotate(4deg);box-shadow:0 12px 28px rgba(143,110,115,.1);}
 .team-story-gallery-card figcaption {padding-top:12px;}
 .team-story-responsive {padding:36px;border:1px solid var(--light-pink-brown);border-radius:20px;background:var(--pink-ivory);}
+.team-story-details-grid {display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+.team-story-details-grid>div {display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;padding:20px;border-radius:6px;background:rgba(157,136,118,.12);text-align:center;}
+.team-story-details-grid>div:last-child {grid-column:1/-1;}
+.team-story-details-grid span {font-size:24px;color:var(--light-pink-brown);}
+.team-story-details-grid small {margin-top:8px;font-size:10px;}
+.team-story-details-grid p {margin:8px 0 0;font-size:13px;line-height:1.6;}
+@media(max-width:600px) {.team-story-details-grid>div {min-height:130px;padding:12px;}}
 .team-story-design-note>span,.team-story-workflow>span {font-size:11px;letter-spacing:.12em;}
 .team-story-design-note h4 {font-size:clamp(24px,2.5vw,42px);font-weight:600;line-height:1.25;margin:18px 0;}
 .team-story-design-note p {font-size:14px;margin:0;}
@@ -72,6 +79,10 @@
 .team-story-phone-body {position:relative;aspect-ratio:1280/2642;border-radius:16.40625cqw;overflow:hidden;background:#000;}
 .team-story-phone-screen {position:absolute;z-index:1;inset:4.296875cqw;border-radius:12.890625cqw;overflow:hidden;background:var(--frame-cream);}
 .team-story-mobile-preview {position:absolute;left:0;top:6%;display:block;width:100%;height:94%;object-fit:contain;}
+.team-story-phone--main .team-story-phone-body {aspect-ratio:1280/2808;}
+.team-story-phone--main .team-story-phone-screen {background:#f7f6f4;}
+.team-story-phone--main .team-story-phone-frame,
+.team-story-phone--main .team-story-phone-antennas {height:100%;}
 .team-story-phone-body>img {position:absolute;display:block;height:auto;pointer-events:none;}
 .team-story-phone-body>.team-story-phone-frame {z-index:0;inset:0;width:100%;}
 .team-story-phone-body>.team-story-phone-status {z-index:2;top:4.296875cqw;left:4.296875cqw;width:91.40625%;filter:invert(1);mix-blend-mode:multiply;}

@@ -5,14 +5,14 @@ export default function initTeamCrystal(art) {
  const motion=gsap.matchMedia();
  let revealed=false;
  motion.add('(prefers-reduced-motion: no-preference)',()=>{
-  const floating=art.querySelector('.team-crystal-float');
+  const floating=art.querySelector('.team-crystal-float') || art.querySelector('img');
   const sparkles=art.querySelectorAll('.team-crystal-sparkle');
   const loops=[];
   let reveal;
   let visible=false;
   const playback=()=>loops.forEach(loop=>loop.paused(!visible||document.hidden));
   const startLoops=()=>{
-   loops.push(gsap.fromTo(floating,{y:0},{y:-7,duration:3.5,ease:'sine.inOut',repeat:-1,yoyo:true}));
+   loops.push(gsap.fromTo(floating,{y:0},{y:-14,duration:3.5,ease:'sine.inOut',repeat:-1,yoyo:true}));
    sparkles.forEach((sparkle,index)=>{
     const pulse=gsap.timeline({repeat:-1,repeatDelay:4.8,delay:1+index*2.4});
     pulse.fromTo(sparkle,{opacity:0,scale:.75},{opacity:.9,scale:1.08,duration:.35,ease:'sine.out'})

@@ -47,9 +47,23 @@ const resizeObserver = new ResizeObserver(resizeHero);
 resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
+const roleFeature = reference('.what-i-do-feature > figure');
+const roleSupport = reference('.what-i-do-support');
+const alignRolePreviews = () => {
+ roleSupport.style.setProperty('--main-preview-height',roleFeature.getBoundingClientRect().height+'px');
+ const firstRole = roleSupport.querySelector('.what-i-do-role');
+ const contentHeight = Math.max(...[...firstRole.children].map(child=>child.getBoundingClientRect().height));
+ roleSupport.style.setProperty('--first-role-height',contentHeight+'px');
+};
+const rolePreviewObserver = new ResizeObserver(alignRolePreviews);
+rolePreviewObserver.observe(roleFeature);
+ [...roleSupport.querySelector('.what-i-do-role').children].forEach(child=>rolePreviewObserver.observe(child));
+alignRolePreviews();
+cleanups.push(() => rolePreviewObserver.disconnect());
+
 start(LoadingIntro);
 start(initEditionHero,root);
-root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
+root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
 root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
  const label=document.createElement('span');
  label.className='personal-preview-caption';
@@ -66,7 +80,7 @@ start(initKeywordStack,reference('.keywords-about-stack'));
 root.querySelectorAll('.bracket-reveal').forEach(element => start(initBracketReveal,element));
 start(initWorkTyping,reference('.work-intro'));
 root.querySelectorAll('.team-start-art:not(.team-crystal-art)').forEach(art => start(initStampPress,art));
-start(initTeamCrystal,reference('.team-crystal-art'));
+root.querySelectorAll('.team-crystal-art,.personal-crystal-art,.video-crystal-art,.archive-crystal-art').forEach(art=>start(initTeamCrystal,art));
 start(initTeamBackground,reference('.team-detail'));
 start(initPersonalBackground,reference('.personal-start'));
 start(initPersonalBackground,reference('.video-start'),{
@@ -265,7 +279,50 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
   caption.textContent=current.label;
  }
  const galleries=new Map();
+ if (step.id==='screens') {
+  const screenDescriptions=[
+   '앞서 설계한 정보 구조를 바탕으로 주요 페이지의 레이아웃과 콘텐츠 배치를 구체화했습니다. 화면별 정보의 우선순위와 사용자 흐름을 고려해 기본 구조를 설계했습니다.',
+   '브랜드의 시각적 일관성을 유지하기 위해 컬러, 타이포그래피, 간격 등 공통 디자인 기준을 정리했습니다. 팀원들이 통일된 방향으로 작업할 수 있도록 스타일을 체계화했습니다.',
+   '버튼, 카드, 내비게이션 등 반복적으로 사용되는 UI 요소를 정리했습니다. 페이지마다 일관된 디자인을 적용하고 효율적으로 작업할 수 있도록 구성했습니다.',
+   '기획 과정과 화면 설계, 디자인 결과물을 장표로 정리했습니다. 프로젝트의 진행 흐름과 주요 디자인 의도를 한눈에 이해할 수 있도록 구성했습니다.',
+  ];
+  description.textContent=screenDescriptions[0];
+  tabs.forEach((button,index)=>button.addEventListener('click',()=>{
+   description.textContent=screenDescriptions[index];
+  }));
+ }
+ if (step.id==='visual') {
+  const visualDescriptions=[
+   '팀원들이 공유한 레퍼런스 이미지와 조사 자료를 바탕으로 무드보드를 직접 제작했습니다. 펜 드로잉, 페이퍼 콜라주, 식물 이미지와 빈티지 질감을 활용해 딥티크의 감성을 시각화하고, 팀의 공통 디자인 방향을 정리했습니다.',
+   '딥티크의 브랜드 이미지와 핵심 키워드를 연결하며 디자인 콘셉트를 구체화했습니다. 다양한 아이디어를 정리하고, 이를 실제 콘텐츠와 화면 디자인에 적용할 방향을 함께 고민했습니다.',
+  ];
+  description.textContent=visualDescriptions[0];
+  tabs.forEach((button,index)=>button.addEventListener('click',()=>{
+   description.textContent=visualDescriptions[index];
+  }));
+ }
+ if (step.id==='structure') {
+  const structureDescriptions=[
+   '사이트의 주요 페이지와 하위 메뉴를 분류하고, 팀원들과 논의하며 전체 메뉴 구조를 설계했습니다. 사용자가 원하는 정보에 쉽게 접근할 수 있도록 메뉴의 구성과 계층을 정리했습니다.',
+   '사용자가 사이트에 접속해 브랜드를 알아보고 제품을 탐색하는 과정을 흐름도로 정리했습니다. 주요 행동과 페이지 간 이동 경로를 검토하며 자연스러운 탐색 흐름을 구성했습니다.',
+   '콘텐츠의 성격과 중요도에 따라 정보를 그룹화하고, 페이지별 정보의 위계와 연결 관계를 구체화했습니다. 이를 통해 일관된 정보 구조와 화면 설계의 기준을 마련했습니다.',
+   '팀원들과 페이지 구성, 콘텐츠 배치, 디자인 방향에 대한 의견을 공유하고 논의 내용을 기록했습니다. 결정 사항과 수정 내용을 정리하며 작업 방향을 함께 조율했습니다.',
+  ];
+  description.textContent=structureDescriptions[0];
+  tabs.forEach((button,index)=>button.addEventListener('click',()=>{
+   description.textContent=structureDescriptions[index];
+  }));
+ }
  if (step.id==='define') {
+  const defineDescriptions=[
+   '사용자 조사 내용을 바탕으로 서로 다른 목적과 니즈를 가진 세 가지 페르소나를 설정했습니다. 각 유형의 목표와 불편함을 정리해 사용자 중심의 개선 방향을 구체화했습니다.',
+   '사용자가 브랜드를 탐색하고 제품을 선택하기까지의 과정을 단계별로 정리했습니다. 탐색 과정에서 발생하는 불편함을 파악하고, 각 단계에 필요한 개선 방안을 도출했습니다.',
+   '공식 정보의 접근성, 브랜드 스토리 전달, 직관적인 향 탐색을 핵심 문제로 정의했습니다. 이를 바탕으로 사용자에게 제공할 가치와 해결 방향을 체계적으로 정리했습니다.',
+  ];
+  description.textContent=defineDescriptions[0];
+  tabs.forEach((button,index)=>button.addEventListener('click',()=>{
+   description.textContent=defineDescriptions[index];
+  }));
   [{materials:personas,label:'퍼소나: 중앙 02, 왼쪽 01, 오른쪽 03',primaryLabel:'PERSONA 02 · PRIMARY'},
    {materials:journeyMaps,label:'저니맵: 중앙 02, 왼쪽 01, 오른쪽 03',primaryLabel:'JOURNEY 02'},
    {materials:leanCanvases,label:'린캔버스: 중앙 PROBLEM 02, 왼쪽 PROBLEM 01, 오른쪽 PROBLEM 03',primaryLabel:'PROBLEM 02'}].forEach(({materials,label,primaryLabel})=>{
@@ -314,6 +371,14 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
   caption.textContent = current.label;
   addResearchLabel();
   if (step.id==='research') description.textContent=current.description || step.description;
+  if (step.id==='interview') {
+   const isInterview=current.id==='interview';
+   panel.querySelector('#ux-step-interview').textContent=isInterview ? '사용자 인터뷰와 분석' : step.title;
+   description.style.whiteSpace='normal';
+   description.textContent=isInterview
+    ? '딥티크 웹사이트 이용 경험을 바탕으로 제품 탐색 과정에서 느끼는 불편함과 브랜드 콘텐츠에 대한 기대를 살펴봤습니다. 인터뷰 답변을 통해 향수 비교의 어려움과 브랜드 스토리 전달의 아쉬움을 파악하고, 개선 방향을 구체화했습니다.'
+    : step.description;
+  }
   tabs.forEach(tab => tab.setAttribute('aria-pressed',String(tab === button)));
  }));
  previewButton.addEventListener('click',() => openDocument(current));

@@ -4,7 +4,7 @@
  --edition-pearl:#f4efea;
  --edition-champagne:#eae1d6;
  --edition-ink:#796858;
- --edition-body:#62564d;
+ --edition-body:#9d8876;
  --edition-muted:#7d6957;
  --edition-line:rgba(121,104,88,.25);
  --edition-serif:'Cormorant Garamond','SUITE',Georgia,serif;
@@ -18,7 +18,7 @@
  --light-pink-brown:#aa927a;
  --deep-pink-brown:#796858;
  --deep-blue-accent:#796858;
- --body-ink:#62564d;
+ --body-ink:#9d8876;
  --about-background:#f1eae2;
 }
 body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
@@ -55,7 +55,9 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .con1 .con1-crystal-artwork img {width:100%;height:auto;object-fit:contain;transform:none;filter:none;mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 66%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 66%,transparent 100%);}
 .con1-copy h2 {font-size:clamp(42px,5.3vw,92px);font-weight:500;line-height:1.05;letter-spacing:-.035em;}
 .con1-statement {margin-top:38px;font-weight:400;line-height:1.8;color:var(--edition-body);}
-.con1-description {font-size:clamp(15px,1.15vw,19px);line-height:1.9;color:var(--edition-body);}
+.con1-description {font-size:clamp(15px,1.15vw,19px);line-height:1.9;color:#9d8876;}
+.con1-statement {color:#9d8876;}
+.team-story-description,.what-i-do-description,.ux-process-description,.archive-gallery-info h4 {color:var(--edition-body);}
 .con1-letter {display:none;}
 .con2 {background:var(--edition-pearl);color:var(--edition-ink);padding:140px 8% 150px;}
 .con2-title {max-width:100%;font-size:clamp(38px,4.6vw,76px);font-weight:500;line-height:1.05;margin-bottom:70px;}
