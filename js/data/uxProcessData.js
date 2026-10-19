@@ -105,6 +105,15 @@ const componentSheets = [
  {id:'components',label:'컴포넌트',image:'/assets/work/ux/planning/components.png',width:2000,height:1200,alt:'딥티크 PC·모바일 내비게이션, 로그인 상태별 헤더, 더 보기와 TOP 버튼 및 화살표 컴포넌트'},
 ].map(({width,height,alt,...material})=>({...material,originalImage:{src:material.image,width,height,alt}}));
 const components = {...componentSheets[1],pages:componentSheets};
+const presentationPages = [
+ {number:16,height:2660,alt:'장표 16: 기존 온라인 경험과 새롭게 디자인한 브랜드 경험 비교'},
+ {number:18,height:2500,alt:'장표 18: 카테고리 탐색, 향 발견, 3D 향수와 푸터 모션 설명'},
+ {number:8,height:2200,alt:'장표 8: 공식 경험 통합, 브랜드 경험 확장과 직관적인 향 탐색 솔루션'},
+].map(({number,height,alt})=>{
+ const image='/assets/work/ux/planning/presentation-'+number+'.png';
+ return {id:'presentation-'+number,label:'장표 '+number,image,originalImage:{src:image,width:1920,height,alt}};
+});
+const presentation = {...presentationPages[0],id:'presentation',label:'장표',title:'Presentation',pages:presentationPages};
 const menuTree = {
  id:'menu',label:'메뉴트리',title:'Information architecture',
  image:'/assets/work/ux/planning/menu-tree.jpg',
@@ -113,6 +122,23 @@ const menuTree = {
   alt:'딥티크 메뉴트리: HOME, SHOP, ABOUT, GALERIE, CONTACT US, MY PAGE와 하위 메뉴 구성',
  },
 };
+const iaStructure = {
+ id:'requirements',label:'IA 구조도',title:'Information architecture',
+ image:'/assets/work/ux/planning/ia-structure.png',
+ originalImage:{
+  src:'/assets/work/ux/planning/ia-structure.png',width:1920,height:1080,
+  alt:'딥티크 IA 구조도: HOME, SHOP, ABOUT, GALERIE, CONTACT US, MY PAGE의 주요 메뉴와 최대 3단계 하위 페이지 계층 관계',
+ },
+};
+const flowPages = [
+ {id:'flow-01',label:'페르소나 01 · 공식 정보 탐색과 재구매',width:2554,height:3648,alt:'페르소나 1번 기반 플로우차트: 공식 정보 탐색부터 재구매까지 이어지는 Full Site Flow'},
+ {id:'flow-02',label:'페르소나 02 · 브랜드 경험과 향수 히스토리',width:2180,height:3426,alt:'페르소나 2번 기반 플로우차트: 브랜드 경험에서 향수 히스토리까지 이어지는 Immersive Flow'},
+ {id:'flow-03',label:'페르소나 03 · 향의 시각적 탐색',width:2200,height:3200,alt:'페르소나 3번 기반 플로우차트: 향을 시각적으로 이해하고 탐색하는 GALERIE Flow'},
+].map(({width,height,alt,...material},index)=>{
+ const image='/assets/work/ux/planning/flow-persona-0'+(index+1)+'.jpg';
+ return {...material,image,originalImage:{src:image,width,height,alt}};
+});
+const userFlow = {...flowPages[0],id:'flow',label:'사용자 플로우차트',title:'User flow',pages:flowPages};
 const meetingPages = [
  {id:'meeting-01',label:'회의록 01',image:'/assets/work/ux/planning/meeting-notes-01.png',width:839,height:749,alt:'딥티크 팀 프로젝트 회의록: 9월 9일과 10일의 논의 내용, 수정 사항과 역할 분담'},
  {id:'meeting-02',label:'회의록 02',image:'/assets/work/ux/planning/meeting-notes-02.png',width:1261,height:909,alt:'딥티크 팀 프로젝트 회의록 모음: 화면 구성과 구현에 관한 팀 논의 기록'},
@@ -126,9 +152,9 @@ const surveyPages = [
 const survey = {...surveyPages[0],id:'survey',label:'설문',pages:surveyPages};
 export const uxSteps = [
  {id:'research',title:'시장과 브랜드 조사',english:'Brand & market research',description:'브랜드와 경쟁사의 화면 구성, 콘텐츠, 탐색 구조를 비교하는 단계입니다.',documents:[brandAudit,competitorResearch,steepAnalysis,threeCAnalysis]},
- {id:'interview',title:'사용자 인터뷰와 분석',english:'Listening to users',description:'사용자의 탐색 경험을 질문하고, 응답을 정리해 요구와 불편을 살펴보는 단계입니다.',documents:[survey,{id:'interview',label:'인터뷰',image:'/assets/work/ux/planning/interview.png',originalImage:{src:'/assets/work/ux/planning/interview.png',width:1890,height:1710,alt:'딥티크 웹사이트 리뉴얼을 위한 사용자 인터뷰 질문과 응답'}}]},
+ {id:'interview',title:'사용자 조사와 분석',english:'Listening to users',description:'설문과 인터뷰를 통해 사용자가 딥티크 온라인 사이트에서 제품과 향을 탐색하는 과정을 살펴봤습니다. 정보 탐색의 불편함과 브랜드 경험에 대한 기대를 분석하고, 이를 바탕으로 주요 개선 방향을 정리했습니다.',documents:[survey,{id:'interview',label:'인터뷰',image:'/assets/work/ux/planning/interview.png',originalImage:{src:'/assets/work/ux/planning/interview.png',width:1890,height:1710,alt:'딥티크 웹사이트 리뉴얼을 위한 사용자 인터뷰 질문과 응답'}}]},
  {id:'define',title:'문제 정의와 기획',english:'Defining the direction',description:'핵심 사용자와 탐색 흐름을 정리하고, 문제·가치·해결 방향을 연결하는 단계입니다.',documents:[personas[1],journeyMaps[1],leanCanvas]},
- {id:'structure',title:'팀 논의와 구조 설계',english:'Planning together',description:'팀의 논의를 바탕으로 정보 구조와 사용자 흐름, 화면별 요구사항을 정리하는 단계입니다.',documents:[menuTree,document('flow','사용자 플로우차트','User flow',['시작','탐색','분기','목표']),document('requirements','IA 구조도','Information architecture',['정보 구조','페이지 구성','계층 관계','탐색 경로']),meetingNotes]},
+ {id:'structure',title:'팀 논의와 구조 설계',english:'Planning together',description:'팀의 논의를 바탕으로 정보 구조와 사용자 흐름, 화면별 요구사항을 정리하는 단계입니다.',documents:[menuTree,userFlow,iaStructure,meetingNotes]},
  {id:'visual',title:'디자인 방향 설정',english:'Shaping the visual language',description:'이미지·컬러·타이포그래피와 여백의 기준을 모아 공통 디자인 방향을 정리하는 단계입니다.',documents:[moodboard,designMindmap]},
- {id:'screens',title:'화면 설계와 구체화',english:'From structure to screens',description:'와이어프레임에서 정보의 우선순위를 정하고, 공통 스타일과 화면 구성을 구체화하는 단계입니다.',documents:[wireframe,designSystem,components,document('presentation','장표','Presentation',[])]},
+ {id:'screens',title:'화면 설계와 구체화',english:'From structure to screens',description:'와이어프레임에서 정보의 우선순위를 정하고, 공통 스타일과 화면 구성을 구체화하는 단계입니다.',documents:[wireframe,designSystem,components,presentation]},
 ];

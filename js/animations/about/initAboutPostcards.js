@@ -106,20 +106,29 @@ export default function initAboutPostcards(section) {
    const photoDistance=()=>scroller.clientHeight*(context.conditions.mobile?4.4:5.25);
    const transitionDistance=()=>context.conditions.mobile?0:scroller.clientHeight;
    const transitionRatio=()=>transitionDistance()/photoDistance();
+   // Native sticky stays in the browser's scroll compositor instead of chasing
+   // asynchronous scrolling with a JavaScript pin transform on every frame.
+   const scene=document.createElement('div');
+   scene.className='memory-fan-scroll-scene';
+   stage.before(scene);
+   scene.append(stage);
+   const sizeScene=()=>{scene.style.height=`${stage.clientHeight+photoDistance()+transitionDistance()}px`;};
+   sizeScene();
    timeline=gsap.timeline({
     onUpdate:()=>render(playhead.progress),
-    scrollTrigger:{id:'about-memory-fan',trigger:stage,scroller,start:'top top',
+    scrollTrigger:{id:'about-memory-fan',trigger:scene,scroller,start:'top top',
      end:()=>`+=${photoDistance()+transitionDistance()}`,
-     pin:stage,pinType:'transform',pinSpacing:true,scrub:1.2,invalidateOnRefresh:true,anticipatePin:1,
+     scrub:1.2,invalidateOnRefresh:true,onRefreshInit:sizeScene,
      onRefresh:()=>{measure();render(playhead.progress);}},
    });
    timeline.to(playhead,{progress:1,duration:100,ease:'none'});
    if(!context.conditions.mobile) {
-    timeline.to(stage,{'--memory-cover-dim':.30,duration:100*transitionRatio(),ease:'none'});
+    timeline.to({}, {duration:100*transitionRatio(),ease:'none'});
    }
    render(playhead.progress);
    return ()=>{
     timeline?.scrollTrigger?.kill();timeline?.kill();timeline=null;
+    scene.before(stage);scene.remove();
     section.insertBefore(story,dialog);
     section.classList.remove('has-inline-story');
     resetCards();stage.style.removeProperty('--fan-card-width');

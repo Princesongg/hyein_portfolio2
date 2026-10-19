@@ -7,6 +7,8 @@
  padding-bottom:100dvh;
 }
 .memory-fan .about-postcards-stage {position:relative;height:100dvh;min-height:0;overflow:clip;background:var(--memory-background);isolation:isolate;}
+.memory-fan-scroll-scene {position:relative;}
+.memory-fan .memory-fan-scroll-scene>.about-postcards-stage {position:sticky;top:0;}
 .memory-fan-glow {position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 66% 48%,#e7e7ef55,transparent 43%),radial-gradient(ellipse at 82% 70%,#eddfd944,transparent 35%),radial-gradient(ellipse at 25% 30%,#fffdfb99,transparent 40%);}
 .memory-fan-heading {position:absolute;z-index:2;left:8%;top:max(115px,17%);max-width:78%;pointer-events:none;transform-origin:left center;}
 .memory-fan .memory-fan-heading p {margin:0 0 16px;font:12px var(--memory-serif);letter-spacing:.26em;}
@@ -104,7 +106,7 @@
 }
 
 /* Q&A rises above the held gallery; only the background receives the dim layer. */
-.memory-fan .about-postcards-stage::after {content:'';position:absolute;inset:0;z-index:5;background:#796858;opacity:var(--memory-cover-dim,0);pointer-events:none;}
+.memory-fan .about-postcards-stage::after {display:none;}
 @media(min-width:701px) and (prefers-reduced-motion:no-preference) {
  .about-postcards.memory-fan {padding-bottom:0;}
 }

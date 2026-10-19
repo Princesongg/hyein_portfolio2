@@ -52,7 +52,7 @@
  box-shadow:0 16px 48px #59474c24,inset 0 0 0 1px #c9b1ae66;
 }
 .postbox-header {position:relative;padding:20px 16px 27px;background:linear-gradient(110deg,#eee3e180,#f8f4f1);border-bottom:1px dashed #c9b1ae;}
-.postbox-header::after {content:'DESIGN POST OFFICE · WITH LOVE';position:absolute;left:18px;bottom:8px;font-size:8px;letter-spacing:.18em;color:#8f6e7399;pointer-events:none;}
+.postbox-header::after {content:'PORTFOLIO GUIDE · QUICK Q&A';position:absolute;left:18px;bottom:8px;font-size:8px;letter-spacing:.18em;color:#8f6e7399;pointer-events:none;}
 .postbox-envelope {position:relative;width:48px;height:56px;padding:6px;background:#f8f4f1;border:1px dashed #c9b1ae;outline:3px solid #f8f4f1;transform:rotate(-6deg);box-shadow:0 2px 4px #8f6e7314;}
 .postbox-envelope::after {content:'♥';position:absolute;right:-9px;bottom:-5px;display:grid;place-items:center;width:23px;height:23px;border:1px solid #c9b1ae;border-radius:50%;color:#c9b1ae;font-size:11px;background:#f8f4f1e6;pointer-events:none;}
 .postbox-header h2 {font-size:17px;letter-spacing:.025em;}
