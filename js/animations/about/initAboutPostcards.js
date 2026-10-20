@@ -17,7 +17,7 @@ export default function initAboutPostcards(section) {
  const events=new AbortController();
  const listen=(target,type,handler,options={})=>target.addEventListener(type,handler,{...options,signal:events.signal});
  const fragment=document.createDocumentFragment();
- const photos=aboutPostcards.slice(0,12);
+ const photos=aboutPostcards;
  const cards=photos.map((item,index)=>{
   const card=document.createElement('div');card.className='memory-fan-card';card.setAttribute('role','listitem');
   const button=document.createElement('button');button.type='button';button.className='memory-fan-photo';

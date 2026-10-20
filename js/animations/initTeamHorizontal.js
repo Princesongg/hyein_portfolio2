@@ -11,17 +11,18 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
   let distance = 0;
   let hold = 0;
   let travel = 0;
+  let overflow = 0;
   let activeIndex = -1;
   let previousOffset = -1;
   const details = prefix === 'team-story' ? root.querySelector('.details-slider') : null;
   const detailRow = details ? rows.indexOf(details.closest('.team-story-row')) : -1;
   let detailDistance = 0;
-  const chapterOffset = index => hold + index * scroller.clientWidth + (detailRow >= 0 && index > detailRow ? detailDistance : 0);
+  const chapterOffset = index => overflow + hold + index * scroller.clientWidth + (detailRow >= 0 && index > detailRow ? detailDistance : 0);
   const update = () => {
    frame = 0;
    if (media.matches) return;
    const offset = scroller.getBoundingClientRect().top - root.getBoundingClientRect().top;
-   const raw = offset - hold;
+   const raw = offset - overflow - hold;
    const detailStart = detailRow * scroller.clientWidth;
    const consumed = detailDistance ? Math.max(0, Math.min(detailDistance, raw - detailStart)) : 0;
    const clampedOffset = Math.max(0, Math.min(travel, raw - consumed));
@@ -40,16 +41,24 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
   const measure = () => {
+   const previousHeight = root.offsetHeight;
+   const bounds = root.getBoundingClientRect();
+   const viewport = scroller.getBoundingClientRect();
+   const preserveFollowingContent = root.dataset.horizontal === 'true'
+    && bounds.top < viewport.top && bounds.bottom < viewport.bottom;
    activeIndex = -1;
    previousOffset = -1;
    root.dataset.horizontal = String(!media.matches);
    track.style.transform = '';
    root.style.removeProperty('--story-stage-height');
-   if (media.matches) { root.style.removeProperty('--story-distance'); root.style.removeProperty('--details-distance'); return; }
+   root.style.removeProperty('--story-stage-top');
+   if (media.matches) { overflow = 0; root.style.removeProperty('--story-overflow'); root.style.removeProperty('--story-distance'); root.style.removeProperty('--details-distance'); return; }
    // Measure the content before constraining the panels to the sticky stage.
    // This includes bottom padding that keeps content above the page footer.
    root.dataset.horizontal = 'false';
    const stageHeight = Math.max(scroller.clientHeight, ...rows.map(row => Math.max(row.offsetHeight, row.scrollHeight)));
+   // Let taller panels scroll to their bottom before the horizontal motion starts.
+   overflow = Math.max(0, stageHeight - scroller.clientHeight);
    travel = Math.max(0, track.scrollWidth - scroller.clientWidth);
    hold = prefix === 'role-story' ? scroller.clientHeight * .65 : 0;
    detailDistance = details ? scroller.clientHeight * 1.8 : 0;
@@ -57,8 +66,13 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    root.style.setProperty('--details-distance', `${detailDistance}px`);
    root.style.setProperty('--story-hold', `${hold}px`);
    root.style.setProperty('--story-stage-height', `${stageHeight}px`);
+   root.style.setProperty('--story-stage-top', `${-overflow}px`);
+   root.style.setProperty('--story-overflow', `${overflow}px`);
    root.style.setProperty('--story-distance', `${distance}px`);
    root.dataset.horizontal = 'true';
+   // Late media/font measurements in a section we've passed must not move
+   // the next section that the user is currently reading.
+   if (preserveFollowingContent) scroller.scrollTop += root.offsetHeight - previousHeight;
    // Restore the current translation before the browser paints the measured layout.
    cancelAnimationFrame(frame);
    update();
@@ -76,7 +90,7 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    const start = scroller.scrollTop + root.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
    const nextIndex = Math.max(0,Math.min(rows.length - 1,activeIndex + (event.key === 'ArrowRight' ? 1 : -1)));
    const next = start + chapterOffset(nextIndex);
-   scroller.scrollTo({top:Math.max(start,Math.min(start + distance,next)),behavior:'smooth'});
+   scroller.scrollTo({top:Math.max(start,Math.min(start + overflow + distance,next)),behavior:'smooth'});
   };
   const observer = new ResizeObserver(scheduleMeasure);
   const onDetailSeek = event => {
@@ -106,6 +120,8 @@ export default function initTeamHorizontal(ref, prefix = 'team-story') {
    track.style.transform = '';
    delete root.dataset.horizontal;
    root.style.removeProperty('--story-stage-height');
+   root.style.removeProperty('--story-stage-top');
+   root.style.removeProperty('--story-overflow');
    root.style.removeProperty('--story-distance');
    root.style.removeProperty('--story-hold');
    root.style.removeProperty('--details-distance');
