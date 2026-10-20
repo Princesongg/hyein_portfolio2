@@ -1,5 +1,4 @@
 import initEditionHero from './animations/initEditionHero.js';
-import LoadingIntro from './components/LoadingIntro.js';
 import initLaptopPreview from './animations/initLaptopPreview.js';
 import initDocumentDialog from './components/work/initDocumentDialog.js';
 import initPostbox from './components/chatbot/initPostbox.js';
@@ -48,7 +47,6 @@ const resizeObserver = new ResizeObserver(resizeHero);
 resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
-start(LoadingIntro);
 start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
 root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
@@ -151,9 +149,10 @@ function goToChapter(section,prefix,index) {
  } else {
   const top = scroller.scrollTop+section.getBoundingClientRect().top-scroller.getBoundingClientRect().top;
   const hold = parseFloat(section.style.getPropertyValue('--story-hold')) || 0;
+  const overflow = parseFloat(section.style.getPropertyValue('--story-overflow')) || 0;
   const detailsDistance = parseFloat(section.style.getPropertyValue('--details-distance')) || 0;
   const detailsRow = [...section.querySelector('.'+prefix+'-track').children].findIndex(row => row.querySelector('.details-slider'));
-  scroller.scrollTo({top:top+hold+index*stage.clientWidth+(detailsRow >= 0 && index > detailsRow ? detailsDistance : 0),behavior});
+  scroller.scrollTo({top:top+overflow+hold+index*stage.clientWidth+(detailsRow >= 0 && index > detailsRow ? detailsDistance : 0),behavior});
  }
 }
 root.addEventListener('click',event => {

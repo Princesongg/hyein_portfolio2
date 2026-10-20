@@ -18,7 +18,7 @@
 .personal-projects-panel {position:relative;}
 .personal-projects-panel {flex:0 0 100%;min-width:0;min-height:100dvh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:6%;padding:150px 5.0521% 95px;scroll-snap-align:start;}
 .personal-projects[data-horizontal='true'] {height:calc(var(--story-stage-height,100dvh) + var(--story-distance,0px));}
-.personal-projects[data-horizontal='true'] .personal-projects-stage {position:sticky;top:0;height:var(--story-stage-height,100dvh);overflow:hidden;}
+.personal-projects[data-horizontal='true'] .personal-projects-stage {position:sticky;top:var(--story-stage-top,0px);height:var(--story-stage-height,100dvh);overflow:hidden;}
 .personal-projects[data-horizontal='true'] .personal-projects-track {height:100%;will-change:transform;}
 .personal-projects[data-horizontal='true'] .personal-projects-panel {height:100%;}
 .personal-projects-chapters {position:absolute;top:100px;right:5.0521%;display:flex;gap:20px;z-index:1;}
@@ -62,6 +62,9 @@
 #personal-03 .team-story-phone-screen {background:#013db9;}
 #personal-03 .team-story-phone-status {filter:none;mix-blend-mode:screen;}
 #personal-03 .personal-phone-image {top:0;height:100%;object-fit:contain;object-position:center bottom;}
+#personal-04 .team-story-phone-screen {background:#000;}
+#personal-04 .team-story-phone-status {filter:none;mix-blend-mode:screen;}
+#personal-04 .personal-phone-image {object-fit:contain;object-position:center top;}
 #personal-06 .personal-phone-image {object-fit:contain;object-position:center top;}
 #personal-06 .team-story-phone-screen {background:#fff;}
 #personal-06 .team-story-phone-screen::before {content:'';position:absolute;inset:0 0 auto;height:13%;background:#ed1d24;pointer-events:none;}
@@ -71,6 +74,9 @@
 .personal-projects-kicker {margin:0 0 18px;font-size:clamp(13px,1.05vw,20px);font-weight:700;}
 .personal-projects-kicker span {font-weight:300;}
 .personal-projects-copy h2 {margin:0 0 44px;font-size:clamp(34px,4vw,76px);line-height:1.08;font-weight:800;overflow-wrap:anywhere;}
+#personal-03 .personal-projects-copy {position:relative;}
+.personal-taeyang-object {position:absolute;top:calc(clamp(65px,5vw,100px) + 14px);right:16%;width:clamp(70px,8vw,145px);height:auto;opacity:.55;transform:rotate(35deg);pointer-events:none;}
+@media(max-width:800px) {.personal-taeyang-object {top:69px;right:0;width:64px;opacity:.55;}}
 .personal-projects-copy h2>span {display:block;margin-top:14px;font-size:clamp(16px,1.25vw,24px);line-height:1.4;font-weight:400;overflow-wrap:normal;}
 .personal-projects-info {display:grid;grid-template-columns:1fr 1fr;gap:30px;}
 .personal-projects-info h3 {display:table;margin:0 0 15px;padding-bottom:6px;border-bottom:2px solid currentColor;font-size:20px;font-weight:800;}
