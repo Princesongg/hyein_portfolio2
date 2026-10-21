@@ -73,3 +73,32 @@
 .archive-brand-calendar-crop {position:relative;display:block;aspect-ratio:1024/955;overflow:hidden;border-radius:3px;}
 .archive-brand-gallery .archive-brand-calendar-crop img {position:absolute;max-width:none;max-height:none;left:-19.74%;top:-20.2%;width:168.42%;height:120.2%;object-fit:fill;}
 @media(max-width:480px) {.archive-brand-gallery .archive-brand-overlay {right:0;width:29%;padding:4px;}}
+@media(max-width:700px) {
+ .archive-gallery {display:flex;flex-direction:column;align-items:stretch;gap:18px;min-height:100svh;padding:var(--mobile-nav-clearance,82px) 7% 22px;scroll-margin-top:0;}
+ .archive-gallery .archive-gallery-controls {align-self:stretch;gap:16px;min-height:36px;}
+ .archive-gallery .archive-gallery-view {font-size:26px;}
+ .archive-gallery .archive-gallery-count {font-size:12px;}
+ .archive-gallery .archive-gallery-stage {height:calc(100svh - var(--mobile-nav-clearance,82px) - 76px);flex:none;align-items:stretch;overscroll-behavior-x:contain;}
+ .archive-gallery .archive-gallery-card {display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:22px;height:100%;padding:0 0 24px;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;scroll-snap-stop:always;}
+ .archive-gallery .archive-gallery-card::-webkit-scrollbar {display:none;}
+ .archive-gallery .archive-gallery-visual,.archive-gallery .archive-gallery-copy {flex:none;}
+ .archive-gallery .archive-artwork {width:100%;max-width:330px;height:clamp(200px,29svh,265px);padding:0 34px 16px 0;}
+ .archive-gallery .archive-artwork .archive-artwork-main {width:100%;height:100%;object-fit:contain;border:0;border-radius:6px;box-shadow:none;}
+ .archive-gallery .archive-award-preview {width:22%;max-width:65px;right:10px;bottom:0;}
+ .archive-gallery .archive-gallery-kicker {margin:0 0 10px;font-size:11px;line-height:1.5;}
+ .archive-gallery .archive-gallery-copy h3 {font-size:30px;line-height:1.15;}
+ .archive-gallery .archive-gallery-category {margin:8px 0 10px;font-size:16px;line-height:1.5;}
+ .archive-gallery .archive-gallery-award {margin:0 0 22px;font-size:14px;line-height:1.6;}
+ .archive-gallery .archive-gallery-info {grid-template-columns:1fr;gap:20px;}
+ .archive-gallery .archive-gallery-info h4 {margin:0 0 7px;padding-bottom:4px;font-size:16px;line-height:1.4;font-weight:500;}
+ .archive-gallery .archive-gallery-info p {font-size:14px;line-height:1.7;}
+ .archive-gallery .archive-gallery-info p+p {margin-top:9px;}
+ .archive-gallery .archive-gallery-tasks {margin-top:12px;gap:6px 14px;font-size:14px;line-height:1.6;}
+ .archive-gallery .archive-brand-gallery {width:100%;max-width:340px;gap:12px;}
+ .archive-gallery .archive-brand-hero {margin-top:16px;}
+ .archive-gallery .archive-brand-gallery .archive-brand-main img {height:clamp(160px,23svh,210px);object-fit:contain;border-radius:6px;}
+ .archive-gallery .archive-brand-details {gap:10px;}
+ .archive-gallery .archive-brand-crop {max-height:95px;}
+ .archive-gallery .archive-brand-caption {font-size:11px;line-height:1.4;}
+ .archive-gallery .archive-gallery-image-slot {height:clamp(180px,26svh,230px);aspect-ratio:auto;}
+}

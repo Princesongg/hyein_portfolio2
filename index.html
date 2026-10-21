@@ -30,10 +30,12 @@
 <link rel="stylesheet" href="/css/components/chatbot/Postbox.css">
 <link rel="stylesheet" href="/css/edition-theme.css">
 <link rel="stylesheet" href="/css/components/hero/Menu.css">
+<link rel="stylesheet" href="/css/components/con2/MobileKeywords.css">
 </head><body><link rel="preload" as="image" href="/assets/hero/2bf09.svg"/><link rel="preload" as="image" href="/assets/hero/abac7.svg"/><link rel="preload" as="image" href="/assets/hero/719e7.png"/><link rel="preload" as="image" href="/assets/hero/89dfb.png"/><link rel="preload" as="image" href="/assets/hero/f2374.png"/><link rel="preload" as="image" href="/assets/hero/60424.png"/><link rel="preload" as="image" href="/assets/hero/fcfed.png"/><link rel="preload" as="image" href="/assets/hero/bfcf8.png"/><link rel="preload" as="image" href="/assets/hero/be9c4.png"/><link rel="preload" as="image" href="/assets/hero/4cd88.png"/><link rel="preload" as="image" href="/assets/con1/de524.png"/><link rel="preload" as="image" href="/assets/con3/a1386.png"/><link rel="preload" as="image" href="/assets/work/crystal-project-frame-v2.png"/><link rel="preload" as="image" href="/assets/hero/85f7a.svg"/>
 <div class="portfolio">
 <header class="portfolio-header"><a class="portfolio-logo" href="#intro"><span class="portfolio-logo-icon" aria-hidden="true"><img src="/assets/hero/2bf09.svg" alt="" style="transform:scale(1)"/></span><span>HYEIN&#x27;S<br/>PORTFOLIO</span></a>
-<nav aria-label="포트폴리오 메뉴"><a href="#intro">INTRO</a><a href="#work">WORK</a><a href="#archive">ARCHIVE</a><a href="#skill">SKILL</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+<button class="mobile-menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="portfolio-navigation"><img class="mobile-menu-open-icon" src="/assets/hero/edition/menu-open.svg" alt="" width="32" height="32"/><img class="mobile-menu-close-icon" src="/assets/hero/edition/menu-close.svg" alt="" width="32" height="32"/></button>
+<nav id="portfolio-navigation" aria-label="포트폴리오 메뉴"><a href="#intro">INTRO</a><a href="#work">WORK</a><a href="#archive">ARCHIVE</a><a href="#skill">SKILL</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
 </nav>
 </header>
 <main class="portfolio-scroll" tabindex="0" aria-label="포트폴리오 내용">
@@ -338,9 +340,7 @@
 </article>
 <article class="project-card">
 <div class="project-stamp"><img class="project-stamp-frame" src="/assets/work/crystal-project-frame-v2.png" alt="" aria-hidden="true"/>
-<div class="project-preview"><span>PROJECT PREVIEW</span>
-<p>작업 이미지
-</p>
+<div class="project-preview project-preview--image"><img src="/assets/work/video-project-preview.png" alt="반려견, 일리윤 제품, 레이싱카로 구성한 AI 영상 프로젝트 모음" loading="lazy"/>
 </div>
 </div>
 <div class="project-information">
@@ -354,15 +354,15 @@
 <div>
 <h4>프로젝트 소개
 </h4>
-<p>브랜드의 매력과 일상 속 아이디어를 짧은 영상으로 표현한 콘텐츠 프로젝트입니다. 뷰티와 반려동물 등 다양한 주제를 바탕으로 각각의 분위기에 맞는 영상 광고를 제작했습니다.
+<p>뷰티 제품, 반려동물의 일상, 버추얼 아이돌을 소재로 다양한 영상 콘텐츠를 제작했습니다. 각 주제의 특성에 맞는 콘셉트를 기획하고, AI 기술과 영상 편집을 활용해 광고 및 콘셉트 영상으로 표현했습니다.
 </p>
 </div>
 <div>
 <h4>작업 내용
 </h4>
-<p>영상 콘셉트 기획부터 이미지 및 영상 소스 구성, 장면 편집, 자막과 전환 효과 연출까지 진행했습니다.
+<p>영상 콘셉트 기획부터 AI 이미지·영상 생성, 장면 구성과 편집, 자막 및 전환 효과 연출까지 진행했습니다.
 </p>
-</div><p class="project-category-caption">SHORT-FORM · CONTENT PLANNING · VIDEO EDITING</p><a class="project-detail-link" href="#work-video">프로젝트 상세 보기 <span aria-hidden="true">↗</span></a>
+</div><p class="project-category-caption">AI CONTENT · CONTENT PLANNING · VIDEO EDITING</p><a class="project-detail-link" href="#work-video">프로젝트 상세 보기 <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </article>
@@ -405,7 +405,8 @@
 <p>2026.09.01 ~ 2026.09.30
 </p>
 </div>
-<div class="team-detail-block">
+<div class="team-detail-pages">
+<div class="team-detail-block team-detail-page" data-team-page="brief">
 <h3>PROJECT BRIEF
 </h3>
 <p>딥티크의 감각적인 브랜드 이미지와 세계관을 온라인에서도 경험할 수 있도록 기획한 웹사이트 리디자인 팀 프로젝트입니다.
@@ -413,7 +414,7 @@
 <p>팀원들과 함께 브랜드·경쟁사 분석, 페르소나 및 고객 여정맵을 바탕으로 개선 방향을 도출하고, 사이트 구조와 페이지별 콘텐츠를 기획하여 디자인과 구현으로 연결했습니다.
 </p>
 </div>
-<div class="team-detail-block">
+<div class="team-detail-block team-detail-page" data-team-page="contribution">
 <h3>WHAT I CONTRIBUTED
 </h3>
 <ul>
@@ -430,6 +431,7 @@
 <li>SHOP 등 여러 페이지의 코드 수정·구현 참여 및 디자인 피드백
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -854,16 +856,20 @@
 <div class="short-form-copy">
 <p class="short-form-kicker">FILM 01 / 03 · VIDEO CONTENTS</p>
 <h2 id="short-form-01-title">PLAVE | HYPERDRIVE</h2>
-<p class="short-form-concept"><em>Personal AI Fan-made Concept Video</em></p>
+<p class="short-form-concept"><em>Personal AI Concept Video</em></p>
 <p class="short-form-subtitle">스타레이스 콘셉트로 재해석한, 플레이브의 역동적인 질주.</p>
 <dl class="short-form-details">
-<div><dt>기획 의도</dt><dd>친구가 좋아하는 아티스트 플레이브의 컴백 소식을 계기로, 신곡 HYPERDRIVE의 스타레이스 콘셉트에서 영감을 받아 개인 포트폴리오용 AI 팬메이드 영상을 제작했습니다.</dd></div>
-<div><dt>타깃</dt><dd>플레이브 팬덤 및 K-POP 아티스트의 콘셉트 영상과 AI 기반 영상 콘텐츠에 관심 있는 시청자</dd></div>
+<div><dt>기획 의도</dt><dd>디지털 시대의 새로운 K-POP 트렌드를 보여주는 버추얼 아이돌 PLAVE의 신곡 HYPERDRIVE에서 영감을 받아, 스타레이스 콘셉트를 AI 기술로 재해석한 개인 영상 프로젝트입니다.</dd></div>
+<div><dt>타깃</dt><dd>플레이브 팬덤 및 K-POP 아티스트의 콘셉트 영상, AI·버추얼 콘텐츠에 관심 있는 시청자</dd></div>
 <div><dt>제작 과정</dt><dd>플레이브의 공식 콘셉트 포토를 활용해 AI로 움직임을 구현하고, 레이싱 콘셉트에 맞춘 장면 구성부터 영상 생성 및 편집까지 진행했습니다.</dd></div>
 <div><dt>편집 포인트</dt><dd>레이싱 특유의 속도감과 역동적인 움직임을 중심으로 장면 전환과 영상의 몰입감을 강조했습니다.</dd></div>
 <div><dt>사용 도구</dt><dd>AI 영상 생성 · 영상 편집</dd></div>
-<div><dt>포맷</dt><dd>AI 팬메이드 콘셉트 영상 · 개인 포트폴리오용 비공식 제작물</dd></div>
+<div><dt>포맷</dt><dd>AI 콘셉트 영상 · 개인 포트폴리오용 비공식 제작물</dd></div>
 </dl>
+<div class="short-form-disclaimer">
+<p><em>본 영상은 공식 협업이 아닌 비상업적 개인 포트폴리오용 AI 콘셉트 작업물입니다.</em></p>
+<p><em>사용된 PLAVE의 공식 이미지, 캐릭터 및 음원에 대한 권리는 VLAST 및 각 권리자에게 귀속됩니다.</em></p>
+</div>
 </div>
 </article>
 <article class="short-form-panel" aria-labelledby="short-form-02-title">

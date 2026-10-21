@@ -165,6 +165,7 @@
 .role-story .what-i-do-detail-row .what-i-do-extra .what-i-do-mobile-bestsellers>img {width:100%;height:auto;aspect-ratio:auto;object-fit:contain;}
 
 .what-i-do-extra>.what-i-do-screen-caption {grid-column:1/-1;margin:0;align-self:start;}
+
 .what-i-do--collaboration .what-i-do-extra>figure:not(.what-i-do-mobile-purchase) .what-i-do-image-bar {padding:4px 8px;}
 .what-i-do--collaboration .what-i-do-extra>figure:not(.what-i-do-mobile-purchase) .what-i-do-image-bar p {font-size:8px;line-height:1.4;}
 .what-i-do--collaboration .what-i-do-extra>figure:not(.what-i-do-mobile-purchase) .what-i-do-image-bar>span {width:3px;height:3px;}
@@ -173,4 +174,76 @@
  .what-i-do-extra>.what-i-do-screen-caption {grid-column:1/4;grid-row:2;}
  .what-i-do-extra>.what-i-do-mobile-purchase {grid-column:4;grid-row:1/3;}
  .what-i-do-extra>.what-i-do-mobile-bestsellers {grid-column:5;}
+}
+
+@media(max-width:700px) {
+ .role-story[data-mobile-role] .role-story-stage {padding:0;}
+ .role-story[data-mobile-role] .role-story-track {display:flex;}
+ .role-story[data-mobile-role][data-horizontal='false'] .role-story-stage {overflow-x:auto;scroll-snap-type:x mandatory;}
+ .role-story[data-mobile-role] .role-story-chapters {position:absolute;top:82px;left:7%;right:7%;width:auto;margin:0;padding:0 0 8px;gap:12px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;}
+ .role-story[data-mobile-role] .role-story-chapters button {flex-shrink:0;font-size:11px;}
+ .role-story[data-mobile-role] .role-story-track>.role-mobile-panel {padding:140px 7% 20px;border:0;}
+ .role-story[data-mobile-role] .what-i-do-heading {margin-bottom:16px;}
+ .role-story[data-mobile-role] .what-i-do-heading h2 {font-size:32px;}
+ .role-story[data-mobile-role] .what-i-do-heading>div>p {margin-bottom:8px;}
+ .role-story[data-mobile-role] .what-i-do-heading-note {margin-top:10px;line-height:1.5;}
+ .role-story[data-mobile-role] .what-i-do-description {line-height:1.55;}
+ .role-story[data-mobile-role] .what-i-do-feature>figure>video,.role-story[data-mobile-role] .what-i-do-video-frame {height:clamp(110px,19svh,160px);aspect-ratio:auto;object-fit:contain;}
+ .role-story[data-mobile-role] .what-i-do-role-title {margin:12px 0 8px;}
+ .role-story[data-mobile-role] .what-i-do-feature {margin:0;padding:0;border:0;}
+ .role-story[data-mobile-role] .what-i-do-detail-row {margin:0;padding:0;border:0;}
+ .role-story[data-mobile-role] .what-i-do-extra {margin-top:16px;}
+ .role-story[data-mobile-role] .what-i-do-extra>figure:nth-of-type(3)>img {height:clamp(110px,18svh,150px);aspect-ratio:auto;object-fit:contain;}
+ .role-story[data-mobile-role] .role-mobile-phones {grid-template-columns:repeat(2,minmax(0,1fr));}
+ .role-story[data-mobile-role] .role-mobile-phones>figure {width:100%;grid-column:auto;}
+ .role-story[data-mobile-role] .role-mobile-phones .what-i-do-mobile-screen {height:clamp(220px,38svh,300px);}
+ .role-story[data-mobile-role] .role-mobile-phones .what-i-do-mobile-screen img {position:static;top:auto;height:100%;object-fit:contain;}
+ .role-story[data-mobile-role] .role-mobile-phones .what-i-do-mobile-bestsellers>img {height:clamp(220px,38svh,300px);object-fit:contain;}
+ .role-story[data-mobile-role][data-horizontal='true'] .what-i-do {overflow-x:hidden;overflow-y:auto;scrollbar-width:none;}
+ .role-story[data-mobile-role][data-horizontal='true'] .what-i-do[data-mobile-fit] {overflow:clip;}
+ .role-story[data-mobile-role] .role-story-chapters::-webkit-scrollbar,.role-story[data-mobile-role] .what-i-do::-webkit-scrollbar {display:none;}
+ .role-story {height:auto;}
+ .role-story .role-story-stage {position:relative;height:auto;padding-top:calc(var(--mobile-nav-top) + var(--mobile-nav-height) + 8px);overflow:visible;scroll-snap-type:none;}
+ .role-story .role-story-track {display:block;height:auto;transform:none;}
+ .role-story .role-story-chapters {position:sticky;top:calc(var(--mobile-nav-top) + var(--mobile-nav-height) + 8px);left:auto;z-index:2;width:86%;margin:0 auto;padding:8px 0 10px;gap:22px;background:var(--edition-paper);}
+ .role-story .role-story-chapters button {font-size:12px;}
+ .role-story .what-i-do {height:auto;min-height:0;padding:22px 7% 36px;scroll-margin-top:42px;}
+ .role-story:not([data-mobile-role]) .what-i-do+.what-i-do {padding-top:28px;border-top:1px solid var(--edition-line);}
+ .role-story .what-i-do-heading {display:block;margin-bottom:22px;}
+ .role-story .what-i-do-heading>div>p {top:0;margin:0 0 10px;font-size:11px;line-height:1.4;}
+ .role-story .what-i-do-heading h2 {font-size:36px;line-height:1;}
+ .role-story .what-i-do-heading>div>span {margin-top:8px;font-size:14px;line-height:1.5;}
+ .role-story .what-i-do-heading-note {margin-top:12px;font-size:14px;line-height:1.6;}
+ .role-story .what-i-do-heading-note br {display:none;}
+ .role-story .what-i-do-design-grid {display:block;}
+ .role-story .what-i-do-feature+.what-i-do-feature {margin-top:32px;padding-top:28px;border-top:1px solid var(--edition-line);}
+ .role-story .what-i-do-feature>figure {width:100%;border-radius:5px;}
+ .role-story .what-i-do-image-bar {padding:8px 12px;}
+ .role-story .what-i-do-feature>figure>video,.role-story .what-i-do-design-grid .what-i-do-video-frame {height:clamp(130px,21svh,180px);aspect-ratio:auto;object-fit:contain;background:#fff;}
+ .role-story .what-i-do-role-title {gap:10px;margin:14px 0 10px;}
+ .role-story .what-i-do-role-title>span {font-size:17px;line-height:1.5;}
+ .role-story .what-i-do-role-title h3 {font-size:16px;line-height:1.5;font-weight:500;}
+ .role-story .what-i-do-description {font-size:14px;line-height:1.65;}
+ .role-story .what-i-do-scope {margin-top:10px;font-size:12px;line-height:1.6;overflow-wrap:anywhere;}
+ .role-story .what-i-do-site {margin-top:14px;padding:8px 16px;font-size:14px;}
+ .role-story .what-i-do-galerie-link {margin-top:12px;font-size:14px;}
+ .role-story .what-i-do-contribution-grid .what-i-do-role {display:block;padding:0;}
+ .role-story .what-i-do-campaigns {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+ .role-story .what-i-do-campaigns .what-i-do-video-frame {height:auto;aspect-ratio:16/9;}
+ .role-story .what-i-do-campaigns .what-i-do-image-bar {padding:7px 8px;}
+ .role-story .what-i-do-campaigns .what-i-do-image-bar p {font-size:9px;}
+ .role-story .what-i-do-detail-row {display:block;margin-top:28px;padding-top:24px;border-top:1px solid var(--edition-line);}
+ .role-story .what-i-do-contribution-copy {margin:0;}
+ .role-story .what-i-do-contribution-copy .what-i-do-role-title {margin-top:0;}
+ .role-story .what-i-do-detail-row .what-i-do-extra {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px;}
+ .role-story .what-i-do-extra>figure {min-width:0;margin:0;grid-column:auto;grid-row:auto;}
+ .role-story .what-i-do-extra>figure:nth-of-type(3) {grid-column:1/-1;}
+ .role-story .what-i-do-detail-row .what-i-do-extra .what-i-do-mobile-purchase {width:100%;justify-self:stretch;}
+ .role-story .what-i-do-extra .what-i-do-mobile-purchase .what-i-do-image-bar {padding:7px 8px;gap:3px;}
+ .role-story .what-i-do-extra .what-i-do-mobile-purchase .what-i-do-image-bar p {font-size:9px;}
+ .role-story .what-i-do-extra>figure:not(.what-i-do-mobile-purchase)>img {width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#fff;}
+ .role-story .what-i-do-extra .what-i-do-mobile-screen {height:clamp(220px,38svh,300px);aspect-ratio:auto;}
+ .role-story .what-i-do-detail-row .what-i-do-extra .what-i-do-mobile-screen img {position:static;top:auto;width:100%;height:100%;aspect-ratio:auto;object-fit:contain;}
+ .role-story .what-i-do-detail-row .what-i-do-extra .what-i-do-mobile-bestsellers>img {width:100%;height:clamp(220px,38svh,300px);aspect-ratio:auto;object-fit:contain;}
+ .role-story .what-i-do-extra>.what-i-do-screen-caption {grid-column:1/-1;grid-row:auto;margin:0;font-size:11px;}
 }

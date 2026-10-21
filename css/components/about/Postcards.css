@@ -110,3 +110,16 @@
 @media(min-width:701px) and (prefers-reduced-motion:no-preference) {
  .about-postcards.memory-fan {padding-bottom:0;}
 }
+@media(max-width:700px) {
+ .memory-fan.has-mobile-story .about-postcards-stage {height:100svh;}
+ .memory-fan.has-mobile-story .memory-fan-heading {top:var(--mobile-nav-clearance,82px);left:8%;max-width:84%;}
+ .memory-fan.has-mobile-story .memory-fan-heading p {margin-bottom:10px;font-size:10px;}
+ .memory-fan.has-mobile-story .memory-fan-heading h2 {font-size:clamp(30px,8.5vw,42px);}
+ .memory-fan.has-mobile-story .memory-fan-heading>span {margin-top:10px;font-size:18px;}
+ .memory-fan.has-mobile-story .about-postcards-letter {position:absolute;left:8%;top:58%;width:84%;margin:0;padding:0;z-index:2;}
+ .memory-fan.has-mobile-story .about-postcards-letter-label {margin-bottom:14px;font-size:10px;line-height:1.5;letter-spacing:.16em;}
+ .memory-fan.has-mobile-story .about-postcards-letter-body {font-size:14px;line-height:1.65;}
+ .memory-fan.has-mobile-story .about-postcards-letter-body p {margin:0 0 12px;}
+ .memory-fan.has-mobile-story .about-postcards-letter-sign {margin-top:18px;padding-top:12px;gap:10px;font-size:9px;line-height:1.5;letter-spacing:.08em;}
+ .memory-fan.has-mobile-story .memory-fan-hint {display:none;}
+}

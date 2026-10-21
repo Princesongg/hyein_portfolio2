@@ -180,3 +180,41 @@
 @media(max-width:480px) {.ux-document-grid {grid-template-columns:repeat(2,1fr);} .ux-document-grid--canvas {grid-template-columns:repeat(3,1fr);} .ux-material-tabs button {font-size:11px;padding:9px 12px;} .ux-mini-sheet {width:38%;} .ux-document-dialog {padding:16px;}}
 @media(max-width:420px) {.ux-image-toolbar {gap:6px;}.ux-image-toolbar button {padding-inline:10px;}}
 @media(prefers-reduced-motion:reduce) {.ux-material-tabs button {transition:none;}}
+@media(max-width:700px) {
+ .ux-process .ux-process-chapters {top:82px;flex-wrap:nowrap;gap:14px;padding-bottom:8px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;}
+ .ux-process .ux-process-chapters button {flex-shrink:0;font-size:11px;}
+ .ux-process .ux-process-panel {grid-template-columns:1fr;grid-template-rows:auto auto;align-content:start;align-items:start;gap:18px;padding:130px 7% 26px;}
+ .ux-process .ux-process-copy {grid-row:1;min-width:0;}
+ .ux-process .ux-process-material,.ux-process .ux-process-collage {grid-row:2;width:100%;min-width:0;}
+ .ux-process .ux-process-kicker {margin-bottom:8px;font-size:11px;line-height:1.4;}
+ .ux-process .ux-process-project {margin-bottom:10px;font-size:14px;line-height:1.5;}
+ .ux-process .ux-process-copy>h2 {margin-bottom:14px;font-size:32px;line-height:1;}
+ .ux-process .ux-process-copy>h3 {margin-bottom:8px;font-size:26px;line-height:1.2;}
+ .ux-process .ux-process-copy>h3.ux-methodology-label {font-size:16px;margin-bottom:8px;}
+ .ux-process .ux-process-english {margin-bottom:12px;font-size:22px;line-height:1.2;}
+ .ux-process .ux-process-description {font-size:14px;line-height:1.6;}
+ .ux-process .ux-process-pending {margin-top:12px;font-size:14px;line-height:1.5;}
+ .ux-process .ux-process-tags {margin-top:12px;gap:6px;}
+ .ux-process .ux-process-tags>span {padding:5px 9px;font-size:10px;}
+ .ux-process .ux-material-tabs {margin-top:14px;flex-wrap:nowrap;gap:6px;overflow-x:auto;scrollbar-width:none;}
+ .ux-process .ux-material-tabs button {flex-shrink:0;padding:7px 11px;font-size:12px;min-height:34px;}
+ .ux-process .ux-process-material .ux-document-image {max-height:24svh;object-fit:contain;}
+ .ux-process .ux-process-material .ux-document-image--planning {height:auto;max-height:24svh;}
+ .ux-process .ux-material-caption {margin-top:8px;font-size:12px;}
+ .ux-process .ux-material-caption button {min-height:34px;}
+ .ux-process .ux-process-collage.ux-lean-gallery {width:min(100%,270px);max-width:270px;padding:0 28px 28px;margin:0 auto;}
+ .ux-process .ux-planning-window {height:17svh;aspect-ratio:auto;}
+ .ux-process .ux-lean-primary-label {margin-top:6px;font-size:8px;}
+ .ux-process .ux-lean-supporting button {width:35%;padding:5px;border-radius:8px;}
+ .ux-process .ux-lean-supporting button:first-child {left:0;}
+ .ux-process .ux-lean-supporting button:last-child {right:0;top:20px;}
+ .ux-process .ux-lean-supporting span {margin-top:4px;font-size:8px;}
+ .ux-process .ux-document-pair {gap:8px;padding-block:12px;}
+ .ux-process .ux-document-pair .ux-document-image {max-height:18svh;}
+ .ux-process .ux-lean-trio {padding:12px 0;}
+ .ux-process .ux-lean-trio .ux-document-image {max-height:20svh;}
+ .ux-process .team-story-footer {bottom:10px;padding-top:6px;}
+ .ux-process[data-horizontal='true'] .ux-process-panel {overflow-x:hidden;overflow-y:auto;scrollbar-width:none;}
+ .ux-process[data-horizontal='true'] .ux-process-panel[data-mobile-fit] {overflow:clip;}
+ .ux-process .ux-process-chapters::-webkit-scrollbar,.ux-process .ux-material-tabs::-webkit-scrollbar,.ux-process .ux-process-panel::-webkit-scrollbar {display:none;}
+}

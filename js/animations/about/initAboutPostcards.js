@@ -68,6 +68,13 @@ export default function initAboutPostcards(section) {
  };
  const measure=()=>{
   layout=createFanLayout(stage.clientWidth,stage.clientHeight,cards.length);
+  if(section.classList.contains('has-mobile-story')) {
+   // Reserve the bottom of the same viewport for the personal note.
+   const compact=createFanLayout(stage.clientWidth,stage.clientHeight*.55,cards.length);
+   compact.cardWidth=layout.cardWidth;
+   compact.area.top=stage.clientHeight*.29;
+   layout=compact;
+  }
   stage.style.setProperty('--fan-card-width',`${layout.cardWidth}px`);
   const space=section.querySelector('.memory-fan-space');
   space.style.left=`${layout.area.left}px`;space.style.top=`${layout.area.top}px`;
@@ -96,10 +103,8 @@ export default function initAboutPostcards(section) {
     section.classList.add('is-memory-static');
     return ()=>section.classList.remove('is-memory-static');
    }
-   if(!context.conditions.mobile) {
-    stage.append(story);
-    section.classList.add('has-inline-story');
-   }
+   stage.append(story);
+   section.classList.add(context.conditions.mobile?'has-mobile-story':'has-inline-story');
    measure();
    const playhead={progress:0};
    // Keep the gallery pinned for one additional viewport while Q&A covers it.
@@ -130,7 +135,7 @@ export default function initAboutPostcards(section) {
     timeline?.scrollTrigger?.kill();timeline?.kill();timeline=null;
     scene.before(stage);scene.remove();
     section.insertBefore(story,dialog);
-    section.classList.remove('has-inline-story');
+    section.classList.remove('has-inline-story','has-mobile-story');
     resetCards();stage.style.removeProperty('--fan-card-width');
     stage.style.removeProperty('--memory-cover-dim');
    };

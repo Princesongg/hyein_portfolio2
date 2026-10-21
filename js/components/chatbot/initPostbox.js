@@ -13,6 +13,21 @@ export default function initPostbox(root) {
  const controller=new AbortController();
  const {signal}=controller;
  let opened=false,closingTimer=0,openingFrame=0,composing=false;
+ let hintTimer=0,hintHideTimer=0;
+ function stopHint(){
+  clearTimeout(hintTimer);
+  clearTimeout(hintHideTimer);
+  launch.classList.remove('postbox-hint-visible');
+ }
+ function scheduleHint(delay=20000){
+  stopHint();
+  if(opened||document.hidden)return;
+  hintTimer=setTimeout(()=>{
+   if(opened||document.hidden)return;
+   launch.classList.add('postbox-hint-visible');
+   hintHideTimer=setTimeout(()=>scheduleHint(16000),4000);
+  },delay);
+ }
  const behavior=()=>media.matches?'instant':'smooth';
  function close(){
   opened=false;
@@ -23,10 +38,12 @@ export default function initPostbox(root) {
   launch.focus({preventScroll:true});
   clearTimeout(closingTimer);
   closingTimer=setTimeout(()=>{panel.hidden=true;},media.matches?0:250);
+  scheduleHint();
  }
  function open(){
   if(opened) return;
   opened=true;
+  stopHint();
   clearTimeout(closingTimer);
   panel.hidden=false;
   panel.inert=false;
@@ -151,5 +168,7 @@ export default function initPostbox(root) {
  window.visualViewport?.addEventListener('resize',viewport,{signal});
  window.visualViewport?.addEventListener('scroll',viewport,{signal});
  viewport();
- return ()=>{controller.abort();clearTimeout(closingTimer);cancelAnimationFrame(openingFrame);};
+ document.addEventListener('visibilitychange',()=>document.hidden?stopHint():scheduleHint(8000),{signal});
+ scheduleHint(8000);
+ return ()=>{controller.abort();stopHint();clearTimeout(closingTimer);cancelAnimationFrame(openingFrame);};
 }

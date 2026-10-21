@@ -4,6 +4,8 @@ import initDocumentDialog from './components/work/initDocumentDialog.js';
 import initPostbox from './components/chatbot/initPostbox.js';
 import initQuickQA from './components/contact/initQuickQA.js';
 import initHeaderColor from './animations/initHeaderColor.js';
+import initMobileMenu from './components/initMobileMenu.js';
+import initTeamDetailPages from './components/work/initTeamDetailPages.js';
 import initCon1Typing from './animations/initCon1Typing.js';
 import initReadyTyping from './animations/initReadyTyping.js';
 import initWorkTyping from './animations/initWorkTyping.js';
@@ -14,8 +16,11 @@ import initSkillOrbit from './animations/initSkillOrbit.js';
 import initAboutIntro from './animations/about/initAboutIntro.js';
 import initAboutPostcards from './animations/about/initAboutPostcards.js';
 import initTeamHorizontal from './animations/initTeamHorizontal.js';
+import initRoleStory from './components/work/initRoleStory.js';
+import initPersonalStory from './components/work/initPersonalStory.js';
 import initDesignDetails from './animations/initDesignDetails.js';
 import initKeywordCards from './animations/initKeywordCards.js';
+import initMobileKeywords from './components/initMobileKeywords.js';
 import initKeywordStack from './animations/initKeywordStack.js';
 import initBracketReveal from './animations/initBracketReveal.js';
 import initStoryReveal from './animations/initStoryReveal.js';
@@ -58,9 +63,12 @@ root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
 start(initPostbox,root);
 start(initQuickQA,reference('.quick-qa'));
 start(initHeaderColor,root);
+start(initMobileMenu,root);
+start(initTeamDetailPages,reference('.team-detail'));
 start(initCon1Typing,reference('.con1-copy'));
 start(initReadyTyping,reference('.contact-ready'));
 start(initKeywordCards,reference('.con2'));
+start(initMobileKeywords,root);
 start(initKeywordStack,reference('.keywords-about-stack'));
 root.querySelectorAll('.bracket-reveal').forEach(element => start(initBracketReveal,element));
 start(initWorkTyping,reference('.work-intro'));
@@ -81,10 +89,10 @@ start(initPersonalBackground,reference('.video-start'),{
 });
 start(initDesignDetails,reference('.team-story-details'));
 start(initTeamHorizontal,reference('.team-story'));
-start(initTeamHorizontal,reference('.role-story'),'role-story');
+start(initRoleStory,reference('.role-story'));
 start(initStoryReveal,reference('.team-story'));
 start(initTeamHorizontal,reference('.ux-process'),'ux-process');
-start(initTeamHorizontal,reference('.personal-projects'),'personal-projects');
+start(initPersonalStory,reference('.personal-projects'));
 start(initTeamHorizontal,reference('.short-form'),'short-form');
 start(initArchiveGallery,reference('.archive-gallery'));
 start(initSkillOrbit,reference('.skill-section'));
@@ -144,6 +152,13 @@ root.querySelectorAll('.project-controls button').forEach((button,index) => {
 function goToChapter(section,prefix,index) {
  const stage = section.querySelector('.'+prefix+'-stage');
  const behavior = reducedMotion() ? 'instant' : 'smooth';
+ if(prefix==='role-story'&&matchMedia('(max-width:700px)').matches&&section.dataset.horizontal!=='true'){
+  const panel=section.querySelector('.role-story-track').children[index];
+  const offset=(parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0)+(parseFloat(getComputedStyle(panel).scrollMarginTop)||0);
+  scroller.scrollTo({top:scroller.scrollTop+panel.getBoundingClientRect().top-scroller.getBoundingClientRect().top-offset,behavior});
+  section.querySelectorAll('.role-story-chapters button').forEach((button,i)=>i===index?button.setAttribute('aria-current','step'):button.removeAttribute('aria-current'));
+  return;
+ }
  if (section.dataset.horizontal !== 'true') {
   stage.scrollTo({left:index*stage.clientWidth,behavior});
  } else {
@@ -188,7 +203,11 @@ root.addEventListener('click',event => {
 for (const prefix of ['team-story','role-story','ux-process','personal-projects','short-form']) {
  const section = root.querySelector('.'+prefix);
  const buttons = section.querySelectorAll('.'+prefix+'-chapters button');
- buttons.forEach((button,index) => button.addEventListener('click',() => goToChapter(section,prefix,index)));
+ if(prefix==='role-story'||prefix==='personal-projects')section.querySelector('.'+prefix+'-chapters').addEventListener('click',event=>{
+  const index=[...section.querySelectorAll('.'+prefix+'-chapters button')].indexOf(event.target.closest('button'));
+  if(index>=0)goToChapter(section,prefix,index);
+ });
+ else buttons.forEach((button,index) => button.addEventListener('click',() => goToChapter(section,prefix,index)));
  const stage = section.querySelector('.'+prefix+'-stage');
  stage.addEventListener('scroll',() => {
   if (section.dataset.horizontal === 'true') return;
