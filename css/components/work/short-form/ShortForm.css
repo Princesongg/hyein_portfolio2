@@ -30,9 +30,11 @@
 .short-form-description {margin-top:28px;font-size:14px;font-weight:300;line-height:1.8;word-break:keep-all;color:var(--archive-scroll-muted,#f0e5e2);}
 .short-form-description p {margin:0 0 18px;}
 .short-form-description p:last-child {margin-bottom:0;}
-.short-form-subtitle {margin:22px 0 34px;font-family:var(--font-accent);font-size:clamp(24px,2vw,36px);font-style:italic;font-weight:300;line-height:1.4;color:var(--archive-scroll-accent,#e2cfcc);}
+.short-form-subtitle {margin:22px 0 34px;font-family:var(--font-base,'SUITE',sans-serif);font-size:clamp(24px,2vw,36px);font-style:normal;font-weight:400;line-height:1.4;color:var(--archive-scroll-accent,#e2cfcc);}
 .short-form-panel[aria-labelledby='short-form-01-title'] .short-form-subtitle,
 .short-form-panel[aria-labelledby='short-form-02-title'] .short-form-subtitle {font-size:clamp(20px,1.6vw,28px);}
+.short-form-panel[aria-labelledby='short-form-03-title'] .short-form-subtitle,
+.short-form-panel[aria-labelledby='short-form-04-title'] .short-form-subtitle {font-size:clamp(18px,1.3vw,24px);}
 .short-form-details {display:grid;gap:22px;margin:0;}
 .short-form-disclaimer {margin-top:26px;padding-top:18px;border-top:1px solid currentColor;font-size:12px;line-height:1.8;word-break:keep-all;color:var(--edition-body,var(--archive-scroll-muted,#f0e5e2));}
 .short-form-disclaimer p {margin:0;}
@@ -71,10 +73,17 @@
  .short-form .short-form-copy h2 {font-size:28px;line-height:1.12;overflow-wrap:anywhere;}
  .short-form .short-form-concept,.short-form .short-form-product {margin-top:8px;font-size:14px;line-height:1.5;}
  .short-form .short-form-panel .short-form-subtitle {margin:14px 0 22px;font-size:20px;line-height:1.45;word-break:keep-all;}
+ .short-form .short-form-panel[aria-labelledby='short-form-03-title'] .short-form-subtitle,
+ .short-form .short-form-panel[aria-labelledby='short-form-04-title'] .short-form-subtitle {font-size:18px;}
  .short-form .short-form-details {gap:18px;}
  .short-form .short-form-details>div {grid-template-columns:1fr;gap:5px;}
  .short-form .short-form-details dt {font-size:16px;line-height:1.4;font-weight:500;}
  .short-form .short-form-details dd {font-size:14px;line-height:1.7;}
  .short-form .short-form-disclaimer {margin-top:22px;padding-top:14px;font-size:14px;line-height:1.65;}
  .short-form .short-form-disclaimer p+p {margin-top:8px;}
+}
+@media(min-width:701px) {
+ .short-form .short-form-chapters {top:auto;bottom:26px;left:50%;right:auto;transform:translateX(-50%);}
+ .short-form .short-form-chapters button {font:inherit;font-size:14px;line-height:1.4;min-width:28px;padding:5px 4px;border-bottom:2px solid transparent;}
+ .short-form .short-form-chapters button[aria-current='step'] {border-bottom-color:currentColor;}
 }

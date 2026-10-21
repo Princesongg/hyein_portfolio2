@@ -77,3 +77,6 @@
 
 
 
+.project-preview--video {background:var(--edition-pearl,#f4efea);}
+.project-preview--video img {object-fit:cover;}
+.project-track[data-tail-space]::after {content:'';flex:0 0 var(--project-tail-space);pointer-events:none;}

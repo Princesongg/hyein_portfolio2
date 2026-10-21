@@ -172,3 +172,7 @@
 @media(max-width:700px) {
  .personal-projects[data-mobile-personal] .personal-projects-track {touch-action:pinch-zoom;}
 }
+@media(min-width:701px) {
+ .personal-projects .personal-projects-chapters {top:auto;bottom:26px;left:50%;right:auto;transform:translateX(-50%);}
+ .personal-projects .personal-projects-chapters button {font:inherit;font-size:14px;line-height:1.4;min-width:28px;padding:5px 4px;}
+}

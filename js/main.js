@@ -133,11 +133,24 @@ const projectTrack = root.querySelector('.project-track');
 const projects = [...projectTrack.children];
 const categories = ['TEAM','PERSONAL','PERSONAL','PERSONAL','PERSONAL','PERSONAL','VIDEO'];
 projects.forEach((project,index) => {project.dataset.category = categories[index];});
+// Leave enough space after the final card for its start edge to snap left.
+const updateProjectTail=()=>{
+ const last=projectTrack.lastElementChild;
+ const gap=parseFloat(getComputedStyle(projectTrack).gap)||0;
+ const space=last?Math.max(0,projectTrack.clientWidth-last.getBoundingClientRect().width-gap):0;
+ projectTrack.style.setProperty('--project-tail-space',`${space}px`);
+ projectTrack.toggleAttribute('data-tail-space',space>1);
+};
+const projectSizeObserver=new ResizeObserver(updateProjectTail);
+projectSizeObserver.observe(projectTrack);
+cleanups.push(()=>projectSizeObserver.disconnect());
+updateProjectTail();
 root.querySelectorAll('.project-filters button').forEach(button => {
  button.addEventListener('click',() => {
   const category = button.textContent.trim();
   root.querySelectorAll('.project-filters button').forEach(item => item.setAttribute('aria-pressed',String(item === button)));
   projectTrack.replaceChildren(...projects.filter(project => category === 'ALL' || project.dataset.category === category));
+  updateProjectTail();
   projectTrack.scrollLeft = 0;
  });
 });
