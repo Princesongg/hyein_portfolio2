@@ -268,6 +268,10 @@ function documentPreview(material) {
 }
 const documentDialog=initDocumentDialog(root.querySelector('.ux-document-dialog'),{scroller,renderPreview:documentPreview});
 const openDocument=documentDialog.open;
+root.querySelectorAll('.team-presentation-open').forEach(button=>button.addEventListener('click',()=>{
+ const presentation=uxSteps.find(step=>step.id==='screens').documents.find(document=>document.id==='presentation');
+ openDocument(presentation);
+}));
 root.querySelectorAll('[data-archive-image]').forEach(button => {
  button.addEventListener('click',() => openDocument({
   label:button.querySelector('img').alt,
@@ -306,20 +310,13 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
    previewButton.append(element('span','ux-document-card-label',current.label+' ↗'));
   }
  };
- if (['structure','visual','screens'].includes(step.id)) {
-  previewButton.replaceChildren(documentPreview(current));
-  addResearchLabel();
- }
- if (step.id==='research') {
-  previewButton.replaceChildren(documentPreview(current));
-  addResearchLabel();
- }
- if (step.id==='interview') {
+ const updatePreview=()=>{
   previewButton.replaceChildren(documentPreview(current));
   addResearchLabel();
   previewButton.setAttribute('aria-label',current.label+' 크게 보기');
   caption.textContent=current.label;
- }
+ };
+ if (['structure','visual','screens','research','interview'].includes(step.id)) updatePreview();
  const galleries=new Map();
  if (step.id==='screens') {
   const screenDescriptions=[
@@ -351,8 +348,6 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
    '팀원들과 페이지 구성, 콘텐츠 배치, 디자인 방향에 대한 의견을 공유하고 논의 내용을 기록했습니다. 결정 사항과 수정 내용을 정리하며 작업 방향을 함께 조율했습니다.',
   ];
   description.textContent=structureDescriptions[0];
-  caption.textContent=current.label;
-  previewButton.setAttribute('aria-label',current.label+' 크게 보기');
   tabs.forEach((button,index)=>button.addEventListener('click',()=>{
    description.textContent=structureDescriptions[index];
   }));
@@ -410,10 +405,7 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
  tabs.forEach((button,documentIndex) => button.addEventListener('click',() => {
   current = step.documents[documentIndex];
   updateGallery();
-  previewButton.replaceChildren(documentPreview(current));
-  previewButton.setAttribute('aria-label',current.label+' 크게 보기');
-  caption.textContent = current.label;
-  addResearchLabel();
+  updatePreview();
   if (step.id==='research') description.textContent=current.description || step.description;
   if (step.id==='interview') {
    const isInterview=current.id==='interview';

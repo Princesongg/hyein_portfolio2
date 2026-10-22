@@ -150,7 +150,7 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .team-story-design-note h4 {font-family:var(--edition-serif);font-weight:500;letter-spacing:-.025em;}
 .team-story-browser,.team-story-responsive,.team-story-workflow,.team-story-design-note,.ux-document {border-color:var(--edition-line);border-radius:6px;box-shadow:0 14px 40px rgba(121,104,88,.06);}
 .team-story-details .team-story-design-note {box-shadow:none;}
-.team-story-tags span,.ux-process-tags>span {border:1px solid var(--edition-line);background:transparent;color:var(--edition-body);}
+.team-story-tags :is(span,button),.ux-process-tags>span {border:1px solid var(--edition-line);background:transparent;color:var(--edition-body);}
 .ux-process {background:var(--personal-scroll-background,var(--edition-pearl));color:var(--edition-body);}
 .ux-process-copy>h2 {font-weight:500;font-size:clamp(40px,4.5vw,72px);}
 .ux-process-copy>h3 {font-family:var(--font-base);font-size:clamp(26px,2.5vw,40px);font-weight:500;letter-spacing:-.035em;}
@@ -175,7 +175,6 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .archive-gallery-info p,.archive-gallery-award,.archive-gallery-tasks,.archive-brand-gallery button {color:var(--edition-body);}
 .archive-gallery-info h4 {border-color:var(--edition-line);font-size:16px;}
 .archive-gallery-arrows button:hover:not(:disabled) {background:var(--edition-ink);color:var(--edition-paper);}
-.archive-gallery-image-slot {background:var(--edition-pearl);color:var(--edition-ink);border-color:var(--edition-line);}
 .archive-artwork .archive-artwork-main {border-radius:4px;border-color:var(--edition-line);}
 
 /* Skills and personal stories retain their motion on quiet pearl surfaces. */
@@ -316,7 +315,7 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
  .team-story .team-story-copy h4 {margin-bottom:10px;font-size:16px;line-height:1.4;}
  .team-story .team-story-description {font-size:14px;line-height:1.6;}
  .team-story .team-story-tags {margin-top:14px;gap:6px;}
- .team-story .team-story-tags span {padding:5px 9px;}
+ .team-story .team-story-tags :is(span,button) {padding:5px 9px;}
  .team-story .team-story-visual {width:100%;max-width:340px;justify-self:center;}
  .team-story .team-story-brand-collage {padding:50px 12px 34px 0;}
  .team-story .team-story-brand-tag {left:10px;font-size:10px;line-height:1.4;}

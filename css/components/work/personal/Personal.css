@@ -15,8 +15,7 @@
 .personal-projects {position:relative;background:var(--video-scroll-background,#d2deeb);color:var(--video-scroll-ink,#416194);}
 .personal-projects-stage {position:relative;overflow-x:auto;scroll-snap-type:x mandatory;}
 .personal-projects-track {display:flex;width:100%;}
-.personal-projects-panel {position:relative;}
-.personal-projects-panel {flex:0 0 100%;min-width:0;min-height:100dvh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:6%;padding:150px 5.0521% 95px;scroll-snap-align:start;}
+.personal-projects-panel {position:relative;flex:0 0 100%;min-width:0;min-height:100dvh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:6%;padding:150px 5.0521% 95px;scroll-snap-align:start;}
 .personal-projects[data-horizontal='true'] {height:calc(var(--story-stage-height,100dvh) + var(--story-distance,0px));}
 .personal-projects[data-horizontal='true'] .personal-projects-stage {position:sticky;top:var(--story-stage-top,0px);height:var(--story-stage-height,100dvh);overflow:hidden;}
 .personal-projects[data-horizontal='true'] .personal-projects-track {height:100%;will-change:transform;}

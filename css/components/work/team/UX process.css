@@ -1,8 +1,7 @@
 .ux-process {position:relative;background:var(--pink-ivory);color:var(--body-ink,#59474c);scroll-margin-top:90px;}
 .ux-process-stage {position:relative;overflow-x:auto;scroll-snap-type:x mandatory;}
 .ux-process-track {display:flex;width:100%;}
-.ux-process-panel {position:relative;}
-.ux-process-panel {flex:0 0 100%;min-width:0;min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:7%;padding:160px 7vw 100px;box-sizing:border-box;scroll-snap-align:start;}
+.ux-process-panel {position:relative;flex:0 0 100%;min-width:0;min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:7%;padding:160px 7vw 100px;box-sizing:border-box;scroll-snap-align:start;}
 .ux-process[data-horizontal='true'] {height:calc(var(--story-stage-height,100dvh) + var(--story-distance,0px));}
 .ux-process[data-horizontal='true'] .ux-process-stage {position:sticky;top:var(--story-stage-top,0px);height:var(--story-stage-height,100dvh);overflow:hidden;}
 .ux-process[data-horizontal='true'] .ux-process-track {height:100%;will-change:transform;}
