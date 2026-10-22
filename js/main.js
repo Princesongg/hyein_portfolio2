@@ -345,12 +345,14 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
  }
  if (step.id==='structure') {
   const structureDescriptions=[
-   '사이트의 주요 페이지와 하위 메뉴를 분류하고, 팀원들과 논의하며 전체 메뉴 구조를 설계했습니다. 사용자가 원하는 정보에 쉽게 접근할 수 있도록 메뉴의 구성과 계층을 정리했습니다.',
    '사용자가 사이트에 접속해 브랜드를 알아보고 제품을 탐색하는 과정을 흐름도로 정리했습니다. 주요 행동과 페이지 간 이동 경로를 검토하며 자연스러운 탐색 흐름을 구성했습니다.',
+   '사이트의 주요 페이지와 하위 메뉴를 분류하고, 팀원들과 논의하며 전체 메뉴 구조를 설계했습니다. 사용자가 원하는 정보에 쉽게 접근할 수 있도록 메뉴의 구성과 계층을 정리했습니다.',
    '콘텐츠의 성격과 중요도에 따라 정보를 그룹화하고, 페이지별 정보의 위계와 연결 관계를 구체화했습니다. 이를 통해 일관된 정보 구조와 화면 설계의 기준을 마련했습니다.',
    '팀원들과 페이지 구성, 콘텐츠 배치, 디자인 방향에 대한 의견을 공유하고 논의 내용을 기록했습니다. 결정 사항과 수정 내용을 정리하며 작업 방향을 함께 조율했습니다.',
   ];
   description.textContent=structureDescriptions[0];
+  caption.textContent=current.label;
+  previewButton.setAttribute('aria-label',current.label+' 크게 보기');
   tabs.forEach((button,index)=>button.addEventListener('click',()=>{
    description.textContent=structureDescriptions[index];
   }));

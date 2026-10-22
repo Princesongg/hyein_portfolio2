@@ -154,7 +154,7 @@ export const uxSteps = [
  {id:'research',title:'시장과 브랜드 조사',english:'Brand & market research',description:'브랜드와 경쟁사의 화면 구성, 콘텐츠, 탐색 구조를 비교하는 단계입니다.',documents:[brandAudit,competitorResearch,steepAnalysis,threeCAnalysis]},
  {id:'interview',title:'사용자 조사와 분석',english:'Listening to users',description:'설문과 인터뷰를 통해 사용자가 딥티크 온라인 사이트에서 제품과 향을 탐색하는 과정을 살펴봤습니다. 정보 탐색의 불편함과 브랜드 경험에 대한 기대를 분석하고, 이를 바탕으로 주요 개선 방향을 정리했습니다.',documents:[survey,{id:'interview',label:'인터뷰',image:'/assets/work/ux/planning/interview.png',originalImage:{src:'/assets/work/ux/planning/interview.png',width:1890,height:1710,alt:'딥티크 웹사이트 리뉴얼을 위한 사용자 인터뷰 질문과 응답'}}]},
  {id:'define',title:'문제 정의와 기획',english:'Defining the direction',description:'핵심 사용자와 탐색 흐름을 정리하고, 문제·가치·해결 방향을 연결하는 단계입니다.',documents:[personas[1],journeyMaps[1],leanCanvas]},
- {id:'structure',title:'팀 논의와 구조 설계',english:'Planning together',description:'팀의 논의를 바탕으로 정보 구조와 사용자 흐름, 화면별 요구사항을 정리하는 단계입니다.',documents:[menuTree,userFlow,iaStructure,meetingNotes]},
+ {id:'structure',title:'팀 논의와 구조 설계',english:'Planning together',description:'팀의 논의를 바탕으로 정보 구조와 사용자 흐름, 화면별 요구사항을 정리하는 단계입니다.',documents:[userFlow,menuTree,iaStructure,meetingNotes]},
  {id:'visual',title:'디자인 방향 설정',english:'Shaping the visual language',description:'이미지·컬러·타이포그래피와 여백의 기준을 모아 공통 디자인 방향을 정리하는 단계입니다.',documents:[moodboard,designMindmap]},
  {id:'screens',title:'화면 설계와 구체화',english:'From structure to screens',description:'와이어프레임에서 정보의 우선순위를 정하고, 공통 스타일과 화면 구성을 구체화하는 단계입니다.',documents:[wireframe,designSystem,components,presentation]},
 ];

@@ -130,7 +130,7 @@ export default function initPostbox(root) {
   // Only a visitor's new question moves the conversation, never background updates.
   log.scrollTo({top:log.scrollHeight,behavior:behavior()});
  }
- log.append(message('안녕하세요! 💌\n\n혜인의 포트폴리오에 오신 걸 환영해요.\n\n제가 어떤 경험을 해왔고, 어떤 작업을 진행했는지 궁금하신가요?\n\n아래 질문을 선택하거나 직접 입력해 주세요!'));
+ log.append(message('안녕하세요! 💌\n혜인의 포트폴리오에 오신 걸 환영해요.\n제가 어떤 경험을 해왔고, 어떤 작업을 진행했는지\n궁금하신가요?\n아래 질문을 선택하거나 직접 입력해 주세요!'));
  const recommended=widget.querySelector('.postbox-suggestions');
  suggestions.forEach(id=>recommended.append(questionButton(id,answers[id].label)));
  launch.addEventListener('click',()=>opened?close():open(),{signal});
