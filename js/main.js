@@ -268,10 +268,6 @@ function documentPreview(material) {
 }
 const documentDialog=initDocumentDialog(root.querySelector('.ux-document-dialog'),{scroller,renderPreview:documentPreview});
 const openDocument=documentDialog.open;
-root.querySelectorAll('.team-presentation-open').forEach(button=>button.addEventListener('click',()=>{
- const presentation=uxSteps.find(step=>step.id==='screens').documents.find(document=>document.id==='presentation');
- openDocument(presentation);
-}));
 root.querySelectorAll('[data-archive-image]').forEach(button => {
  button.addEventListener('click',() => openDocument({
   label:button.querySelector('img').alt,
