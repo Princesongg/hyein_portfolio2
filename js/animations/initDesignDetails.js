@@ -20,6 +20,8 @@ export default function initDesignDetails(root) {
     copy.className = 'details-slide-copy';
     if (index === 0) copy.append(...panel.lastElementChild.childNodes);
     else copy.append(...[...panel.children].slice(1));
+    // Let larger copy wrap naturally without joining words across old hard breaks.
+    if (root.closest('.diptyque-readable')) copy.querySelectorAll('br').forEach(br => br.replaceWith(document.createTextNode(' ')));
     const visual = document.createElement('div');
     visual.className = 'details-slide-visual';
     visual.append(image);

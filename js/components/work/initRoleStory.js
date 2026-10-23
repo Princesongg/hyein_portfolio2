@@ -19,7 +19,7 @@ export default function initRoleStory(root) {
    const caption=extra.querySelector('.what-i-do-screen-caption');
    const move=(node,parent)=>{const marker=document.createComment('mobile role position');node.before(marker);parent.append(node);restore.push(()=>marker.replaceWith(node));};
    const labels=['01 메인','02 GALERIE','03 협업','04 화면 개선','05 모바일'];
-   const subtitles=['메인 페이지 UI 디자인','GALERIE 디자인과 구현','디자인 방향 조율과 코드 개선','여러 페이지의 완성도 높이기','모바일 구매 화면과 상품 탐색'];
+   const subtitles=['메인 페이지 UI 디자인','GALERIE 디자인과 구현','사이트 기획 및 디자인 방향 조율','서브페이지 디자인 참여 및 코드 개선','모바일 구매 화면과 상품 탐색'];
    const panels=labels.map((label,index)=>{
     const panel=document.createElement('section');panel.className='what-i-do role-mobile-panel';
     panel.id=index===0?originalPanels[0].id:index===2?originalPanels[1].id:`mobile-role-${index+1}`;

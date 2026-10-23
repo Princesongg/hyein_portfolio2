@@ -1,0 +1,87 @@
+/* DIPTYQUE detail only: preserve display titles, media and motion layouts. */
+/* Shared text-only information rows across both What I do sections. */
+.role-story .what-i-do-feature-copy {color:#5f5048;}
+.role-story .what-i-do-feature-copy .what-i-do-role-title {margin:24px 0 18px;gap:12px;}
+.role-story .what-i-do-feature-copy .what-i-do-role-title h3 {font-size:20px;font-weight:600;line-height:1.5;color:#5f5048;}
+.role-story .what-i-do-feature-copy .what-i-do-role-title>span {font-family:var(--edition-serif);font-size:20px;line-height:1.5;color:#705c4f;}
+.role-story .what-i-do-role-info {margin:0;}
+.role-story .what-i-do-role-info>div {display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;padding:16px 0;border-top:1px solid var(--edition-line);}
+.role-story .what-i-do-role-info>div:last-child {border-bottom:1px solid var(--edition-line);}
+.role-story .what-i-do-role-info dt {padding-top:3px;font-size:13px;font-weight:500;line-height:1.6;letter-spacing:.035em;color:#705c4f;}
+.role-story .what-i-do-role-info dd {margin:0;max-width:36em;font-size:16px;font-weight:400;line-height:1.75;word-break:keep-all;overflow-wrap:break-word;}
+.role-story .what-i-do-feature-copy :is(.what-i-do-site,.what-i-do-galerie-link) {margin-top:18px;font-size:14px;}
+.role-story .what-i-do-collaboration-copy .what-i-do-role-title {margin:0 0 18px;}
+.role-story .what-i-do-collaboration-copy .what-i-do-role-info dt {overflow-wrap:normal;word-break:normal;}
+@media(max-width:800px) {
+ .role-story .what-i-do-contribution-grid .what-i-do-collaboration-copy {margin-top:24px;}
+ .role-story .what-i-do-detail-row:has(>.what-i-do-collaboration-copy) {display:flex;flex-direction:column;}
+ .role-story .what-i-do-detail-row>.what-i-do-collaboration-copy {width:100%;margin-top:24px;}
+ .role-story .what-i-do-detail-row:has(>.what-i-do-collaboration-copy)>.what-i-do-extra {order:-1;width:100%;margin-top:0;}
+}
+@media(max-width:1100px) {
+ .role-story .what-i-do-role-info>div {grid-template-columns:122px minmax(0,1fr);gap:14px;}
+ .role-story .what-i-do-feature-copy .what-i-do-role-title h3 {font-size:18px;}
+ .role-story .what-i-do-role-info dd {font-size:15px;}
+}
+@media(max-width:600px) {
+ .role-story .what-i-do-feature-copy .what-i-do-role-title {margin:18px 0 16px;}
+ .role-story .what-i-do-role-info>div {grid-template-columns:minmax(0,1fr);gap:6px;padding:14px 0;}
+ .role-story .what-i-do-role-info dt {padding-top:0;}
+}
+
+.diptyque-readable {--diptyque-copy:#5f5048;--diptyque-label:#705c4f;}
+.diptyque-readable .team-detail-info {color:var(--diptyque-copy);}
+.diptyque-readable .team-detail-info dd {font-size:17px;line-height:1.75;}
+.diptyque-readable .team-detail-role-lead {font-size:19px;line-height:1.65;}
+.diptyque-readable.team-story .team-story-copy h4 {font-size:20px;font-weight:600;line-height:1.5;color:var(--diptyque-copy);margin-bottom:18px;max-width:32em;word-break:keep-all;}
+.diptyque-readable.team-story .team-story-description {max-width:34em;font-size:18px;font-weight:400;line-height:1.75;color:var(--diptyque-copy);overflow-wrap:break-word;word-break:keep-all;}
+.diptyque-readable.team-story .team-story-description+.team-story-description {margin-top:18px;}
+.diptyque-readable.team-story .team-story-index {font-size:14px;line-height:1.5;color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-tags :is(span,a) {font-size:13px;line-height:1.45;color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-chapters button {font-size:13px;line-height:1.5;color:var(--diptyque-label);opacity:.8;}
+.diptyque-readable.team-story .team-story-chapters button[aria-current='step'] {opacity:1;}
+.diptyque-readable.team-story .team-story-footer {font-size:13px;color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-visual figcaption,
+.diptyque-readable.team-story .team-story-screen-caption {font-size:13px;line-height:1.5;color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-explore-caption-description {font-size:14px;line-height:1.75;color:var(--diptyque-copy);max-width:30em;}
+.diptyque-readable.team-story .team-story-row--together .team-story-description {font-size:18px;line-height:1.75;max-width:32em;}
+.diptyque-readable.team-story .team-story-workflow>a {font-size:15px;line-height:1.6;color:var(--diptyque-copy);}
+.diptyque-readable.team-story .team-story-design-note>span {font-size:13px;line-height:1.5;color:var(--diptyque-label);}
+
+/* The 02 slider retains its visual/copy columns and gains room for readable text. */
+.diptyque-readable.team-story .team-story-details.details-slider .team-story-details-grid {height:clamp(360px,42dvh,460px);}
+.diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy small {font-size:13px;line-height:1.5;margin-bottom:14px;color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy p,
+.diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy p+p {font-size:17px;line-height:1.75;color:var(--diptyque-copy);max-width:32em;overflow-wrap:break-word;}
+.diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy p+p {margin-top:16px;}
+.diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy strong {font-size:20px;font-weight:600;line-height:1.5;color:var(--diptyque-copy);}
+.diptyque-readable.team-story .team-story-details.details-slider .details-copy-nowrap {white-space:normal;}
+.diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy br {display:none;}
+.diptyque-readable.team-story .details-controls :is(button,.details-count) {font-size:13px;line-height:1.5;color:var(--diptyque-label);}
+.diptyque-readable.team-story .details-controls button {opacity:.8;}
+.diptyque-readable.team-story .details-controls button[aria-pressed='true'] {opacity:1;}
+
+@media(max-width:800px) {
+ .diptyque-readable.team-story .team-story-details.details-slider .team-story-details-grid {height:500px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .team-story-details-grid>.details-slide {grid-template-rows:240px minmax(0,1fr);gap:20px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide:first-child .details-slide-visual {height:240px;}
+}
+@media(max-width:600px) {
+ .diptyque-readable .team-detail-info dd {font-size:16px;line-height:1.75;}
+ .diptyque-readable .team-detail-role-lead {font-size:17px;line-height:1.65;}
+ .diptyque-readable.team-story .team-story-copy h4 {font-size:18px;line-height:1.5;margin-bottom:12px;}
+ .diptyque-readable.team-story .team-story-description,
+ .diptyque-readable.team-story .team-story-row--together .team-story-description {font-size:16px;line-height:1.75;max-width:100%;}
+ .diptyque-readable.team-story .team-story-description+.team-story-description {margin-top:16px;}
+ .diptyque-readable.team-story .team-story-chapters {flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+ .diptyque-readable.team-story .team-story-chapters button {flex:none;white-space:nowrap;}
+ .diptyque-readable.team-story .team-story-index {font-size:13px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .team-story-details-grid {height:430px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .team-story-details-grid>.details-slide {grid-template-rows:170px minmax(0,1fr);gap:16px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide:first-child .details-slide-visual {height:170px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide-visual figure img {max-height:140px;}
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy p,
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy p+p {font-size:16px;line-height:1.7;}
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy strong {font-size:18px;line-height:1.5;}
+ .diptyque-readable.team-story .team-story-details.details-slider .details-slide-copy small {margin-bottom:10px;}
+}

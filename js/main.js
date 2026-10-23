@@ -5,7 +5,6 @@ import initPostbox from './components/chatbot/initPostbox.js';
 import initQuickQA from './components/contact/initQuickQA.js';
 import initHeaderColor from './animations/initHeaderColor.js';
 import initMobileMenu from './components/initMobileMenu.js';
-import initTeamDetailPages from './components/work/initTeamDetailPages.js';
 import initCon1Typing from './animations/initCon1Typing.js';
 import initReadyTyping from './animations/initReadyTyping.js';
 import initWorkTyping from './animations/initWorkTyping.js';
@@ -54,6 +53,14 @@ cleanups.push(() => resizeObserver.disconnect());
 
 start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
+root.querySelectorAll('.team-story-explore-mobile-scroll').forEach(preview=>{
+ let visible=false;
+ const update=()=>preview.toggleAttribute('data-playing',visible&&!document.hidden);
+ const observer=new IntersectionObserver(entries=>{visible=entries.some(entry=>entry.isIntersecting);update();},{root:scroller,threshold:.15});
+ observer.observe(preview);
+ document.addEventListener('visibilitychange',update);
+ cleanups.push(()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);});
+});
 root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
  const label=document.createElement('span');
  label.className='personal-preview-caption';
@@ -64,7 +71,6 @@ start(initPostbox,root);
 start(initQuickQA,reference('.quick-qa'));
 start(initHeaderColor,root);
 start(initMobileMenu,root);
-start(initTeamDetailPages,reference('.team-detail'));
 start(initCon1Typing,reference('.con1-copy'));
 start(initReadyTyping,reference('.contact-ready'));
 start(initKeywordCards,reference('.con2'));

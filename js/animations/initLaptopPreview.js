@@ -12,6 +12,8 @@ export default function initLaptopPreview(video) {
    source.src=source.dataset.src;
    video.load();
   }
+  const playbackRate=Number(video.dataset.playbackRate);
+  if(Number.isFinite(playbackRate)&&playbackRate>0)video.playbackRate=playbackRate;
   video.play().catch(()=>{});
  };
  const observer=new IntersectionObserver(entries=>{
