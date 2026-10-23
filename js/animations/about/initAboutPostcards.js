@@ -68,6 +68,13 @@ export default function initAboutPostcards(section) {
  };
  const measure=()=>{
   layout=createFanLayout(stage.clientWidth,stage.clientHeight,cards.length);
+  if(section.classList.contains('has-mobile-story')) {
+   // Reserve the bottom of the same viewport for the personal note.
+   const compact=createFanLayout(stage.clientWidth,stage.clientHeight*.55,cards.length);
+   compact.cardWidth=layout.cardWidth;
+   compact.area.top=stage.clientHeight*.33;
+   layout=compact;
+  }
   stage.style.setProperty('--fan-card-width',`${layout.cardWidth}px`);
   const space=section.querySelector('.memory-fan-space');
   space.style.left=`${layout.area.left}px`;space.style.top=`${layout.area.top}px`;
@@ -92,14 +99,38 @@ export default function initAboutPostcards(section) {
   media=gsap.matchMedia();
   media.add({reduced:'(prefers-reduced-motion: reduce)',mobile:'(max-width:700px)',desktop:'(min-width:701px)'},context=>{
    resetCards();
+   if(context.conditions.mobile) {
+    stage.append(story);
+    section.classList.add('has-mobile-story','is-mobile-carousel');
+    deck.tabIndex=0;
+    const counter=document.createElement('p');counter.className='memory-mobile-counter';
+    counter.setAttribute('aria-live','polite');stage.append(counter);
+    let selected=-1;
+    const updateCounter=()=>{
+     const center=deck.scrollLeft+deck.clientWidth/2;
+     const index=cards.reduce((best,card,i)=>Math.abs(card.offsetLeft+card.offsetWidth/2-center)<Math.abs(cards[best].offsetLeft+cards[best].offsetWidth/2-center)?i:best,0);
+     if(index!==selected){selected=index;counter.textContent=`${String(index+1).padStart(2,'0')} / ${cards.length} · 좌우로 넘겨보세요`;}
+    };
+    const onCarouselKey=event=>{
+     if(event.target!==deck||!['ArrowLeft','ArrowRight'].includes(event.key))return;
+     event.preventDefault();
+     const next=Math.max(0,Math.min(cards.length-1,selected+(event.key==='ArrowRight'?1:-1)));
+     deck.scrollTo({left:cards[next].offsetLeft-(deck.clientWidth-cards[next].offsetWidth)/2,behavior:context.conditions.reduced?'instant':'smooth'});
+    };
+    deck.scrollLeft=0;updateCounter();
+    deck.addEventListener('scroll',updateCounter,{passive:true});deck.addEventListener('keydown',onCarouselKey);
+    return ()=>{
+     deck.removeEventListener('scroll',updateCounter);deck.removeEventListener('keydown',onCarouselKey);
+     counter.remove();deck.removeAttribute('tabindex');deck.scrollLeft=0;
+     section.insertBefore(story,dialog);section.classList.remove('has-mobile-story','is-mobile-carousel');resetCards();
+    };
+   }
    if(context.conditions.reduced) {
     section.classList.add('is-memory-static');
     return ()=>section.classList.remove('is-memory-static');
    }
-   if(!context.conditions.mobile) {
-    stage.append(story);
-    section.classList.add('has-inline-story');
-   }
+   stage.append(story);
+   section.classList.add(context.conditions.mobile?'has-mobile-story':'has-inline-story');
    measure();
    const playhead={progress:0};
    // Keep the gallery pinned for one additional viewport while Q&A covers it.
@@ -130,7 +161,7 @@ export default function initAboutPostcards(section) {
     timeline?.scrollTrigger?.kill();timeline?.kill();timeline=null;
     scene.before(stage);scene.remove();
     section.insertBefore(story,dialog);
-    section.classList.remove('has-inline-story');
+    section.classList.remove('has-inline-story','has-mobile-story');
     resetCards();stage.style.removeProperty('--fan-card-width');
     stage.style.removeProperty('--memory-cover-dim');
    };

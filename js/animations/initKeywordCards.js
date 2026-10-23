@@ -2,7 +2,7 @@
 
 export default function initKeywordCards(section) {
  const media=gsap.matchMedia();
- media.add('(prefers-reduced-motion: no-preference)',()=>{
+ media.add('(prefers-reduced-motion: no-preference) and (min-width:701px)',()=>{
   const title=section.querySelector('.con2-title');
   const grid=section.querySelector('.con2-grid');
   const cards=[...grid.querySelectorAll('.con2-card')];

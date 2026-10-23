@@ -14,6 +14,10 @@ export default function initArchiveGallery(section) {
   index = Math.max(0,Math.min(cards.length - 1,next));
   update();
   stage.scrollTo({left:index * stage.clientWidth,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  const scroller = section.closest('.portfolio-scroll');
+  if (scroller && section.getBoundingClientRect().top < scroller.getBoundingClientRect().top) {
+   scroller.scrollTo({top:scroller.scrollTop + section.getBoundingClientRect().top - scroller.getBoundingClientRect().top,behavior:'instant'});
+  }
  };
  const onClick = event => {
   const button = event.target.closest('[data-archive-direction]');

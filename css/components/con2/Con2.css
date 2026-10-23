@@ -60,8 +60,7 @@
 }
 @media(max-width:1000px),(hover:none) {
  .con2 {padding:110px 8% 100px;}
- .con2-title {margin-bottom:44px;}
- .con2-title {max-width:calc(100% - 90px);}
+ .con2-title {margin-bottom:44px;max-width:calc(100% - 90px);}
  .con2-intro-stamp {width:100px;margin-left:0;transform:translateY(-50%) rotate(9deg);}
  .con2-grid {grid-template-columns:1fr;gap:24px;}
  .con2-card {height:auto;min-height:290px;padding:64px 32px 40px;}

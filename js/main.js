@@ -4,6 +4,8 @@ import initDocumentDialog from './components/work/initDocumentDialog.js';
 import initPostbox from './components/chatbot/initPostbox.js';
 import initQuickQA from './components/contact/initQuickQA.js';
 import initHeaderColor from './animations/initHeaderColor.js';
+import initMobileMenu from './components/initMobileMenu.js';
+import initTeamDetailPages from './components/work/initTeamDetailPages.js';
 import initCon1Typing from './animations/initCon1Typing.js';
 import initReadyTyping from './animations/initReadyTyping.js';
 import initWorkTyping from './animations/initWorkTyping.js';
@@ -14,8 +16,11 @@ import initSkillOrbit from './animations/initSkillOrbit.js';
 import initAboutIntro from './animations/about/initAboutIntro.js';
 import initAboutPostcards from './animations/about/initAboutPostcards.js';
 import initTeamHorizontal from './animations/initTeamHorizontal.js';
+import initRoleStory from './components/work/initRoleStory.js';
+import initPersonalStory from './components/work/initPersonalStory.js';
 import initDesignDetails from './animations/initDesignDetails.js';
 import initKeywordCards from './animations/initKeywordCards.js';
+import initMobileKeywords from './components/initMobileKeywords.js';
 import initKeywordStack from './animations/initKeywordStack.js';
 import initBracketReveal from './animations/initBracketReveal.js';
 import initStoryReveal from './animations/initStoryReveal.js';
@@ -58,9 +63,12 @@ root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
 start(initPostbox,root);
 start(initQuickQA,reference('.quick-qa'));
 start(initHeaderColor,root);
+start(initMobileMenu,root);
+start(initTeamDetailPages,reference('.team-detail'));
 start(initCon1Typing,reference('.con1-copy'));
 start(initReadyTyping,reference('.contact-ready'));
 start(initKeywordCards,reference('.con2'));
+start(initMobileKeywords,root);
 start(initKeywordStack,reference('.keywords-about-stack'));
 root.querySelectorAll('.bracket-reveal').forEach(element => start(initBracketReveal,element));
 start(initWorkTyping,reference('.work-intro'));
@@ -81,10 +89,10 @@ start(initPersonalBackground,reference('.video-start'),{
 });
 start(initDesignDetails,reference('.team-story-details'));
 start(initTeamHorizontal,reference('.team-story'));
-start(initTeamHorizontal,reference('.role-story'),'role-story');
+start(initRoleStory,reference('.role-story'));
 start(initStoryReveal,reference('.team-story'));
 start(initTeamHorizontal,reference('.ux-process'),'ux-process');
-start(initTeamHorizontal,reference('.personal-projects'),'personal-projects');
+start(initPersonalStory,reference('.personal-projects'));
 start(initTeamHorizontal,reference('.short-form'),'short-form');
 start(initArchiveGallery,reference('.archive-gallery'));
 start(initSkillOrbit,reference('.skill-section'));
@@ -125,11 +133,24 @@ const projectTrack = root.querySelector('.project-track');
 const projects = [...projectTrack.children];
 const categories = ['TEAM','PERSONAL','PERSONAL','PERSONAL','PERSONAL','PERSONAL','VIDEO'];
 projects.forEach((project,index) => {project.dataset.category = categories[index];});
+// Leave enough space after the final card for its start edge to snap left.
+const updateProjectTail=()=>{
+ const last=projectTrack.lastElementChild;
+ const gap=parseFloat(getComputedStyle(projectTrack).gap)||0;
+ const space=last?Math.max(0,projectTrack.clientWidth-last.getBoundingClientRect().width-gap):0;
+ projectTrack.style.setProperty('--project-tail-space',`${space}px`);
+ projectTrack.toggleAttribute('data-tail-space',space>1);
+};
+const projectSizeObserver=new ResizeObserver(updateProjectTail);
+projectSizeObserver.observe(projectTrack);
+cleanups.push(()=>projectSizeObserver.disconnect());
+updateProjectTail();
 root.querySelectorAll('.project-filters button').forEach(button => {
  button.addEventListener('click',() => {
   const category = button.textContent.trim();
   root.querySelectorAll('.project-filters button').forEach(item => item.setAttribute('aria-pressed',String(item === button)));
   projectTrack.replaceChildren(...projects.filter(project => category === 'ALL' || project.dataset.category === category));
+  updateProjectTail();
   projectTrack.scrollLeft = 0;
  });
 });
@@ -144,6 +165,13 @@ root.querySelectorAll('.project-controls button').forEach((button,index) => {
 function goToChapter(section,prefix,index) {
  const stage = section.querySelector('.'+prefix+'-stage');
  const behavior = reducedMotion() ? 'instant' : 'smooth';
+ if(prefix==='role-story'&&matchMedia('(max-width:700px)').matches&&section.dataset.horizontal!=='true'){
+  const panel=section.querySelector('.role-story-track').children[index];
+  const offset=(parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0)+(parseFloat(getComputedStyle(panel).scrollMarginTop)||0);
+  scroller.scrollTo({top:scroller.scrollTop+panel.getBoundingClientRect().top-scroller.getBoundingClientRect().top-offset,behavior});
+  section.querySelectorAll('.role-story-chapters button').forEach((button,i)=>i===index?button.setAttribute('aria-current','step'):button.removeAttribute('aria-current'));
+  return;
+ }
  if (section.dataset.horizontal !== 'true') {
   stage.scrollTo({left:index*stage.clientWidth,behavior});
  } else {
@@ -188,7 +216,11 @@ root.addEventListener('click',event => {
 for (const prefix of ['team-story','role-story','ux-process','personal-projects','short-form']) {
  const section = root.querySelector('.'+prefix);
  const buttons = section.querySelectorAll('.'+prefix+'-chapters button');
- buttons.forEach((button,index) => button.addEventListener('click',() => goToChapter(section,prefix,index)));
+ if(prefix==='role-story'||prefix==='personal-projects')section.querySelector('.'+prefix+'-chapters').addEventListener('click',event=>{
+  const index=[...section.querySelectorAll('.'+prefix+'-chapters button')].indexOf(event.target.closest('button'));
+  if(index>=0)goToChapter(section,prefix,index);
+ });
+ else buttons.forEach((button,index) => button.addEventListener('click',() => goToChapter(section,prefix,index)));
  const stage = section.querySelector('.'+prefix+'-stage');
  stage.addEventListener('scroll',() => {
   if (section.dataset.horizontal === 'true') return;
@@ -274,20 +306,13 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
    previewButton.append(element('span','ux-document-card-label',current.label+' ↗'));
   }
  };
- if (['structure','visual','screens'].includes(step.id)) {
-  previewButton.replaceChildren(documentPreview(current));
-  addResearchLabel();
- }
- if (step.id==='research') {
-  previewButton.replaceChildren(documentPreview(current));
-  addResearchLabel();
- }
- if (step.id==='interview') {
+ const updatePreview=()=>{
   previewButton.replaceChildren(documentPreview(current));
   addResearchLabel();
   previewButton.setAttribute('aria-label',current.label+' 크게 보기');
   caption.textContent=current.label;
- }
+ };
+ if (['structure','visual','screens','research','interview'].includes(step.id)) updatePreview();
  const galleries=new Map();
  if (step.id==='screens') {
   const screenDescriptions=[
@@ -313,8 +338,8 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
  }
  if (step.id==='structure') {
   const structureDescriptions=[
-   '사이트의 주요 페이지와 하위 메뉴를 분류하고, 팀원들과 논의하며 전체 메뉴 구조를 설계했습니다. 사용자가 원하는 정보에 쉽게 접근할 수 있도록 메뉴의 구성과 계층을 정리했습니다.',
    '사용자가 사이트에 접속해 브랜드를 알아보고 제품을 탐색하는 과정을 흐름도로 정리했습니다. 주요 행동과 페이지 간 이동 경로를 검토하며 자연스러운 탐색 흐름을 구성했습니다.',
+   '사이트의 주요 페이지와 하위 메뉴를 분류하고, 팀원들과 논의하며 전체 메뉴 구조를 설계했습니다. 사용자가 원하는 정보에 쉽게 접근할 수 있도록 메뉴의 구성과 계층을 정리했습니다.',
    '콘텐츠의 성격과 중요도에 따라 정보를 그룹화하고, 페이지별 정보의 위계와 연결 관계를 구체화했습니다. 이를 통해 일관된 정보 구조와 화면 설계의 기준을 마련했습니다.',
    '팀원들과 페이지 구성, 콘텐츠 배치, 디자인 방향에 대한 의견을 공유하고 논의 내용을 기록했습니다. 결정 사항과 수정 내용을 정리하며 작업 방향을 함께 조율했습니다.',
   ];
@@ -376,10 +401,7 @@ root.querySelectorAll('.ux-process-panel:not(.ux-process-intro)').forEach((panel
  tabs.forEach((button,documentIndex) => button.addEventListener('click',() => {
   current = step.documents[documentIndex];
   updateGallery();
-  previewButton.replaceChildren(documentPreview(current));
-  previewButton.setAttribute('aria-label',current.label+' 크게 보기');
-  caption.textContent = current.label;
-  addResearchLabel();
+  updatePreview();
   if (step.id==='research') description.textContent=current.description || step.description;
   if (step.id==='interview') {
    const isInterview=current.id==='interview';

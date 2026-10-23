@@ -7,7 +7,8 @@
 .postbox-chat-icon {display:block;width:28px;height:28px;pointer-events:none;}
 .postbox-controls .postbox-top {width:48px;height:48px;}
 .postbox-tooltip {position:absolute;right:0;bottom:calc(100% + 12px);width:max-content;max-width:260px;padding:8px 14px;border-radius:18px;background:var(--deep-pink-brown);color:var(--frame-cream);font-size:13px;opacity:0;visibility:hidden;transition:opacity .2s;pointer-events:none;}
-.postbox-launch:hover .postbox-tooltip,.postbox-launch:focus-visible .postbox-tooltip {opacity:1;visibility:visible;}
+.postbox-launch:hover .postbox-tooltip,.postbox-launch:focus-visible .postbox-tooltip,.postbox-launch.postbox-hint-visible .postbox-tooltip {opacity:1;visibility:visible;}
+.postbox-controls .postbox-launch.postbox-hint-visible {background:#eee5d9;border-color:#c9ae8f;}
 .postbox-launch[aria-expanded='true'] .postbox-tooltip {display:none;}
 .postbox-panel {position:absolute;right:clamp(24px,4vw,76px);bottom:calc(max(38px,5vh) + 150px);display:flex;flex-direction:column;width:410px;height:min(640px,calc(100dvh - 220px));min-height:0;background:var(--frame-cream);border:1px solid var(--light-pink-brown);border-radius:22px;box-shadow:0 12px 45px #405c9126;overflow:hidden;pointer-events:auto;opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s;}
 .postbox-panel[hidden] {display:none;}

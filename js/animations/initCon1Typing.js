@@ -17,14 +17,14 @@ export default function initCon1Typing(copyRef) {
    const timeline = gsap.timeline({paused:true});
    let time = 0;
    copy.querySelectorAll('h2 .con1-typing-line').forEach(line => {
-    const interval = .055;
+    const interval = .035;
     Array.from(line.querySelectorAll('.con1-character')).forEach((char,charIndex) => {
      timeline.set(char, {autoAlpha:1}, time);
      timeline.call(() => setCursor(char), [], time);
      // Small pauses around punctuation make the typing feel less mechanical.
-     time += interval + (/[，,。.]/.test(char.textContent) ? .14 : charIndex % 7 === 5 ? .035 : 0);
+     time += interval + (/[，,。.]/.test(char.textContent) ? .09 : charIndex % 7 === 5 ? .02 : 0);
     });
-    time += .32;
+    time += .2;
    });
    timeline.call(() => setCursor(null), [], time + .35);
    timeline.to(koreanLines, {y:0, autoAlpha:1, duration:.85, stagger:.14, ease:'power3.out'}, time + .1);

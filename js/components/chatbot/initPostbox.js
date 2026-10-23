@@ -13,6 +13,21 @@ export default function initPostbox(root) {
  const controller=new AbortController();
  const {signal}=controller;
  let opened=false,closingTimer=0,openingFrame=0,composing=false;
+ let hintTimer=0,hintHideTimer=0;
+ function stopHint(){
+  clearTimeout(hintTimer);
+  clearTimeout(hintHideTimer);
+  launch.classList.remove('postbox-hint-visible');
+ }
+ function scheduleHint(delay=20000){
+  stopHint();
+  if(opened||document.hidden)return;
+  hintTimer=setTimeout(()=>{
+   if(opened||document.hidden)return;
+   launch.classList.add('postbox-hint-visible');
+   hintHideTimer=setTimeout(()=>scheduleHint(16000),4000);
+  },delay);
+ }
  const behavior=()=>media.matches?'instant':'smooth';
  function close(){
   opened=false;
@@ -23,10 +38,12 @@ export default function initPostbox(root) {
   launch.focus({preventScroll:true});
   clearTimeout(closingTimer);
   closingTimer=setTimeout(()=>{panel.hidden=true;},media.matches?0:250);
+  scheduleHint();
  }
  function open(){
   if(opened) return;
   opened=true;
+  stopHint();
   clearTimeout(closingTimer);
   panel.hidden=false;
   panel.inert=false;
@@ -113,7 +130,7 @@ export default function initPostbox(root) {
   // Only a visitor's new question moves the conversation, never background updates.
   log.scrollTo({top:log.scrollHeight,behavior:behavior()});
  }
- log.append(message('안녕하세요! 💌\n\n혜인의 포트폴리오에 오신 걸 환영해요.\n\n제가 어떤 경험을 해왔고, 어떤 작업을 진행했는지 궁금하신가요?\n\n아래 질문을 선택하거나 직접 입력해 주세요!'));
+ log.append(message('안녕하세요! 💌\n혜인의 포트폴리오에 오신 걸 환영해요.\n제가 어떤 경험을 해왔고, 어떤 작업을 진행했는지\n궁금하신가요?\n아래 질문을 선택하거나 직접 입력해 주세요!'));
  const recommended=widget.querySelector('.postbox-suggestions');
  suggestions.forEach(id=>recommended.append(questionButton(id,answers[id].label)));
  launch.addEventListener('click',()=>opened?close():open(),{signal});
@@ -151,5 +168,7 @@ export default function initPostbox(root) {
  window.visualViewport?.addEventListener('resize',viewport,{signal});
  window.visualViewport?.addEventListener('scroll',viewport,{signal});
  viewport();
- return ()=>{controller.abort();clearTimeout(closingTimer);cancelAnimationFrame(openingFrame);};
+ document.addEventListener('visibilitychange',()=>document.hidden?stopHint():scheduleHint(8000),{signal});
+ scheduleHint(8000);
+ return ()=>{controller.abort();stopHint();clearTimeout(closingTimer);cancelAnimationFrame(openingFrame);};
 }
