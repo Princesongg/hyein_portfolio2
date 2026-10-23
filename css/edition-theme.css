@@ -59,6 +59,8 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .con1-statement {margin-top:38px;font-weight:400;line-height:1.8;color:var(--edition-body);}
 .con1-description {font-size:clamp(15px,1.15vw,19px);line-height:1.9;color:var(--edition-body);}
 .con1-statement {color:var(--edition-body);}
+.con1-statement strong {position:relative;display:inline-block;isolation:isolate;white-space:nowrap;font-weight:800;color:var(--edition-heading);}
+.con1-statement strong::before {content:'';position:absolute;z-index:-1;left:-.12em;right:-.12em;bottom:.18em;height:.55em;border-radius:.12em;background:var(--edition-champagne);transform:rotate(-1deg);pointer-events:none;}
 .team-story-description,.what-i-do-description,.ux-process-description,.archive-gallery-info h4 {color:var(--edition-body);}
 .con1-letter {display:none;}
 .con2 {background:var(--edition-pearl);color:var(--edition-ink);padding:140px 8% 150px;}
@@ -84,7 +86,9 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .con3-copy h2 {font-size:5.6cqw;line-height:1;}
 .con3-body {gap:24px;}
 .con3-statement {font-size:clamp(17px,1.45vw,26px);font-weight:400;line-height:1.7;}
-.con3-statement strong {font-weight:600;}
+.con3-statement strong {font-weight:800;color:var(--edition-heading);}
+.con3-statement strong .bracket-reveal {position:relative;isolation:isolate;}
+.con3-statement strong .bracket-reveal::before {content:'';position:absolute;z-index:-1;left:-.12em;right:-.12em;bottom:.06em;height:.55em;border-radius:.12em;background:var(--edition-champagne);transform:rotate(-1deg);pointer-events:none;}
 .con3-description {font-size:clamp(14px,1.05vw,18px);line-height:1.9;color:var(--edition-body);}
 .con3-description span {white-space:normal;}
 .con3-photo-frame {border:1px solid var(--edition-line);border-radius:48% 48% 3px 3px;background:radial-gradient(ellipse at 25% 20%,#fff 0,transparent 60%),linear-gradient(130deg,#f5eee7,#eee4db 50%,#faf8f3);box-shadow:12px 14px 0 -1px var(--edition-paper),12px 14px 0 0 var(--edition-line);}
