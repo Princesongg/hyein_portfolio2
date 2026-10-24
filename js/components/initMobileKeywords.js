@@ -14,7 +14,7 @@ export default function initMobileKeywords(root) {
   frame=0;
   const view=scroller.getBoundingClientRect();
   const reading=mobile.matches&&readingSections.some(section=>{const area=section.getBoundingClientRect();return area.bottom>view.top&&area.top<view.bottom;});
-  if(mobile.matches&&role&&role.dataset.horizontal!=='true'){
+  if(mobile.matches&&role&&role.dataset.horizontal!=='true'&&!role.hasAttribute('data-native-mobile')){
    const clearance=parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0;
    const panels=[...role.querySelector('.role-story-track').children];
    const index=panels.reduce((selected,panel,i)=>panel.getBoundingClientRect().top<=view.top+clearance+60?i:selected,0);

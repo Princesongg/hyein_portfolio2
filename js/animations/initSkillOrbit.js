@@ -3,7 +3,7 @@ export default function initSkillOrbit(section) {
  const stage = section.querySelector('.skill-stage');
  const orbit = section.querySelector('.skill-orbit');
  const icons = [...orbit.children];
- const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+ const media = window.matchMedia('(prefers-reduced-motion: reduce), (max-width:700px)');
  let frame = 0;
  const clamp = value => Math.max(0,Math.min(1,value));
  const update = () => {

@@ -91,12 +91,15 @@
  .memory-fan-heading {top:90px;}
 }
 /* Keep the personal note beside the desktop stack, below its opening title. */
-.memory-fan.has-inline-story .about-postcards-letter {position:absolute;left:8%;top:44%;z-index:2;width:24%;margin:0;padding:0;}
+@media(min-width:701px) {
+ .memory-fan.has-inline-story .memory-fan-heading {top:max(125px,22%);}
+}
+.memory-fan.has-inline-story .about-postcards-letter {position:absolute;left:8%;top:49%;z-index:2;width:24%;margin:0;padding:0;}
 .memory-fan.has-inline-story .about-postcards-letter-label {font-size:10px;margin-bottom:24px;letter-spacing:.18em;}
 .memory-fan.has-inline-story .about-postcards-letter-body {font-size:clamp(14px,1vw,16px);line-height:1.95;}
 .memory-fan.has-inline-story .about-postcards-letter-sign {flex-wrap:wrap;margin-top:24px;padding-top:14px;font-size:9px;letter-spacing:.10em;}
 @media(min-width:701px) and (max-height:700px) {
- .memory-fan.has-inline-story .about-postcards-letter {top:43%;}
+ .memory-fan.has-inline-story .about-postcards-letter {top:47%;}
  .memory-fan.has-inline-story .about-postcards-letter-label {margin-bottom:16px;}
  .memory-fan.has-inline-story .about-postcards-letter-body p {margin-bottom:14px;}
  .memory-fan.has-inline-story .about-postcards-letter-sign {margin-top:16px;}

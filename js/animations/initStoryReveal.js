@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 export default function initStoryReveal(ref) {
   const media = gsap.matchMedia();
-  media.add('(prefers-reduced-motion: no-preference)', () => {
+  media.add('(prefers-reduced-motion: no-preference) and (min-width:701px)', () => {
    const rows = [...ref.querySelectorAll('.team-story-row')];
    const animations = rows.map(row => gsap.fromTo(row.querySelectorAll('.team-story-copy,.team-story-visual'), {y:32,opacity:0}, {y:0,opacity:1,duration:.8,stagger:.1,ease:'power2.out',paused:true}));
    const observer = new IntersectionObserver(entries => entries.forEach(entry => {

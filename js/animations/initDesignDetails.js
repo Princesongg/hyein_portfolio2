@@ -12,6 +12,7 @@ export default function initDesignDetails(root) {
   let accumulated = 0;
   let lastWheel = 0;
   let touchY = 0;
+  let touchX = 0;
   const story = root.closest('.team-story');
   const scrollDriven = () => story?.dataset.horizontal === 'true';
   panels.forEach((panel, index) => {
@@ -85,6 +86,7 @@ export default function initDesignDetails(root) {
     if (index >= 0) select(index);
   };
   const onWheel = event => {
+    if (matchMedia('(max-width:700px)').matches) return;
     if (scrollDriven()) return;
     if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
     const direction = Math.sign(event.deltaY);
@@ -104,11 +106,12 @@ export default function initDesignDetails(root) {
     event.stopPropagation();
     select(event.key === 'Home' ? 0 : event.key === 'End' ? 2 : active + (['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1));
   };
-  const onTouchStart = event => { touchY = event.changedTouches[0].clientY; };
+  const onTouchStart = event => { touchY = event.changedTouches[0].clientY; touchX = event.changedTouches[0].clientX; };
   const onTouchEnd = event => {
     if (scrollDriven()) return;
-    const delta = touchY - event.changedTouches[0].clientY;
-    if (Math.abs(delta) > 45) show(active + Math.sign(delta));
+    const delta = touchX - event.changedTouches[0].clientX;
+    const vertical = touchY - event.changedTouches[0].clientY;
+    if (Math.abs(delta) > 45 && Math.abs(delta) > Math.abs(vertical) * 1.3) show(active + Math.sign(delta));
   };
   controls.addEventListener('click', onClick);
   root.addEventListener('wheel', onWheel, {passive:false});

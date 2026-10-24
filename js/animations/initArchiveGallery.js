@@ -6,6 +6,8 @@ export default function initArchiveGallery(section) {
  let index = 0;
  let timer;
  const update = () => {
+  if (matchMedia('(max-width:700px)').matches) stage.style.height = cards[index].offsetHeight + 'px';
+  else stage.style.removeProperty('height');
   count.textContent = `${String(index + 1).padStart(2,'0')} / ${String(cards.length).padStart(2,'0')}`;
   buttons[0].disabled = index === 0;
   buttons[1].disabled = index === cards.length - 1;
@@ -35,8 +37,16 @@ export default function initArchiveGallery(section) {
    update();
   },150);
  };
- const observer = new ResizeObserver(() => stage.scrollTo({left:index * stage.clientWidth,behavior:'instant'}));
+ let measuredWidth = 0;
+ const observer = new ResizeObserver(() => {
+  if (stage.clientWidth !== measuredWidth) {
+   measuredWidth = stage.clientWidth;
+   stage.scrollTo({left:index * stage.clientWidth,behavior:'instant'});
+  }
+  update();
+ });
  observer.observe(stage);
+ cards.forEach(card => observer.observe(card));
  section.addEventListener('click',onClick);
  stage.addEventListener('keydown',onKey);
  stage.addEventListener('scroll',onScroll,{passive:true});

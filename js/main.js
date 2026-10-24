@@ -1,3 +1,4 @@
+import initDetailSummaries from './components/initDetailSummaries.js';
 import initEditionHero from './animations/initEditionHero.js';
 import initLaptopPreview from './animations/initLaptopPreview.js';
 import initDocumentDialog from './components/work/initDocumentDialog.js';
@@ -11,6 +12,7 @@ import initWorkTyping from './animations/initWorkTyping.js';
 import initTeamBackground from './animations/initTeamBackground.js';
 import initPersonalBackground from './animations/initPersonalBackground.js';
 import initArchiveGallery from './animations/initArchiveGallery.js';
+import initMobileOverview from './components/initMobileOverview.js';
 import initSkillOrbit from './animations/initSkillOrbit.js';
 import initAboutIntro from './animations/about/initAboutIntro.js';
 import initAboutPostcards from './animations/about/initAboutPostcards.js';
@@ -51,6 +53,7 @@ const resizeObserver = new ResizeObserver(resizeHero);
 resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
+start(initDetailSummaries,root);
 start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
 root.querySelectorAll('.team-story-explore-mobile-scroll').forEach(preview=>{
@@ -100,6 +103,7 @@ start(initStoryReveal,reference('.team-story'));
 start(initTeamHorizontal,reference('.ux-process'),'ux-process');
 start(initPersonalStory,reference('.personal-projects'));
 start(initTeamHorizontal,reference('.short-form'),'short-form');
+start(initMobileOverview,root);
 start(initArchiveGallery,reference('.archive-gallery'));
 start(initSkillOrbit,reference('.skill-section'));
 start(initAboutIntro,reference('.about-intro'));
@@ -171,11 +175,12 @@ root.querySelectorAll('.project-controls button').forEach((button,index) => {
 function goToChapter(section,prefix,index) {
  const stage = section.querySelector('.'+prefix+'-stage');
  const behavior = reducedMotion() ? 'instant' : 'smooth';
- if(prefix==='role-story'&&matchMedia('(max-width:700px)').matches&&section.dataset.horizontal!=='true'){
-  const panel=section.querySelector('.role-story-track').children[index];
-  const offset=(parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0)+(parseFloat(getComputedStyle(panel).scrollMarginTop)||0);
-  scroller.scrollTo({top:scroller.scrollTop+panel.getBoundingClientRect().top-scroller.getBoundingClientRect().top-offset,behavior});
-  section.querySelectorAll('.role-story-chapters button').forEach((button,i)=>i===index?button.setAttribute('aria-current','step'):button.removeAttribute('aria-current'));
+ if(section.hasAttribute('data-native-mobile')){
+  const track=section.querySelector('.'+prefix+'-track');
+  const panel=track.children[index];
+  if (!panel) return;
+  track.scrollTo({left:index*track.clientWidth,behavior});
+  section.querySelectorAll('.'+prefix+'-chapters button').forEach((button,i)=>i===index?button.setAttribute('aria-current','step'):button.removeAttribute('aria-current'));
   return;
  }
  if (section.dataset.horizontal !== 'true') {
@@ -229,7 +234,7 @@ for (const prefix of ['team-story','role-story','ux-process','personal-projects'
  else buttons.forEach((button,index) => button.addEventListener('click',() => goToChapter(section,prefix,index)));
  const stage = section.querySelector('.'+prefix+'-stage');
  stage.addEventListener('scroll',() => {
-  if (section.dataset.horizontal === 'true') return;
+  if (section.dataset.horizontal === 'true' || section.hasAttribute('data-native-mobile')) return;
   const active = Math.round(stage.scrollLeft/stage.clientWidth);
   buttons.forEach((button,index) => {
    if (index === active) button.setAttribute('aria-current','step');

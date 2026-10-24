@@ -19,7 +19,7 @@ export default function initRoleStory(root) {
    const caption=extra.querySelector('.what-i-do-screen-caption');
    const move=(node,parent)=>{const marker=document.createComment('mobile role position');node.before(marker);parent.append(node);restore.push(()=>marker.replaceWith(node));};
    const labels=['01 메인','02 GALERIE','03 협업','04 화면 개선','05 모바일'];
-   const subtitles=['메인 페이지 UI 디자인','GALERIE 디자인과 구현','사이트 기획 및 디자인 방향 조율','서브페이지 디자인 참여 및 코드 개선','모바일 구매 화면과 상품 탐색'];
+   const subtitles=['메인 PC·모바일 UI 디자인','GALERIE 디자인·구현','4인 팀 조장 · 기획과 디자인 조율','서브페이지 UI 지원 · 코드 개선','모바일 구매 화면과 상품 탐색'];
    const panels=labels.map((label,index)=>{
     const panel=document.createElement('section');panel.className='what-i-do role-mobile-panel';
     panel.id=index===0?originalPanels[0].id:index===2?originalPanels[1].id:`mobile-role-${index+1}`;
@@ -39,6 +39,16 @@ export default function initRoleStory(root) {
    figures.slice(0,3).forEach(figure=>move(figure,desktopGallery));desktop.append(desktopGallery);panels[3].append(desktop);
    const phones=document.createElement('div');phones.className='what-i-do-extra role-mobile-phones';
    figures.slice(3).forEach(figure=>move(figure,phones));move(caption,phones);panels[4].append(phones);
+   const facts=[
+    ['브랜드 스토리를 전달하는 PC·모바일 UI 디자인','레이아웃 · 이미지 기반 3D 비주얼 제작','메인 페이지 레이아웃·스타일 직접 수정'],
+    ['이미지로 향을 탐색하는 PC·모바일 UI 디자인','GALERIE PC·모바일 웹 구현 및 개선','팀원과 의견을 조율하며 페이지 완성'],
+    ['브랜드·사용자 조사 기반 사이트 구조와 콘텐츠 공동 기획','4인 팀 조장 · 디자인 방향 조율 및 전체 화면 검토'],
+    ['서브페이지 UI 디자인 지원 · 팀원 작업 검토와 보완','메인·SHOP 등 레이아웃과 스타일 직접 수정'],
+   ];
+   panels.forEach((panel,index)=>panel.querySelectorAll('.what-i-do-role-info dd').forEach((dd,i)=>{
+    if(!facts[index]?.[i])return;
+    const original=dd.textContent;dd.textContent=facts[index][i];restore.push(()=>{dd.textContent=original;});
+   }));
    track.replaceChildren(...panels);
    nav.replaceChildren(...labels.map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;return button;}));
    root.setAttribute('data-mobile-role','');

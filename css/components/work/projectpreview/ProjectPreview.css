@@ -27,7 +27,8 @@
 .preview-site-circle::before {
  content:'';position:absolute;inset:0;z-index:-1;
  background:rgba(242,239,235,.6);
- backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+ /* Keep the masked surface free of backdrop filters: mobile compositing can
+    paint the filter's rectangular bounds instead of the paw silhouette. */
  mask:url('/assets/work/paw-cursor.png') center / 142.31% 148% no-repeat;
  -webkit-mask:url('/assets/work/paw-cursor.png') center / 142.31% 148% no-repeat;
 }

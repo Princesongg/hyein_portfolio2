@@ -82,3 +82,5 @@
 .con3-statement .bracket-edge:first-child {margin-right:.15em;}
 .con3-statement .bracket-edge:last-child {margin-left:.15em;}
 
+
+.con3-copy h2 .bracket-reveal {column-gap:.08em;}
