@@ -71,7 +71,7 @@
  .portfolio > .portfolio-header .portfolio-logo {font-size:14px;}
 }
 .mobile-menu-toggle {display:none;}
-@media(max-width:700px) {
+@media(max-width:900px) {
  html,body {height:100%;overflow:hidden;}
  .portfolio {position:fixed;inset:0;overflow:clip;--mobile-nav-top:max(14px,env(safe-area-inset-top));--mobile-nav-height:56px;--mobile-nav-gap:12px;--mobile-nav-clearance:calc(var(--mobile-nav-top) + var(--mobile-nav-height) + var(--mobile-nav-gap));}
  .portfolio-scroll {scroll-padding-top:var(--mobile-nav-clearance);}

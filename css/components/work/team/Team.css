@@ -1,14 +1,14 @@
 ﻿.team-detail {position:relative;background:var(--work-background,var(--frame-cream));color:var(--deep-pink-brown);padding:140px 5.2083% 120px;scroll-margin-top:90px;}
 .team-detail-layout {position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:7%;max-width:1760px;margin:auto;}
-.team-laptop {position:relative;display:block;min-width:0;aspect-ratio:1464/728;color:var(--frame-cream);text-decoration:none;}
-.team-laptop-screen {position:absolute;left:10.040984%;top:0;width:79.918033%;height:96.153846%;border:2px solid #b4b5b7;border-radius:clamp(10px,1.3vw,23px) clamp(10px,1.3vw,23px) 5px 5px;background:#111113;box-shadow:0 0 0 1px #77787a,inset 0 0 0 2px #29292b;overflow:hidden;}
+/* Portfolio device: matte champagne edges, a warm bezel and a quiet grounding shadow. */
+.team-laptop {--device-edge:#c6b9a7;--device-bezel:#44413e;position:relative;isolation:isolate;display:block;min-width:0;aspect-ratio:1464/728;color:var(--frame-cream);text-decoration:none;}
+.team-laptop::after {content:'';position:absolute;z-index:-1;pointer-events:none;left:7%;right:7%;bottom:-4%;height:8%;border-radius:50%;background:radial-gradient(ellipse,rgb(119 102 82 / .15),rgb(119 102 82 / .04) 48%,transparent 72%);filter:blur(clamp(3px,.6vw,9px));}
+.team-laptop-screen {position:absolute;left:10.040984%;top:0;width:79.918033%;height:96.153846%;border:2px solid var(--device-edge);border-radius:clamp(8px,1.1vw,18px) clamp(8px,1.1vw,18px) 4px 4px;background:var(--device-bezel);box-shadow:0 0 0 1px rgb(183 164 137 / .2),inset 0 1px 0 rgb(255 248 234 / .22),0 8px 20px -12px rgb(109 95 78 / .15);overflow:hidden;}
 .team-laptop-viewport {position:absolute;left:1.794872%;top:3.6%;width:96.410256%;height:91.5%;overflow:hidden;border-radius:3px;background:#f7f6f4;}
-.team-laptop-screen::before {content:'';position:absolute;z-index:1;top:1.15%;left:50%;width:4px;height:4px;transform:translateX(-50%);border-radius:50%;background:#192831;box-shadow:0 0 0 1px #070708;}
 /* The preview is captured at the device screen ratio; display the entire frame. */
 .team-laptop-preview {display:block;width:100%;height:100%;object-fit:fill;background:#f7f6f4;}
-.team-laptop-screen::after {content:'MacBook Pro';position:absolute;left:0;right:0;bottom:1.25%;text-align:center;color:#a5a5a8;font-family:Arial,sans-serif;font-size:clamp(5px,.5vw,9px);letter-spacing:.02em;pointer-events:none;}
-.team-laptop-base {position:absolute;left:0;top:96.153846%;width:100%;height:3.571429%;border-radius:2px 2px 45% 45% / 5% 5% 80% 80%;background:linear-gradient(90deg,#b5b6b8,#ededee 3%,#c8c9cb 17%,#e2e3e5 50%,#c8c9cb 83%,#ededee 97%,#b5b6b8);box-shadow:inset 0 1px 0 #f7f7f8,inset 0 -3px 3px #959699,0 5px 7px -5px rgb(0 0 0 / .35);}
-.team-laptop-base::before {content:'';position:absolute;left:43%;top:0;width:14%;height:40%;border-radius:0 0 7px 7px;background:linear-gradient(#9d9ea1,#c5c6c8);box-shadow:0 1px 0 rgb(255 255 255 / .7);}
+.team-laptop-base {position:absolute;left:3%;top:96.153846%;width:94%;height:3.571429%;border-radius:2px 2px 24% 24% / 10% 10% 65% 65%;background:linear-gradient(180deg,#e9e4dc,#d8d1c7 65%,#c9bfb1);box-shadow:inset 0 1px 0 #f6f1e9,inset 0 -1px 0 rgb(165 144 115 / .3),0 3px 6px -4px rgb(111 95 76 / .2);}
+.team-laptop-base::before {content:'';position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgb(181 160 130 / .45),transparent);}
 .team-detail-number {margin:0 0 20px;font-size:36px;font-weight:700;}
 .team-detail-number span {font-size:13px;font-weight:400;margin-left:10px;letter-spacing:.06em;}
 .team-detail-category {margin:0 0 24px;font-size:16px;line-height:1.5;word-break:keep-all;}

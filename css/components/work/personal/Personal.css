@@ -68,14 +68,10 @@
 #personal-06 .team-story-phone-screen {background:#fff;}
 #personal-06 .team-story-phone-screen::before {content:'';position:absolute;inset:0 0 auto;height:13%;background:#ed1d24;pointer-events:none;}
 #personal-06 .team-story-phone-status {filter:none;mix-blend-mode:screen;}
-.personal-hospital-mobile-preview {position:absolute;left:0;top:6%;display:block;width:100%;height:94%;object-fit:contain;}
 .personal-project-phone figcaption {color:#416194;letter-spacing:.08em;}
 .personal-projects-kicker {margin:0 0 18px;font-size:clamp(13px,1.05vw,20px);font-weight:700;}
 .personal-projects-kicker span {font-weight:300;}
 .personal-projects-copy h2 {margin:0 0 44px;font-size:clamp(34px,4vw,76px);line-height:1.08;font-weight:800;overflow-wrap:anywhere;}
-#personal-03 .personal-projects-copy {position:relative;}
-.personal-taeyang-object {position:absolute;top:calc(clamp(65px,5vw,100px) + 14px);right:16%;width:clamp(70px,8vw,145px);height:auto;opacity:.55;transform:rotate(35deg);pointer-events:none;}
-@media(max-width:800px) {.personal-taeyang-object {top:69px;right:0;width:64px;opacity:.55;}}
 .personal-projects-copy h2>span {display:block;margin-top:14px;font-size:clamp(16px,1.25vw,24px);line-height:1.4;font-weight:400;overflow-wrap:normal;}
 .personal-projects-info {display:grid;grid-template-columns:1fr 1fr;gap:30px;}
 .personal-projects-info h3 {display:table;margin:0 0 15px;padding-bottom:6px;border-bottom:2px solid currentColor;font-size:20px;font-weight:800;}
@@ -128,48 +124,6 @@
  .personal-start.personal-start--crystal h2 {font-size:clamp(48px,12vw,80px);}
  .personal-chapter-number {left:1.6em;right:auto;}
  .personal-start--crystal .personal-crystal-art {width:min(100%,440px);margin:0 -3% 0 0;}
-}
-@media(max-width:700px) {
- .personal-projects[data-mobile-personal] .personal-projects-chapters {top:82px;left:7%;right:7%;gap:14px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;}
- .personal-projects[data-mobile-personal] .personal-projects-chapters button {flex-shrink:0;font-size:11px;padding:0 0 8px;}
- .personal-projects[data-mobile-personal] .personal-mobile-panel {display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding:134px 7% 22px;box-sizing:border-box;}
- .personal-projects[data-mobile-personal] .personal-projects-copy {position:relative;}
- .personal-projects[data-mobile-personal] .personal-projects-kicker {margin:0 0 10px;font-size:11px;line-height:1.4;}
- .personal-projects[data-mobile-personal] .personal-projects-copy h2 {margin:0;font-size:30px;line-height:1;overflow-wrap:anywhere;}
- .personal-projects[data-mobile-personal] .personal-projects-copy h2>span {margin-top:6px;font-size:20px;line-height:1.2;}
- .personal-mobile-phase {display:block;margin-top:10px;font-size:11px;line-height:1.4;color:var(--edition-body);}
- .personal-projects[data-mobile-personal] .personal-projects-visual {flex:none;width:min(100%,340px);max-width:340px;height:clamp(125px,20svh,165px);margin:0 auto;padding:0 50px 16px 0;}
- .personal-projects[data-mobile-personal] .personal-projects-visual>a {height:100%;border-radius:5px;}
- .personal-projects[data-mobile-personal] .personal-shot-desktop {height:calc(100% - 22px);aspect-ratio:auto;}
- .personal-projects[data-mobile-personal] .personal-preview-caption {padding:5px 7px;font-size:8px;line-height:1.5;}
- .personal-projects[data-mobile-personal] .personal-project-phone {width:clamp(62px,18vw,78px);right:0;bottom:0;}
- .personal-projects[data-mobile-personal] .personal-project-phone figcaption {padding-top:4px;font-size:8px;line-height:1.3;}
- .personal-projects[data-mobile-personal] .personal-projects-info {display:grid;grid-template-columns:1fr;gap:16px;min-width:0;}
- .personal-projects[data-mobile-personal] .personal-projects-info h3 {margin:0 0 7px;padding-bottom:4px;border-bottom-width:1px;font-size:16px;line-height:1.4;font-weight:500;}
- .personal-projects[data-mobile-personal] .personal-projects-info p {font-size:14px;line-height:1.6;}
- .personal-projects[data-mobile-personal] .personal-projects-tasks {display:grid;gap:8px;margin-top:14px;font-size:14px;line-height:1.6;}
- .personal-projects[data-mobile-personal] .personal-projects-link {align-self:flex-start;margin-top:4px;padding:9px 16px;font-size:14px;line-height:1.4;}
- .personal-projects[data-mobile-personal][data-horizontal='true'] .personal-mobile-panel {overflow-x:hidden;overflow-y:auto;scrollbar-width:none;}
- .personal-projects[data-mobile-personal][data-horizontal='true'] .personal-mobile-panel[data-mobile-fit] {overflow:clip;}
- .personal-projects[data-mobile-personal] .personal-projects-chapters::-webkit-scrollbar,.personal-projects[data-mobile-personal] .personal-mobile-panel::-webkit-scrollbar {display:none;}
-}
-@media(max-width:700px) {
- .personal-projects[data-mobile-personal] .personal-mobile-panel {gap:16px;padding-top:122px;padding-bottom:16px;}
- .personal-projects[data-mobile-personal] .personal-mobile-panel>header,
- .personal-projects[data-mobile-personal] .personal-mobile-panel>.personal-projects-info,
- .personal-projects[data-mobile-personal] .personal-mobile-panel>.personal-projects-link {flex:none;}
- .personal-projects[data-mobile-personal] .personal-projects-kicker {margin-bottom:6px;}
- .personal-projects[data-mobile-personal] .personal-projects-copy h2 {font-size:26px;}
- .personal-projects[data-mobile-personal] .personal-projects-copy h2>span {margin-top:4px;font-size:18px;}
- .personal-projects[data-mobile-personal] .personal-projects-visual {height:clamp(140px,19svh,180px);padding-right:48px;padding-bottom:12px;}
- .personal-projects[data-mobile-personal] .personal-project-phone {width:clamp(60px,17vw,76px);}
- .personal-projects[data-mobile-personal] .personal-projects-info {gap:16px;}
- .personal-projects[data-mobile-personal] .personal-projects-info h3 {margin-bottom:6px;padding-bottom:3px;}
- .personal-projects[data-mobile-personal] .personal-projects-info p {line-height:1.65;}
- .personal-projects[data-mobile-personal] .personal-projects-link {margin-top:0;padding:7px 15px;}
-}
-@media(max-width:700px) {
- .personal-projects[data-mobile-personal] .personal-projects-track {touch-action:pinch-zoom;}
 }
 @media(min-width:701px) {
  .personal-projects .personal-projects-chapters {top:auto;bottom:26px;left:50%;right:auto;transform:translateX(-50%);}

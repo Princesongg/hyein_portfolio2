@@ -43,10 +43,6 @@
  .ux-process[data-native-mobile] .ux-process-tags {gap:6px;margin-top:12px;}
  .ux-process[data-native-mobile] .ux-process-tags>span {font-size:9px;padding:5px 8px;}
  .ux-process[data-native-mobile] :is(.ux-process-material,.ux-process-collage) {max-width:310px;justify-self:center;width:100%;}
- .personal-projects[data-mobile-personal] .personal-projects-info {gap:10px;}
- .personal-projects[data-mobile-personal] .personal-projects-info h3 {font-size:14px;margin-bottom:10px;}
- .personal-projects[data-mobile-personal] .personal-projects-info p {font-size:13px;line-height:1.5;}
- .personal-projects[data-mobile-personal] .personal-projects-visual {height:clamp(125px,18svh,155px);}
  .short-form[data-native-mobile] .short-form-copy {order:-1;}
  .short-form[data-native-mobile] .short-form-copy h2 {font-size:28px;line-height:1.1;}
  .short-form[data-native-mobile] .short-form-subtitle {margin:10px 0 14px!important;font-size:18px!important;line-height:1.4;}
@@ -62,7 +58,9 @@
  .mobile-card-detail .short-form-details :is(dt,dd) {font-size:13px;line-height:1.5;}
  .archive-gallery .archive-gallery-card {gap:14px;height:auto;overflow:visible;}
  .archive-gallery .archive-gallery-stage {height:auto;align-items:flex-start;}
- .archive-gallery .archive-artwork {height:clamp(160px,24svh,205px);}
+ .archive-gallery .archive-artwork {display:flex;align-items:flex-end;gap:8px;width:fit-content;max-width:100%;height:clamp(160px,24svh,205px);padding:0 8px 16px 0;}
+ .archive-gallery .archive-artwork .archive-artwork-main {flex:0 1 auto;min-width:0;width:auto;max-width:100%;height:100%;}
+ .archive-gallery .archive-artwork .archive-award-preview {position:relative;flex:none;right:auto;bottom:-12px;width:60px;max-width:65px;margin-left:-12px;}
  .archive-gallery .archive-gallery-copy h3 {font-size:26px;}
  .archive-gallery .archive-gallery-award {margin-bottom:12px;font-size:13px;}
  .archive-gallery .archive-gallery-info {gap:12px;}
@@ -78,7 +76,7 @@
  .archive-gallery .archive-textile-gallery {display:flex;gap:0;padding:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;align-items:flex-start;}
  .archive-gallery .archive-textile-group {flex:0 0 100%;scroll-snap-align:start;}
  .archive-gallery .archive-textile-group .archive-textile-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
- .archive-gallery .archive-textile-item img {height:90px;aspect-ratio:auto;object-fit:contain;}
+ .archive-gallery .archive-textile-item img {align-self:flex-start;width:auto;max-width:100%;height:auto;max-height:90px;aspect-ratio:auto;object-fit:contain;}
  .archive-gallery .archive-textile-item figcaption {font-size:10px;line-height:1.4;}
  .archive-gallery .archive-textile-group-title {font-size:10px;margin-bottom:8px;}
  .mobile-textile-tabs {display:flex;gap:14px;margin-bottom:12px;}
@@ -147,7 +145,6 @@
  .contact-ready-layout {padding:104px 8% 36px;gap:24px;}
  .contact-ready h2 {font-size:32px;}
  .contact-ready p {font-size:14px;margin-top:14px;}
- .contact-ready-photos {width:180px;}
  .quick-qa {padding:104px 8% 36px;}
  .quick-qa h2 {font-size:32px;margin-bottom:22px;}
  .quick-qa-item summary {min-height:58px;padding:15px 0;font-size:14px;line-height:1.5;}
@@ -168,11 +165,6 @@
  .ux-process[data-native-mobile] :is(.ux-process-material,.ux-process-collage) {max-width:250px;}
  .ux-process[data-native-mobile] .ux-process-description {font-size:13px;line-height:1.5;}
  .ux-process[data-native-mobile] .ux-process-copy>h2 {font-size:25px;margin-bottom:10px;}
- .personal-projects[data-mobile-personal] .personal-projects-info {gap:8px;}
- .personal-projects[data-mobile-personal] .personal-projects-info p {font-size:12px;line-height:1.45;}
- .personal-projects[data-mobile-personal] .personal-projects-visual {height:110px;}
- .personal-projects[data-mobile-personal] .personal-projects-copy h2 {font-size:23px;}
- .personal-projects[data-mobile-personal] .personal-projects-copy h2>span {font-size:16px;}
  .con2 .con2-card {padding:10px 0;}
  .con2 .con2-card-heading h3 {font-size:24px;}
  .con2 .con2-title {font-size:25px;}

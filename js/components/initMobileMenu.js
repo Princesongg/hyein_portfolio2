@@ -2,7 +2,7 @@ export default function initMobileMenu(root) {
  const header=root.querySelector('.portfolio-header');
  const toggle=header.querySelector('.mobile-menu-toggle');
  const scroller=root.querySelector('.portfolio-scroll');
- const mobile=matchMedia('(max-width:700px)');
+ const mobile=matchMedia('(max-width:900px)');
  let open=false;
  let previousOverflow='';
  let previousInert=false;

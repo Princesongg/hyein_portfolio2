@@ -20,3 +20,40 @@
 .contact-link[href]:hover {text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;}
 .contact-link:focus-visible {outline:2px solid currentColor;outline-offset:8px;border-radius:2px;}
 @media(max-width:380px) {.contact {padding-inline:24px;}.contact-heading {width:260px;}.contact-heading h2 {font-size:52px;}.contact-link {font-size:20px;}}
+
+/* Quiet return paths around the existing contact information. */
+.contact-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,475px) minmax(0,1fr);grid-template-areas:'team info personal';align-items:center;gap:clamp(24px,3.5vw,64px);width:100%;max-width:1440px;margin:auto;}
+.contact-layout>.contact-ending {grid-area:info;min-width:0;}
+.contact-project-card {
+ position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;
+ width:100%;max-width:300px;min-height:168px;padding:26px 24px;justify-self:center;
+ border:1px solid rgba(170,146,122,.34);border-radius:16px;
+ background:rgba(252,250,247,.56);
+ box-shadow:0 4px 16px rgba(121,104,88,.025);color:var(--edition-ink,#796858);text-decoration:none;text-align:left;
+ transition:transform .25s ease,border-color .25s ease;
+}
+.contact-project-card--team {grid-area:team;}
+.contact-project-card--personal {grid-area:personal;}
+.contact-card-label {font-family:var(--font-base);font-size:10px;line-height:1.5;letter-spacing:.15em;}
+.contact-card-title {font-family:var(--edition-serif);font-size:clamp(24px,1.65vw,32px);font-weight:400;line-height:1.25;letter-spacing:-.025em;}
+.contact-card-title em {font-weight:400;font-style:italic;}
+.contact-card-description {max-width:19em;font-family:var(--font-base);font-size:12px;line-height:1.7;color:var(--edition-muted,#7d6957);word-break:keep-all;}
+.contact-card-arrow {position:absolute;right:22px;bottom:22px;font-size:18px;line-height:1;opacity:.7;}
+.contact-project-card:focus-visible {outline:2px solid var(--edition-ink,#796858);outline-offset:6px;}
+@media(hover:hover) {
+ .contact-project-card:hover {transform:translateY(-3px);border-color:rgba(121,104,88,.55);}
+}
+@media(max-width:1100px) and (min-width:701px) {
+ .contact-layout {max-width:740px;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:'info info' 'team personal';gap:36px 24px;}
+ .contact-layout>.contact-ending {justify-self:center;}
+ .contact-project-card {max-width:none;min-height:152px;}
+ .contact-card-title {font-size:28px;}
+}
+@media(max-width:700px) {
+ .contact:has(.contact-layout) {padding:100px 7% 80px;}
+ .contact-layout {grid-template-columns:minmax(0,1fr);grid-template-areas:'info' 'team' 'personal';gap:24px;}
+ .contact-layout>.contact-ending {margin-bottom:24px;}
+ .contact-project-card {width:min(100%,340px);max-width:340px;min-height:148px;padding:24px;gap:10px;}
+ .contact-card-title {font-size:30px;}
+}
+@media(prefers-reduced-motion:reduce) {.contact-project-card {transition:none;}}

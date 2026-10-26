@@ -1,4 +1,5 @@
 import initDetailSummaries from './components/initDetailSummaries.js';
+import initViewportLayout from './components/initViewportLayout.js';
 import initEditionHero from './animations/initEditionHero.js';
 import initLaptopPreview from './animations/initLaptopPreview.js';
 import initDocumentDialog from './components/work/initDocumentDialog.js';
@@ -8,6 +9,7 @@ import initHeaderColor from './animations/initHeaderColor.js';
 import initMobileMenu from './components/initMobileMenu.js';
 import initCon1Typing from './animations/initCon1Typing.js';
 import initReadyTyping from './animations/initReadyTyping.js';
+import initReadyApproach from './components/contact/initReadyApproach.js';
 import initWorkTyping from './animations/initWorkTyping.js';
 import initTeamBackground from './animations/initTeamBackground.js';
 import initPersonalBackground from './animations/initPersonalBackground.js';
@@ -53,9 +55,10 @@ const resizeObserver = new ResizeObserver(resizeHero);
 resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
+start(initViewportLayout,root);
 start(initDetailSummaries,root);
 start(initEditionHero,root);
-root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video,.personal-hospital-mobile-preview').forEach(video=>start(initLaptopPreview,video));
+root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video').forEach(video=>start(initLaptopPreview,video));
 root.querySelectorAll('.team-story-explore-mobile-scroll').forEach(preview=>{
  let visible=false;
  const update=()=>preview.toggleAttribute('data-playing',visible&&!document.hidden);
@@ -76,6 +79,7 @@ start(initHeaderColor,root);
 start(initMobileMenu,root);
 start(initCon1Typing,reference('.con1-copy'));
 start(initReadyTyping,reference('.contact-ready'));
+start(initReadyApproach,reference('.ready-approach'));
 start(initKeywordCards,reference('.con2'));
 start(initMobileKeywords,root);
 start(initKeywordStack,reference('.keywords-about-stack'));
@@ -174,12 +178,17 @@ root.querySelectorAll('.project-controls button').forEach((button,index) => {
 
 function goToChapter(section,prefix,index) {
  const stage = section.querySelector('.'+prefix+'-stage');
- const behavior = reducedMotion() ? 'instant' : 'smooth';
+ const bounds=section.getBoundingClientRect(),viewport=scroller.getBoundingClientRect();
+ const inSection=bounds.top<viewport.bottom&&bounds.bottom>viewport.top;
+ // Cross-section jumps must not animate through, and remeasure, every sticky story.
+ const behavior = reducedMotion()||!inSection ? 'instant' : 'smooth';
  if(section.hasAttribute('data-native-mobile')){
   const track=section.querySelector('.'+prefix+'-track');
   const panel=track.children[index];
   if (!panel) return;
   track.scrollTo({left:index*track.clientWidth,behavior});
+  const clearance=parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0;
+  scroller.scrollTo({top:scroller.scrollTop+section.getBoundingClientRect().top-scroller.getBoundingClientRect().top-clearance,behavior});
   section.querySelectorAll('.'+prefix+'-chapters button').forEach((button,i)=>i===index?button.setAttribute('aria-current','step'):button.removeAttribute('aria-current'));
   return;
  }
@@ -187,6 +196,12 @@ function goToChapter(section,prefix,index) {
   stage.scrollTo({left:index*stage.clientWidth,behavior});
  } else {
   const top = scroller.scrollTop+section.getBoundingClientRect().top-scroller.getBoundingClientRect().top;
+  if(section.hasAttribute('data-content-scroll')){
+   const panel=section.querySelector('.'+prefix+'-track').children[index];
+   const clearance=parseFloat(getComputedStyle(root).getPropertyValue('--header-clearance'))||0;
+   scroller.scrollTo({top:top-clearance+Number(panel.dataset.chapterOffset),behavior});
+   return;
+  }
   const hold = parseFloat(section.style.getPropertyValue('--story-hold')) || 0;
   const overflow = parseFloat(section.style.getPropertyValue('--story-overflow')) || 0;
   const detailsDistance = parseFloat(section.style.getPropertyValue('--details-distance')) || 0;
@@ -195,6 +210,20 @@ function goToChapter(section,prefix,index) {
  }
 }
 root.addEventListener('click',event => {
+ const contactCard=event.target.closest('.contact-project-card');
+ if(contactCard&&!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey&&event.button===0){
+  const target=reference(contactCard.getAttribute('href'));
+  if(!target)return;
+  event.preventDefault();
+  const align=()=>{
+   const clearance=parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0;
+   scroller.scrollTo({top:scroller.scrollTop+target.getBoundingClientRect().top-scroller.getBoundingClientRect().top-clearance,behavior:'instant'});
+  };
+  align();
+  requestAnimationFrame(()=>requestAnimationFrame(align));
+  history.replaceState(null,'',contactCard.hash);
+  return;
+ }
  const link = event.target.closest('.project-detail-link');
  if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
  const target = reference(link.getAttribute('href'));
@@ -204,7 +233,7 @@ root.addEventListener('click',event => {
   // Jump across the sticky horizontal chapters without animating through them.
   // Re-read the destination after their scroll-driven layout has updated.
   const alignVideoIntro = () => {
-   const top = scroller.scrollTop + target.getBoundingClientRect().top - scroller.getBoundingClientRect().top - 90;
+   const top = scroller.scrollTop + target.getBoundingClientRect().top - scroller.getBoundingClientRect().top - (parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0);
    scroller.scrollTo({top,behavior:'instant'});
   };
   alignVideoIntro();
@@ -220,7 +249,7 @@ root.addEventListener('click',event => {
   }
   goToChapter(personal,'personal-projects',panels.indexOf(target));
  } else {
-  const top = scroller.scrollTop + target.getBoundingClientRect().top - scroller.getBoundingClientRect().top - 90;
+  const top = scroller.scrollTop + target.getBoundingClientRect().top - scroller.getBoundingClientRect().top - (parseFloat(getComputedStyle(scroller).scrollPaddingTop)||0);
   scroller.scrollTo({top,behavior:reducedMotion() ? 'instant' : 'smooth'});
  }
 });
