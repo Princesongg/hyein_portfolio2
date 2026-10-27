@@ -132,7 +132,14 @@ start(initPersonalBackground,reference('.archive-start'),{
 const shortFormVideos = [...root.querySelectorAll('.short-form-visual video')];
 const shortFormVideoVisibility = new IntersectionObserver(entries => {
  entries.forEach(({target:video,isIntersecting}) => {
-  if (isIntersecting) video.play().catch(() => {});
+  if (isIntersecting) {
+   const source = video.querySelector('source[data-src]');
+   if (source && !source.hasAttribute('src')) {
+    source.src = source.dataset.src;
+    video.load();
+   }
+   video.play().catch(() => {});
+  }
   else video.pause();
  });
 },{root:scroller,threshold:.5});
