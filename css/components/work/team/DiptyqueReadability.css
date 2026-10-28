@@ -37,7 +37,8 @@
 .diptyque-readable.team-story .team-story-description {max-width:34em;font-size:18px;font-weight:400;line-height:1.75;color:var(--diptyque-copy);overflow-wrap:break-word;word-break:keep-all;}
 .diptyque-readable.team-story .team-story-description+.team-story-description {margin-top:18px;}
 .diptyque-readable.team-story .team-story-index {font-size:14px;line-height:1.5;color:var(--diptyque-label);}
-.diptyque-readable.team-story .team-story-tags :is(span,a) {font-size:13px;line-height:1.45;color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-tags :is(span,a) {color:var(--diptyque-label);}
+.diptyque-readable.team-story .team-story-tags>:is(span,a:not(.team-detail-link)) {font-size:13px;line-height:1.45;}
 .diptyque-readable.team-story .team-story-chapters button {font-size:13px;line-height:1.5;color:var(--diptyque-label);opacity:.8;}
 .diptyque-readable.team-story .team-story-chapters button[aria-current='step'] {opacity:1;}
 .diptyque-readable.team-story .team-story-footer {font-size:13px;color:var(--diptyque-label);}

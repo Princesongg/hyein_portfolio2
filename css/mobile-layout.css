@@ -10,7 +10,7 @@
  .team-detail-copy h2 {width:62%;margin-bottom:16px;font-size:clamp(28px,7.5vw,40px);line-height:1;}
  .team-detail-copy h2>span {margin-top:8px;font-size:.55em;line-height:1.2;}
  .team-detail-actions {gap:10px;margin-bottom:16px;}
- .team-detail-actions .team-detail-link {min-height:40px;padding:8px 16px;font-size:12px;}
+ .team-detail-link {min-height:40px;padding:8px 16px;font-size:12px;}
  .team-detail-info-row {gap:6px;padding:12px 0;}
  .team-detail-info-row:first-child {grid-template-columns:80px minmax(0,1fr);align-items:center;gap:12px;}
  .team-detail-info dt {font-size:14px;line-height:1.4;}
@@ -83,7 +83,7 @@
  .team-story[data-native-mobile] .team-story-description {font-size:14px!important;line-height:1.8!important;}
  .team-story[data-native-mobile] .team-story-description+.team-story-description {margin-top:8px;}
  .team-story[data-native-mobile] .team-story-tags {margin-top:16px;gap:8px;}
- .team-story[data-native-mobile] .team-story-tags :is(span,a) {font-size:10px;padding:4px 8px;}
+ .team-story[data-native-mobile] .team-story-tags>:is(span,a:not(.team-detail-link)) {font-size:10px;padding:4px 8px;}
  .team-story[data-native-mobile] .team-story-visual {max-width:270px;}
  .team-story[data-native-mobile] .team-story-brand-collage {padding:35px 16px 24px 0;}
  .team-story[data-native-mobile] .team-story-brand-tag {top:0;font-size:9px;}
