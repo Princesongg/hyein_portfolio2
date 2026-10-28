@@ -31,7 +31,7 @@ export default function initDesignDetails(root) {
       const back = document.createElement('figure');
       back.className = 'details-back-photo';
       const backImage = document.createElement('img');
-      backImage.src = '/assets/work/diptyque-3d-back.png';
+      backImage.src = '/assets/work/diptyque-3d-back.webp';
       backImage.alt = '오르페옹 3D 비주얼 뒷면 전체 화면';
       backImage.width = 2533;
       backImage.height = 1337;

@@ -59,7 +59,7 @@ start(initViewportLayout,root);
 start(initDetailSummaries,root);
 start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video').forEach(video=>start(initLaptopPreview,video));
-root.querySelectorAll('.team-story-explore-mobile-scroll').forEach(preview=>{
+root.querySelectorAll('.team-story-explore-mobile-scroll,.personal-shot-scroll').forEach(preview=>{
  let visible=false;
  const update=()=>preview.toggleAttribute('data-playing',visible&&!document.hidden);
  const observer=new IntersectionObserver(entries=>{visible=entries.some(entry=>entry.isIntersecting);update();},{root:scroller,threshold:.15});
@@ -130,6 +130,11 @@ start(initPersonalBackground,reference('.archive-start'),{
  },
 });
 const shortFormVideos = [...root.querySelectorAll('.short-form-visual video')];
+const visibleShortFormVideos = new Set();
+const updateShortFormPlayback = () => shortFormVideos.forEach(video => {
+ if (visibleShortFormVideos.has(video) && !document.hidden) video.play().catch(() => {});
+ else video.pause();
+});
 const shortFormVideoVisibility = new IntersectionObserver(entries => {
  entries.forEach(({target:video,isIntersecting}) => {
   if (isIntersecting) {
@@ -138,14 +143,18 @@ const shortFormVideoVisibility = new IntersectionObserver(entries => {
     source.src = source.dataset.src;
     video.load();
    }
-   video.play().catch(() => {});
+   visibleShortFormVideos.add(video);
   }
-  else video.pause();
+  else visibleShortFormVideos.delete(video);
  });
+ updateShortFormPlayback();
 },{root:scroller,threshold:.5});
 shortFormVideos.forEach(video => shortFormVideoVisibility.observe(video));
+document.addEventListener('visibilitychange', updateShortFormPlayback);
 cleanups.push(() => {
  shortFormVideoVisibility.disconnect();
+ document.removeEventListener('visibilitychange', updateShortFormPlayback);
+ visibleShortFormVideos.clear();
  shortFormVideos.forEach(video => video.pause());
 });
 
@@ -325,7 +334,7 @@ cleanups.push(documentDialog.destroy);
 root.querySelector('.ux-lean-open').addEventListener('click',() => openDocument(leanCanvas));
 root.querySelector('.archive-award-preview').addEventListener('click',() => openDocument({
  label:'LIVELY SUMMER · 한영 텍스타일 디자인 공모전 특선 상장',
- image:'/assets/archive/lively-summer-award.png',
+ image:'/assets/archive/lively-summer-award.webp',
 }));
 const planningPreview = root.querySelector('.ux-planning-preview');
 const previewVisibility = new IntersectionObserver(entries => {

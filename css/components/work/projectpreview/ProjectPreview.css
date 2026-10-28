@@ -29,8 +29,8 @@
  background:rgba(242,239,235,.6);
  /* Keep the masked surface free of backdrop filters: mobile compositing can
     paint the filter's rectangular bounds instead of the paw silhouette. */
- mask:url('/assets/work/paw-cursor.png') center / 142.31% 148% no-repeat;
- -webkit-mask:url('/assets/work/paw-cursor.png') center / 142.31% 148% no-repeat;
+ mask:url('/assets/work/paw-cursor.webp') center / 142.31% 148% no-repeat;
+ -webkit-mask:url('/assets/work/paw-cursor.webp') center / 142.31% 148% no-repeat;
 }
 
 

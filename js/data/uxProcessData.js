@@ -1,20 +1,20 @@
 const document = (id, label, title, columns) => ({id, label, title, columns, image:null});
 const brandAudit = {
  ...document('brand','자사 분석','Brand audit',['브랜드 이미지','콘텐츠 구성','탐색 구조','개선 방향']),
- image:'/assets/work/ux/planning/brand-audit.jpg',
+ image:'/assets/work/ux/planning/brand-audit.webp',
  description:'기존 딥티크 판매 채널의 콘텐츠·UI·비주얼·탐색 구조를 분석했습니다. 상품 중심의 구성에서 브랜드 스토리와 향의 감성이 충분히 전달되지 않는 점을 파악하고, 이를 보완하기 위한 개선 방향을 도출했습니다.',
  originalImage:{
-  src:'/assets/work/ux/planning/brand-audit.jpg',
+  src:'/assets/work/ux/planning/brand-audit.webp',
   width:1920,height:1080,
   alt:'팀원들과 함께 진행한 딥티크 자사분석 원본: Contents, UI, Visual, Marketing, Theme & Message, Support 항목별 평가와 상세 설명',
  },
 };
 const competitorResearch = {
  id:'competitors',label:'경쟁사 분석',title:'Competitor analysis',
- image:'/assets/work/ux/planning/competitor-research.jpg',
+ image:'/assets/work/ux/planning/competitor-research.webp',
  description:'조 말론, 르 라보, 바이레도의 웹사이트를 비교하며 브랜드별 콘텐츠 구성, 시각적 표현 방식, 제품 탐색 구조를 분석했습니다. 각 브랜드의 강점과 개선점을 살펴보고, 이를 바탕으로 딥티크만의 차별화된 브랜드 경험을 위한 디자인 방향을 도출했습니다.',
  originalImage:{
-  src:'/assets/work/ux/planning/competitor-research.jpg',
+  src:'/assets/work/ux/planning/competitor-research.webp',
   width:2067,height:1653,
   alt:'팀원들과 함께 진행한 경쟁사 리서치 원본: 조말론, 르라보, 바이레도의 화면 구성과 콘텐츠, 탐색 및 프로모션 비교 분석',
  },
@@ -40,44 +40,44 @@ const threeCAnalysis = {
  },
 };
 export const leanCanvases = [
- {id:'lean-01',label:'린캔버스 · PROBLEM 01',title:'Lean Product Canvas · Problem 01',image:'/assets/work/ux/lean-problem-01.jpg'},
- {id:'lean',label:'린캔버스 · PROBLEM 02 · PRIMARY PERSONA',title:'Lean Product Canvas · Problem 02',image:'/assets/work/ux/lean-problem-02.jpg'},
- {id:'lean-03',label:'린캔버스 · PROBLEM 03',title:'Lean Product Canvas · Problem 03',image:'/assets/work/ux/lean-problem-03.jpg'},
+ {id:'lean-01',label:'린캔버스 · PROBLEM 01',title:'Lean Product Canvas · Problem 01',image:'/assets/work/ux/lean-problem-01.webp'},
+ {id:'lean',label:'린캔버스 · PROBLEM 02 · PRIMARY PERSONA',title:'Lean Product Canvas · Problem 02',image:'/assets/work/ux/lean-problem-02.webp'},
+ {id:'lean-03',label:'린캔버스 · PROBLEM 03',title:'Lean Product Canvas · Problem 03',image:'/assets/work/ux/lean-problem-03.webp'},
 ].map(material=>({...material,originalImage:{
  src:material.image,width:2200,height:1650,
  alt:material.label+' 팀 프로젝트 기획 원본 자료',
 }}));
 export const leanCanvas = leanCanvases[1];
 export const personas = [
- {id:'persona-01',label:'퍼소나 01 · 기존 고객형',title:'Persona 01',image:'/assets/work/ux/planning/persona-01.jpg'},
- {id:'persona',label:'퍼소나 · PERSONA 02 · PRIMARY PERSONA',title:'Primary persona',image:'/assets/work/ux/planning/persona-02.jpg'},
- {id:'persona-03',label:'퍼소나 03 · 향 탐색의 어려움',title:'Persona 03',image:'/assets/work/ux/planning/persona-03.jpg'},
+ {id:'persona-01',label:'퍼소나 01 · 기존 고객형',title:'Persona 01',image:'/assets/work/ux/planning/persona-01.webp'},
+ {id:'persona',label:'퍼소나 · PERSONA 02 · PRIMARY PERSONA',title:'Primary persona',image:'/assets/work/ux/planning/persona-02.webp'},
+ {id:'persona-03',label:'퍼소나 03 · 향 탐색의 어려움',title:'Persona 03',image:'/assets/work/ux/planning/persona-03.webp'},
 ].map(material=>({...material,originalImage:{
  src:material.image,width:1600,height:1000,
  alt:material.label+' 팀 프로젝트 사용자 특성과 목표, 불편한 점 및 니즈 정리 원본',
 }}));
 export const journeyMaps = [
- {id:'journey-01',label:'저니맵 01 · 기존 고객형',title:'User journey 01',image:'/assets/work/ux/planning/journey-01.jpg'},
- {id:'journey',label:'저니맵 · JOURNEY 02 · PRIMARY PERSONA',title:'User journey 02',image:'/assets/work/ux/planning/journey-02.png'},
- {id:'journey-03',label:'저니맵 03 · 향 탐색',title:'User journey 03',image:'/assets/work/ux/planning/journey-03.jpg'},
+ {id:'journey-01',label:'저니맵 01 · 기존 고객형',title:'User journey 01',image:'/assets/work/ux/planning/journey-01.webp'},
+ {id:'journey',label:'저니맵 · JOURNEY 02 · PRIMARY PERSONA',title:'User journey 02',image:'/assets/work/ux/planning/journey-02.webp'},
+ {id:'journey-03',label:'저니맵 03 · 향 탐색',title:'User journey 03',image:'/assets/work/ux/planning/journey-03.webp'},
 ].map(material=>({...material,originalImage:{
  src:material.image,width:1920,height:1080,
  alt:material.label+' 팀 프로젝트 사용자 행동, 감정, 불편한 점 및 해결 방향 정리 원본',
 }}));
 const moodboard = {
  id:'mood',label:'무드보드',title:'Moodboard',
- image:'/assets/work/ux/planning/moodboard.png',
+ image:'/assets/work/ux/planning/moodboard.webp',
  originalImage:{
-  src:'/assets/work/ux/planning/moodboard.png',
+  src:'/assets/work/ux/planning/moodboard.webp',
   width:1920,height:1300,
   alt:'딥티크 팀 프로젝트 디자인 무드보드 원본: 향과 장면, 이야기를 담은 드로잉, 종이 콜라주, 식물과 빈티지 질감',
  },
 };
 const designMindmap = {
  id:'mindmap',label:'디자인 마인드맵',title:'Design mindmap',
- image:'/assets/work/ux/planning/design-mindmap.png',
+ image:'/assets/work/ux/planning/design-mindmap.webp',
  originalImage:{
-  src:'/assets/work/ux/planning/design-mindmap.png',
+  src:'/assets/work/ux/planning/design-mindmap.webp',
   width:1920,height:1080,
   alt:'딥티크 팀 프로젝트 디자인 마인드맵 원본: 자연, 향수, 파리, 기억, 여행, 예술과 창립자를 중심으로 확장한 브랜드 이미지와 이야기 키워드',
  },
@@ -93,9 +93,9 @@ const designSystem = {
 };
 const wireframe = {
  id:'wireframe',label:'와이어프레임',title:'Wireframe',
- image:'/assets/work/ux/planning/wireframe.png',
+ image:'/assets/work/ux/planning/wireframe.webp',
  originalImage:{
-  src:'/assets/work/ux/planning/wireframe.png',
+  src:'/assets/work/ux/planning/wireframe.webp',
   width:1920,height:1080,
   alt:'딥티크 팀 프로젝트 와이어프레임 원본: 정보 구조를 바탕으로 정리한 주요 화면의 흐름과 레이아웃',
  },
@@ -116,17 +116,17 @@ const presentationPages = [
 const presentation = {...presentationPages[0],id:'presentation',label:'장표',title:'Presentation',pages:presentationPages};
 const menuTree = {
  id:'menu',label:'메뉴트리',title:'Information architecture',
- image:'/assets/work/ux/planning/menu-tree.jpg',
+ image:'/assets/work/ux/planning/menu-tree.webp',
  originalImage:{
-  src:'/assets/work/ux/planning/menu-tree.jpg',width:4545,height:3849,
+  src:'/assets/work/ux/planning/menu-tree.webp',width:4545,height:3849,
   alt:'딥티크 메뉴트리: HOME, SHOP, ABOUT, GALERIE, CONTACT US, MY PAGE와 하위 메뉴 구성',
  },
 };
 const iaStructure = {
  id:'requirements',label:'IA 구조도',title:'Information architecture',
- image:'/assets/work/ux/planning/ia-structure.png',
+ image:'/assets/work/ux/planning/ia-structure.webp',
  originalImage:{
-  src:'/assets/work/ux/planning/ia-structure.png',width:1920,height:1080,
+  src:'/assets/work/ux/planning/ia-structure.webp',width:1920,height:1080,
   alt:'딥티크 IA 구조도: HOME, SHOP, ABOUT, GALERIE, CONTACT US, MY PAGE의 주요 메뉴와 최대 3단계 하위 페이지 계층 관계',
  },
 };
@@ -141,7 +141,7 @@ const flowPages = [
 const userFlow = {...flowPages[0],id:'flow',label:'사용자 플로우차트',title:'User flow',pages:flowPages};
 const meetingPages = [
  {id:'meeting-01',label:'회의록 01',image:'/assets/work/ux/planning/meeting-notes-01.png',width:839,height:749,alt:'딥티크 팀 프로젝트 회의록: 9월 9일과 10일의 논의 내용, 수정 사항과 역할 분담'},
- {id:'meeting-02',label:'회의록 02',image:'/assets/work/ux/planning/meeting-notes-02.png',width:1261,height:909,alt:'딥티크 팀 프로젝트 회의록 모음: 화면 구성과 구현에 관한 팀 논의 기록'},
+ {id:'meeting-02',label:'회의록 02',image:'/assets/work/ux/planning/meeting-notes-02.webp',width:1261,height:909,alt:'딥티크 팀 프로젝트 회의록 모음: 화면 구성과 구현에 관한 팀 논의 기록'},
 ].map(({width,height,alt,...material})=>({...material,originalImage:{src:material.image,width,height,alt}}));
 const meetingNotes = {...meetingPages[0],id:'meeting',label:'회의록',pages:meetingPages};
 const surveyPages = [

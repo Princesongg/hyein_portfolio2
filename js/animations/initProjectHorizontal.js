@@ -15,10 +15,13 @@ export default function initProjectHorizontal(root,prefix) {
  const details=prefix==='team-story'?root.querySelector('.details-slider'):null;
  const detailRow=details?rows.indexOf(details.closest('.team-story-row')):-1;
  let detailDistance=0,lastDetail=-1;
+ let lastOffset=-1;
  let starts=[],overflows=[],width=0,clearance=0,total=0,frame=0,measureFrame=0;
  const update=()=>{
   frame=0;
   const offset=Math.max(0,Math.min(total,scroller.getBoundingClientRect().top+clearance-root.getBoundingClientRect().top));
+  if(offset===lastOffset)return;
+  lastOffset=offset;
   let index=0;
   while(index<rows.length-1&&offset>=starts[index+1])index++;
   const local=offset-starts[index];
@@ -38,6 +41,7 @@ export default function initProjectHorizontal(root,prefix) {
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
  const measure=()=>{
   measureFrame=0;
+  lastOffset=-1;
   const previousHeight=root.offsetHeight;
   const bounds=root.getBoundingClientRect(),viewport=scroller.getBoundingClientRect();
   const passed=root.hasAttribute('data-content-scroll')&&bounds.top<viewport.top&&bounds.bottom<viewport.bottom;

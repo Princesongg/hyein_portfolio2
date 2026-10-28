@@ -6,7 +6,7 @@ export default function initEditionHero(root) {
  const hero = root.querySelector('.edition-hero');
  const logo = root.querySelector('.portfolio-logo-icon img');
  const originalLogo = logo.getAttribute('src');
- logo.setAttribute('src', '/assets/hero/edition/26562.png');
+ logo.setAttribute('src', '/assets/hero/edition/26562.webp');
  const navigate = event => {
   const link = event.target.closest('a[href^="#"]');
   if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;

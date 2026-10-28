@@ -98,16 +98,16 @@ body,.portfolio {background:var(--edition-paper);color:var(--edition-body);}
 .con3-photo-frame img {object-position:50% 27%;}
 .con3-portrait::after {display:none;}
 .con3 .con3-canvas {isolation:isolate;}
-.con3 .con3-canvas::before {content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;background:url('/assets/hero/edition/d94e2.png') center / cover no-repeat;opacity:.14;mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);}
+.con3 .con3-canvas::before {content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;background:url('/assets/hero/edition/d94e2.webp') center / cover no-repeat;opacity:.14;mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);}
 
 /* Chapter openings share the same pearl light and small gold motif. */
 .work-intro,.about-intro {background:var(--edition-paper);color:var(--edition-ink);}
 .work-intro-stage,.about-intro-stage {background:radial-gradient(ellipse at 12% 70%,rgba(234,225,214,.7),transparent 60%),radial-gradient(ellipse at 85% 15%,rgba(238,226,220,.55),transparent 55%);}
-.work-intro-stage::after,.about-intro-stage::after {content:'';position:absolute;inset:0;background:url('/assets/hero/edition/d94e2.png') center/cover no-repeat;opacity:.16;pointer-events:none;}
+.work-intro-stage::after,.about-intro-stage::after {content:'';position:absolute;inset:0;background:url('/assets/hero/edition/d94e2.webp') center/cover no-repeat;opacity:.16;pointer-events:none;}
 .work-intro-stage {background:none;}
 .work-intro-stage::after {display:none;}
 .about-intro-stage {background:none;}
-.about-intro-stage::after {background:linear-gradient(rgba(252,250,247,.84),rgba(252,250,247,.84)),url('/assets/hero/edition/d94e2.png') center/cover no-repeat,radial-gradient(ellipse at 12% 70%,rgba(234,225,214,.7),transparent 60%);opacity:1;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 65%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 65%,transparent);}
+.about-intro-stage::after {background:linear-gradient(rgba(252,250,247,.84),rgba(252,250,247,.84)),url('/assets/hero/edition/d94e2.webp') center/cover no-repeat,radial-gradient(ellipse at 12% 70%,rgba(234,225,214,.7),transparent 60%);opacity:1;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 65%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 65%,transparent);}
 .about-postcards.memory-fan {--memory-background:var(--edition-paper);}
 .memory-fan-glow {mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 75%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 75%,transparent);}
 .work-intro-copy,.about-intro-copy {z-index:1;}

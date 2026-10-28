@@ -4,9 +4,11 @@ export default function initPersonalBackground(section, options = {}) {
  const surfaces = [previous, section].filter(Boolean);
  const media = window.matchMedia('(prefers-reduced-motion: reduce)');
  let frame = 0;
+ let lastProgress = -1;
  const property = options.property || '--personal-scroll-background';
  const colors = options.colors || {};
  const clear = () => surfaces.forEach(surface => {
+  lastProgress = -1;
   surface.style.removeProperty(property);
   Object.keys(colors).forEach(name => surface.style.removeProperty(name));
  });
@@ -15,6 +17,8 @@ export default function initPersonalBackground(section, options = {}) {
   if (media.matches) { clear(); return; }
   const top = section.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
   const progress = Math.max(0, Math.min(1, (scroller.clientHeight - top) / (scroller.clientHeight * .75)));
+  if (progress === lastProgress) return;
+  lastProgress = progress;
   const eased = progress * progress * (3 - 2 * progress);
   const from = options.from || [244, 239, 234];
   const to = options.to || [252, 250, 247];

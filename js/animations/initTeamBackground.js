@@ -7,7 +7,11 @@ export default function initTeamBackground(sectionRef) {
   const surfaces = [preview, start, section].filter(Boolean);
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
   let frame = 0;
-  const clear = () => surfaces.forEach(element => element.style.removeProperty('--work-background'));
+  let lastColor = '';
+  const clear = () => {
+   lastColor = '';
+   surfaces.forEach(element => element.style.removeProperty('--work-background'));
+  };
   const update = () => {
    frame = 0;
    if (media.matches) { clear(); return; }
@@ -23,6 +27,8 @@ export default function initTeamBackground(sectionRef) {
    const to = firstHalf ? [241, 234, 226] : [252, 250, 247];
    const channels = from.map((channel, index) => Math.round(channel + (to[index] - channel) * eased));
    const color = `rgb(${channels.join(',')})`;
+   if (color === lastColor) return;
+   lastColor = color;
    surfaces.forEach(element => element.style.setProperty('--work-background', color));
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };

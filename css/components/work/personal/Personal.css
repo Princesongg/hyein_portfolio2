@@ -51,6 +51,8 @@
 .personal-onitsuka-title {position:absolute;left:5.5%;top:80%;display:flex;flex-direction:column;align-items:center;}
 .personal-onitsuka-title strong {font-family:Georgia,serif;font-weight:900;font-size:3.125cqw;line-height:1.4;}
 .personal-onitsuka-title span {font-size:1.667cqw;font-weight:800;color:#ffcd00;}
+.personal-shot-scroll img,.personal-shot-scroll .personal-scroll-content {animation-play-state:paused;}
+.personal-shot-scroll[data-playing] img,.personal-shot-scroll[data-playing] .personal-scroll-content {animation-play-state:running;}
 @media(prefers-reduced-motion:reduce) {.personal-shot-scroll img {animation:none;}}
 @media(prefers-reduced-motion:reduce) {.personal-scroll-content {animation:none;}}
 .personal-projects-visual .personal-project-phone {right:0;bottom:0;width:25%;margin:0;transform:rotate(3deg);filter:drop-shadow(0 10px 15px rgb(65 97 148 / .15));}

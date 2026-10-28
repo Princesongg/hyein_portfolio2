@@ -5,12 +5,15 @@ export default function initSkillOrbit(section) {
  const icons = [...orbit.children];
  const media = window.matchMedia('(prefers-reduced-motion: reduce), (max-width:700px)');
  let frame = 0;
+ let lastProgress = -1;
  const clamp = value => Math.max(0,Math.min(1,value));
  const update = () => {
   frame = 0;
   if (media.matches) return;
   const top = section.getBoundingClientRect().top-scroller.getBoundingClientRect().top;
   const progress = clamp(-top/(scroller.clientHeight*1.2));
+  if (progress === lastProgress) return;
+  lastProgress = progress;
   const entry = clamp((progress-.025)/.28);
   const expansion = clamp(progress/.75);
   const growth = expansion*expansion*(3-2*expansion);
@@ -39,6 +42,7 @@ export default function initSkillOrbit(section) {
  };
  const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
  const measure = () => {
+  lastProgress = -1;
   section.dataset.motion = String(!media.matches);
   section.style.setProperty('--skill-stage-height',`${stage.offsetHeight}px`);
   if (media.matches) icons.forEach(icon => {icon.style.transform='';icon.style.opacity='';icon.style.zIndex='';});
