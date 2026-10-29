@@ -299,6 +299,8 @@ function element(tag,className,text) {
 function documentPreview(material) {
  if (material.image) {
   const image = element('img','ux-document-image'+(material.originalImage ? ' ux-document-image--planning' : ''));
+  image.loading = 'lazy';
+  image.decoding = 'async';
   image.src = material.image;
   image.alt = material.originalImage?.alt || material.label+' 기획 자료';
   if (material.originalImage) {
