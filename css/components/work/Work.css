@@ -78,4 +78,5 @@
 
 .project-preview--video {background:var(--edition-pearl,#f4efea);}
 .project-preview--video img {object-fit:cover;}
+.project-preview img[src='/assets/work/pack-my-bag-card.png'] {object-fit:contain;object-position:center;background:#faf8f2;}
 .project-track[data-tail-space]::after {content:'';flex:0 0 var(--project-tail-space);pointer-events:none;}

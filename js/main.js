@@ -21,6 +21,7 @@ import initAboutPostcards from './animations/about/initAboutPostcards.js';
 import initTeamHorizontal from './animations/initTeamHorizontal.js';
 import initRoleStory from './components/work/initRoleStory.js';
 import initPersonalStory from './components/work/initPersonalStory.js';
+import initPersonalKeywords from './components/work/initPersonalKeywords.js';
 import initDesignDetails from './animations/initDesignDetails.js';
 import initKeywordCards from './animations/initKeywordCards.js';
 import initMobileKeywords from './components/initMobileKeywords.js';
@@ -56,6 +57,7 @@ resizeObserver.observe(root);
 cleanups.push(() => resizeObserver.disconnect());
 
 start(initViewportLayout,root);
+start(initPersonalKeywords,root);
 start(initDetailSummaries,root);
 start(initEditionHero,root);
 root.querySelectorAll('.team-laptop-preview,.team-story-preview,.team-story-mobile-preview,.team-story-galerie-preview,.what-i-do-preview,.personal-onitsuka-video').forEach(video=>start(initLaptopPreview,video));
@@ -70,7 +72,7 @@ root.querySelectorAll('.team-story-explore-mobile-scroll,.personal-shot-scroll')
 root.querySelectorAll('.personal-projects-visual > a').forEach(preview=>{
  const label=document.createElement('span');
  label.className='personal-preview-caption';
- label.textContent='MAIN PAGE · PC / MOBILE UI DESIGN';
+ label.textContent=preview.dataset.previewCaption||'MAIN PAGE · PC / MOBILE UI DESIGN';
  preview.append(label);
 });
 start(initPostbox,root);
@@ -161,7 +163,7 @@ cleanups.push(() => {
 // Filter existing HTML blocks rather than rebuilding the portfolio.
 const projectTrack = root.querySelector('.project-track');
 const projects = [...projectTrack.children];
-const categories = ['TEAM','PERSONAL','PERSONAL','PERSONAL','PERSONAL','PERSONAL','VIDEO'];
+const categories = ['TEAM','PERSONAL','PERSONAL','PERSONAL','PERSONAL','PERSONAL','PERSONAL','VIDEO'];
 projects.forEach((project,index) => {project.dataset.category = categories[index];});
 // Leave enough space after the final card for its start edge to snap left.
 const updateProjectTail=()=>{
